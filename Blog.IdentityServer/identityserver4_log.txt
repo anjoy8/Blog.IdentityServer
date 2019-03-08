@@ -2666,3 +2666,81 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such col
 2019-03-08 18:29:09.063 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
 2019-03-08 18:29:09.064 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
 2019-03-08 18:29:09.283 +08:00 [DBG] Starting grant removal
+2019-03-08 18:29:47.781 +08:00 [DBG] Login Url: /Account/Login
+2019-03-08 18:29:47.783 +08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-03-08 18:29:47.788 +08:00 [DBG] Logout Url: /Account/Logout
+2019-03-08 18:29:47.789 +08:00 [DBG] ConsentUrl Url: /consent
+2019-03-08 18:29:47.790 +08:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-03-08 18:29:47.791 +08:00 [DBG] Error Url: /home/error
+2019-03-08 18:29:47.792 +08:00 [DBG] Error Id Parameter: errorId
+2019-03-08 18:29:47.917 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:29:47.935 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:29:47.942 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-08 18:29:47.962 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-08 18:29:47.965 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-08 18:29:47.970 +08:00 [DBG] Start discovery request
+2019-03-08 18:29:48.786 +08:00 [ERR] Failed executing DbCommand (114ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."Id", "x"."Created", "x"."Description", "x"."DisplayName", "x"."Emphasize", "x"."Enabled", "x"."Name", "x"."NonEditable", "x"."Required", "x"."ShowInDiscoveryDocument", "x"."Updated"
+FROM "IdentityResources" AS "x"
+ORDER BY "x"."Id"
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+2019-03-08 18:29:48.955 +08:00 [ERR] An exception occurred while iterating over the results of a query for context type 'IdentityServer4.EntityFramework.DbContexts.ConfigurationDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2019-03-08 18:29:49.198 +08:00 [INF] {"Details":"Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.\r\n   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)\r\n   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()\r\n   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)\r\n   at System.Data.Common.DbCommand.ExecuteReader()\r\n   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)\r\n   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()\r\n   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()\r\n   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)\r\n   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)\r\n   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)\r\n   at IdentityServer4.EntityFramework.Stores.ResourceStore.GetAllResourcesAsync() in C:\\local\\identity\\server4\\EntityFramework.Storage\\src\\Stores\\ResourceStore.cs:line 138\r\n   at IdentityServer4.Stores.IResourceStoreExtensions.GetAllEnabledResourcesAsync(IResourceStore store) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Extensions\\IResourceStoreExtensions.cs:line 105\r\n   at IdentityServer4.ResponseHandling.DiscoveryResponseGenerator.CreateDiscoveryDocumentAsync(String baseUrl, String issuerUri) in C:\\local\\identity\\server4\\IdentityServer4\\src\\ResponseHandling\\Default\\DiscoveryResponseGenerator.cs:line 169\r\n   at IdentityServer4.Endpoints.DiscoveryEndpoint.ProcessAsync(HttpContext context) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Endpoints\\DiscoveryEndpoint.cs:line 58\r\n   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Hosting\\IdentityServerMiddleware.cs:line 54","Category":"Error","Name":"Unhandled Exception","EventType":"Error","Id":3000,"Message":"SQLite Error 1: 'no such column: x.Created'.","ActivityId":"0HLL3M3UI9CHK:00000001","TimeStamp":"2019-03-08T10:29:49.0000000Z","ProcessId":29164,"LocalIpAddress":"::1:5002","RemoteIpAddress":"::1","$type":"UnhandledExceptionEvent"}
+2019-03-08 18:29:49.233 +08:00 [FTL] Unhandled exception: SQLite Error 1: 'no such column: x.Created'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at IdentityServer4.EntityFramework.Stores.ResourceStore.GetAllResourcesAsync() in C:\local\identity\server4\EntityFramework.Storage\src\Stores\ResourceStore.cs:line 138
+   at IdentityServer4.Stores.IResourceStoreExtensions.GetAllEnabledResourcesAsync(IResourceStore store) in C:\local\identity\server4\IdentityServer4\src\Extensions\IResourceStoreExtensions.cs:line 105
+   at IdentityServer4.ResponseHandling.DiscoveryResponseGenerator.CreateDiscoveryDocumentAsync(String baseUrl, String issuerUri) in C:\local\identity\server4\IdentityServer4\src\ResponseHandling\Default\DiscoveryResponseGenerator.cs:line 169
+   at IdentityServer4.Endpoints.DiscoveryEndpoint.ProcessAsync(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Endpoints\DiscoveryEndpoint.cs:line 58
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 54
+2019-03-08 18:31:13.517 +08:00 [INF] Starting IdentityServer4 version 2.3.2.0
+2019-03-08 18:31:13.817 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-03-08 18:31:13.818 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-03-08 18:31:13.819 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-03-08 18:31:13.819 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-03-08 18:31:13.820 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-03-08 18:31:13.820 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-03-08 18:31:14.008 +08:00 [DBG] Starting grant removal
