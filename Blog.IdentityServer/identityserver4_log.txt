@@ -1,0 +1,2668 @@
+2019-03-06 14:24:42.076 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-06 14:24:42.109 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-06 14:24:42.110 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-06 14:24:42.110 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-06 14:24:42.112 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-06 14:24:45.137 +08:00 [DBG] Starting token cleanup
+2019-03-06 14:29:36.349 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-06 14:29:36.380 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-06 14:29:36.380 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-06 14:29:36.381 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-06 14:29:36.381 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-06 14:29:39.184 +08:00 [DBG] Starting token cleanup
+2019-03-06 14:31:22.545 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-06 14:31:22.589 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-06 14:31:22.592 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-06 14:31:22.594 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-06 14:31:22.597 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-06 14:31:23.085 +08:00 [DBG] Starting token cleanup
+2019-03-06 14:34:24.299 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 14:34:24.900 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 14:34:24.907 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 14:34:24.991 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 14:34:25.013 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 14:34:25.019 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 14:34:25.026 +08:00 [DBG] Start discovery request
+2019-03-06 14:34:25.813 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 14:34:25.983 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 14:34:26.032 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 14:34:26.054 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 14:34:26.063 +08:00 [DBG] Start authorize request
+2019-03-06 14:34:26.086 +08:00 [DBG] No user present in authorize request
+2019-03-06 14:34:26.200 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:26.624 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:26.676 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:26.747 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:26.778 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:26.803 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:26.819 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:26.853 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "80f6588089e94a78b229693e3355c887",
+  "Nonce": "5db1cc5fd2d34b759677d349324e282f",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "80f6588089e94a78b229693e3355c887",
+    "nonce": "5db1cc5fd2d34b759677d349324e282f"
+  }
+}
+2019-03-06 14:34:26.875 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 14:34:27.517 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:27.551 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:27.565 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:27.593 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:27.615 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:27.641 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:27.647 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:27.683 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:45.670 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 14:34:46.019 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 14:34:46.027 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 14:34:46.032 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 14:34:46.037 +08:00 [DBG] Adding auth_time claim with value: 1551854086
+2019-03-06 14:34:46.056 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 14:34:46.174 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL1VN30QMMS:00000003",
+  "TimeStamp": "2019-03-06T06:34:46Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 14:34:46.218 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:46.223 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:46.227 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 14:34:46.235 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 14:34:46.239 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 14:34:46.250 +08:00 [DBG] Start authorize callback request
+2019-03-06 14:34:46.257 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 14:34:46.261 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:46.297 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:46.310 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:46.342 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:46.368 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:46.390 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:46.397 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:46.401 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "80f6588089e94a78b229693e3355c887",
+  "Nonce": "5db1cc5fd2d34b759677d349324e282f",
+  "SessionId": "508b8ef8cbf962650f1e187b556e1291",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "80f6588089e94a78b229693e3355c887",
+    "nonce": "5db1cc5fd2d34b759677d349324e282f"
+  }
+}
+2019-03-06 14:34:46.481 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: false
+2019-03-06 14:34:46.486 +08:00 [DBG] user_consent grant with value: blogvuejs|1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 not found in store.
+2019-03-06 14:34:46.493 +08:00 [DBG] Found no prior consent from consent store, consent is required
+2019-03-06 14:34:46.497 +08:00 [INF] Showing consent: User has not yet consented
+2019-03-06 14:34:46.512 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:46.517 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:46.576 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:46.613 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:46.628 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:46.653 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:46.669 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:46.690 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:46.695 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:46.728 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:46.742 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:46.774 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:51.094 +08:00 [DBG] CORS request made for path: /consent from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 14:34:51.100 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:51.107 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:51.161 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:51.203 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:51.220 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:51.249 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:51.267 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:51.294 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:51.299 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:51.343 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:51.349 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:51.354 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 14:34:51.361 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 14:34:51.368 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 14:34:51.372 +08:00 [DBG] Start authorize callback request
+2019-03-06 14:34:51.415 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 14:34:51.420 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 14:34:51.477 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:51.488 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:51.518 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:51.535 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:51.562 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 14:34:51.567 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 14:34:51.570 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "80f6588089e94a78b229693e3355c887",
+  "Nonce": "5db1cc5fd2d34b759677d349324e282f",
+  "SessionId": "508b8ef8cbf962650f1e187b556e1291",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "80f6588089e94a78b229693e3355c887",
+    "nonce": "5db1cc5fd2d34b759677d349324e282f"
+  }
+}
+2019-03-06 14:34:51.603 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: false
+2019-03-06 14:34:51.608 +08:00 [DBG] user_consent grant with value: blogvuejs|1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 not found in store.
+2019-03-06 14:34:51.614 +08:00 [DBG] Found no prior consent from consent store, consent is required
+2019-03-06 14:34:51.627 +08:00 [INF] User consented to scopes: ["openid","profile","roles","blog.core.api"]
+2019-03-06 14:34:51.636 +08:00 [DBG] User indicated to remember consent for scopes: ["openid","profile","roles","blog.core.api"]
+2019-03-06 14:34:51.651 +08:00 [DBG] Client allows remembering consent, and consent given. Updating consent store for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 14:34:51.694 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= not found in database
+2019-03-06 14:34:51.869 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 14:34:51.884 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 14:34:51.891 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 14:34:52.048 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 14:34:52.055 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 14:34:52.083 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****IRmw"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****h8HA"
+    }
+  ],
+  "ActivityId": "0HLL1VN30QMMS:00000007",
+  "TimeStamp": "2019-03-06T06:34:52Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 14:34:52.099 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "80f6588089e94a78b229693e3355c887",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 14:34:52.129 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 14:34:52.133 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 14:34:53.284 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 14:34:53.302 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 14:34:53.309 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 14:34:53.320 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 14:34:53.389 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 14:34:53.418 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 14:34:53.482 +08:00 [DBG] Start discovery request
+2019-03-06 14:34:53.556 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 14:34:53.605 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 14:34:53.626 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 14:34:53.636 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 14:34:53.643 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 14:34:53.653 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 14:34:53.658 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 14:34:53.671 +08:00 [DBG] Start key discovery request
+2019-03-06 14:34:53.719 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 14:34:53.749 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 14:34:53.755 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 14:34:53.780 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 14:34:53.796 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 14:34:53.804 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 14:34:53.817 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 14:34:53.828 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 14:34:53.839 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 14:34:53.859 +08:00 [DBG] Start userinfo request
+2019-03-06 14:34:53.870 +08:00 [DBG] Bearer token found in header
+2019-03-06 14:34:53.972 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:54.004 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 14:34:54.018 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 14:34:54.027 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551854091,
+    "exp": 1551857691,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551854086,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 14:34:54.041 +08:00 [DBG] Creating userinfo response
+2019-03-06 14:34:54.048 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 14:34:54.057 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 14:34:54.078 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:54.087 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 14:34:54.091 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 14:34:54.109 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 14:34:54.128 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 14:34:54.134 +08:00 [DBG] End userinfo request
+2019-03-06 14:34:54.194 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:54.205 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 14:34:54.211 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 14:34:54.218 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 14:34:54.222 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 14:34:54.228 +08:00 [DBG] Rendering check session result
+2019-03-06 14:34:54.584 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 14:34:54.594 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 14:34:54.599 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 14:34:54.606 +08:00 [DBG] Start discovery request
+2019-03-06 14:34:54.655 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 14:34:54.830 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 14:34:54.837 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 14:34:54.841 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 14:34:54.845 +08:00 [DBG] Start key discovery request
+2019-03-06 15:31:23.236 +08:00 [WRN] The LINQ expression 'where ([x].Expiration < Convert(DateTime.UtcNow, Nullable`1))' could not be translated and will be evaluated locally.
+2019-03-06 15:31:23.246 +08:00 [WRN] The LINQ expression 'Take(__p_0)' could not be translated and will be evaluated locally.
+2019-03-06 15:31:23.267 +08:00 [INF] Clearing 0 tokens
+2019-03-06 15:49:31.967 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:31.977 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:31.984 +08:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2019-03-06 15:49:31.994 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2019-03-06 15:49:32.001 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2019-03-06 15:49:32.011 +08:00 [DBG] Processing signout request for 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:49:32.024 +08:00 [DBG] Start end session request validation
+2019-03-06 15:49:32.046 +08:00 [DBG] Start identity token validation
+2019-03-06 15:49:32.084 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:32.087 +08:00 [DBG] Client found: blogvuejs / MarketPlace JavaScript Client
+2019-03-06 15:49:32.098 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:49:32.104 +08:00 [DBG] Token validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "ValidateLifetime": false,
+  "Claims": {
+    "nbf": 1551854092,
+    "exp": 1551854392,
+    "iss": "http://localhost:5002",
+    "aud": "blogvuejs",
+    "nonce": "5db1cc5fd2d34b759677d349324e282f",
+    "iat": 1551854092,
+    "at_hash": "VayBGTLOuSeBapEAtcNNOA",
+    "sid": "508b8ef8cbf962650f1e187b556e1291",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551854086,
+    "idp": "local",
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:49:32.119 +08:00 [INF] End session request validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "PostLogOutUri": "http://localhost:6688",
+  "Raw": {
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkN2Q4NDcyMzZkYTgwNjM5ZjQxYTdiYmYwYWViMGU2IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTE4NTQwOTIsImV4cCI6MTU1MTg1NDM5MiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiYmxvZ3Z1ZWpzIiwibm9uY2UiOiI1ZGIxY2M1ZmQyZDM0Yjc1OTY3N2QzNDkzMjRlMjgyZiIsImlhdCI6MTU1MTg1NDA5MiwiYXRfaGFzaCI6IlZheUJHVExPdVNlQmFwRUF0Y05OT0EiLCJzaWQiOiI1MDhiOGVmOGNiZjk2MjY1MGYxZTE4N2I1NTZlMTI5MSIsInN1YiI6IjFkMTMyYTJiLWM5ZmQtNGY3Yy05YmE5LTliMDBjNDAxOTVlMCIsImF1dGhfdGltZSI6MTU1MTg1NDA4NiwiaWRwIjoibG9jYWwiLCJhbXIiOlsicHdkIl19.ESYGkVWoJh4Qs4cTI5Fbi5AEOqzPL_1dlr2tddoQntuIimAkoLAgUtnJ5AJYM04fFbBRuobBk6jwnOt7e4MPwI9ay6rW7xO1JsLff0yUrgVG9hQKXjNDgna2XKng44mrRFQHQkwR2eC0GPWfQHAKcenlbDkeXPbnCu2FATGm5mOOhIVsa2R94UVDzg9WGXsir3YWgWJsO4gmm4qUycXuOga52cU_Tk1ICxQLGAhKHpSweZxTlTeq8myM0JAHb2YhsX92tT0ows0WiFcEJwNLCXq91x7h-l5uAhnKNEHc76cpM06j-Ilh0H9gY7OTf3V23fg1vjGdkB3bGxgzZwIRmw",
+    "post_logout_redirect_uri": "http://localhost:6688"
+  }
+}
+2019-03-06 15:49:32.130 +08:00 [DBG] Success validating end session request from blogvuejs
+2019-03-06 15:49:32.207 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:32.213 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:32.331 +08:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-03-06 15:49:32.337 +08:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-03-06 15:49:32.345 +08:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-03-06 15:49:32.354 +08:00 [INF] {
+  "Name": "User Logout Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1002,
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "Alice Smith",
+  "ActivityId": "0HLL1VN30QMN2:00000002",
+  "TimeStamp": "2019-03-06T07:49:32Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:49:32.895 +08:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-03-06 15:49:32.929 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-03-06 15:49:32.936 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-03-06 15:49:32.958 +08:00 [DBG] Processing signout callback request
+2019-03-06 15:49:33.113 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:33.116 +08:00 [DBG] No client front-channel logout URLs
+2019-03-06 15:49:33.119 +08:00 [DBG] No client back-channel logout URLs
+2019-03-06 15:49:33.124 +08:00 [INF] Successful signout callback.
+2019-03-06 15:49:33.129 +08:00 [DBG] No client front-channel iframe urls
+2019-03-06 15:49:33.133 +08:00 [DBG] No client back-channel iframe urls
+2019-03-06 15:49:39.503 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:49:39.519 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:49:39.527 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:49:39.532 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:49:39.538 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:49:39.545 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:49:39.549 +08:00 [DBG] Start discovery request
+2019-03-06 15:49:39.585 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:49:39.610 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 15:49:39.620 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 15:49:39.627 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 15:49:39.632 +08:00 [DBG] Start authorize request
+2019-03-06 15:49:39.635 +08:00 [DBG] No user present in authorize request
+2019-03-06 15:49:39.644 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:49:39.687 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:39.706 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:39.744 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:39.766 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:39.794 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:39.799 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:49:39.803 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "ef165f2c52524ea992914ff12ff9e683",
+  "Nonce": "3414e5bf214845979bb2625fe3a35be3",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "ef165f2c52524ea992914ff12ff9e683",
+    "nonce": "3414e5bf214845979bb2625fe3a35be3"
+  }
+}
+2019-03-06 15:49:39.814 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 15:49:39.862 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:49:39.897 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:39.914 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:39.938 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:39.952 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:39.977 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:39.981 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:49:40.012 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:48.569 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:49:48.637 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:49:48.640 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 15:49:48.643 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 15:49:48.648 +08:00 [DBG] Adding auth_time claim with value: 1551858588
+2019-03-06 15:49:48.652 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:49:48.661 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL1VN30QMN2:00000006",
+  "TimeStamp": "2019-03-06T07:49:48Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:49:48.682 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:48.687 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:48.690 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 15:49:48.693 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 15:49:48.700 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 15:49:48.703 +08:00 [DBG] Start authorize callback request
+2019-03-06 15:49:48.707 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:49:48.711 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:49:48.748 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:48.761 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:48.786 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:48.801 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:48.822 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:49:48.827 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:49:48.833 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "ef165f2c52524ea992914ff12ff9e683",
+  "Nonce": "3414e5bf214845979bb2625fe3a35be3",
+  "SessionId": "045e1a9db90c9d6515fb2c238162f997",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "ef165f2c52524ea992914ff12ff9e683",
+    "nonce": "3414e5bf214845979bb2625fe3a35be3"
+  }
+}
+2019-03-06 15:49:48.874 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 15:49:48.893 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 15:49:48.899 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 15:49:48.901 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 15:49:48.905 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:49:48.928 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 15:49:48.936 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 15:49:48.943 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****x5UQ"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****RnjA"
+    }
+  ],
+  "ActivityId": "0HLL1VN30QMN2:00000007",
+  "TimeStamp": "2019-03-06T07:49:48Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:49:48.953 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "ef165f2c52524ea992914ff12ff9e683",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 15:49:48.966 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:49:48.970 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:49:50.007 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:49:50.025 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:49:50.032 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:49:50.038 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:49:50.046 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:49:50.053 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:49:50.059 +08:00 [DBG] Start discovery request
+2019-03-06 15:49:50.137 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:49:50.258 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 15:49:50.325 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:49:50.331 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:49:50.342 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 15:49:50.358 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 15:49:50.370 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 15:49:50.380 +08:00 [DBG] Start key discovery request
+2019-03-06 15:49:50.416 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:49:50.431 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:49:50.437 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:49:50.454 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:49:50.476 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:49:50.482 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:49:50.490 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 15:49:50.498 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 15:49:50.511 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 15:49:50.521 +08:00 [DBG] Start userinfo request
+2019-03-06 15:49:50.536 +08:00 [DBG] Bearer token found in header
+2019-03-06 15:49:50.622 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:50.671 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:49:50.685 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:49:50.690 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551858588,
+    "exp": 1551862188,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858588,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:49:50.700 +08:00 [DBG] Creating userinfo response
+2019-03-06 15:49:50.703 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:49:50.707 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:49:50.725 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:50.732 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 15:49:50.737 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:49:50.752 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:49:50.774 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 15:49:50.781 +08:00 [DBG] End userinfo request
+2019-03-06 15:49:50.855 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:50.862 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:49:50.871 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 15:49:50.880 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 15:49:50.889 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 15:49:50.895 +08:00 [DBG] Rendering check session result
+2019-03-06 15:49:51.139 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:49:51.147 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:49:51.155 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:49:51.161 +08:00 [DBG] Start discovery request
+2019-03-06 15:49:51.202 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:49:51.333 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 15:49:51.345 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 15:49:51.349 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 15:49:51.357 +08:00 [DBG] Start key discovery request
+2019-03-06 15:50:09.786 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:09.811 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:09.834 +08:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2019-03-06 15:50:09.840 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2019-03-06 15:50:09.859 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2019-03-06 15:50:09.869 +08:00 [DBG] Processing signout request for 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:50:09.874 +08:00 [DBG] Start end session request validation
+2019-03-06 15:50:09.880 +08:00 [DBG] Start identity token validation
+2019-03-06 15:50:09.929 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:09.932 +08:00 [DBG] Client found: blogvuejs / MarketPlace JavaScript Client
+2019-03-06 15:50:09.947 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:50:09.951 +08:00 [DBG] Token validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "ValidateLifetime": false,
+  "Claims": {
+    "nbf": 1551858588,
+    "exp": 1551858888,
+    "iss": "http://localhost:5002",
+    "aud": "blogvuejs",
+    "nonce": "3414e5bf214845979bb2625fe3a35be3",
+    "iat": 1551858588,
+    "at_hash": "r9KlMzE_dkzOw6UsqYVRNw",
+    "sid": "045e1a9db90c9d6515fb2c238162f997",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858588,
+    "idp": "local",
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:50:09.956 +08:00 [INF] End session request validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "PostLogOutUri": "http://localhost:6688",
+  "Raw": {
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkN2Q4NDcyMzZkYTgwNjM5ZjQxYTdiYmYwYWViMGU2IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTE4NTg1ODgsImV4cCI6MTU1MTg1ODg4OCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiYmxvZ3Z1ZWpzIiwibm9uY2UiOiIzNDE0ZTViZjIxNDg0NTk3OWJiMjYyNWZlM2EzNWJlMyIsImlhdCI6MTU1MTg1ODU4OCwiYXRfaGFzaCI6InI5S2xNekVfZGt6T3c2VXNxWVZSTnciLCJzaWQiOiIwNDVlMWE5ZGI5MGM5ZDY1MTVmYjJjMjM4MTYyZjk5NyIsInN1YiI6IjFkMTMyYTJiLWM5ZmQtNGY3Yy05YmE5LTliMDBjNDAxOTVlMCIsImF1dGhfdGltZSI6MTU1MTg1ODU4OCwiaWRwIjoibG9jYWwiLCJhbXIiOlsicHdkIl19.r_o7DpmLeVu7DuIobISXhk9Hwo2FFbNAm3Sw5HlSqEckFM9TZRTgpEpGdHE3oXN57JaAhlM_xlU5SuzbVp6b1zE5UzoFlpapIn4_5NDgzZU3koqHEMEJYvUJLtweiFKVYbxXCf-khOKVaO-F-tMMOaldiv_0PJExZGrq9EPzZsXJPx8H-MRl1_C42d9TlrXu3qNwrEjnJpU4dr3vgHoDGb51vj71EzWEeZH6HM0b4WWJyj1c5obxG3nj9eO3RuWw89svhZzHbDycbHmc-PQZnjL_pAzElt1XhnuWxGEBPiVaDCJB2zZHrE2luJ3B7uXiYSR0v7zgAZhG_083oOx5UQ",
+    "post_logout_redirect_uri": "http://localhost:6688"
+  }
+}
+2019-03-06 15:50:09.971 +08:00 [DBG] Success validating end session request from blogvuejs
+2019-03-06 15:50:09.983 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:09.986 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:10.019 +08:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-03-06 15:50:10.024 +08:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-03-06 15:50:10.030 +08:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-03-06 15:50:10.036 +08:00 [INF] {
+  "Name": "User Logout Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1002,
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "Alice Smith",
+  "ActivityId": "0HLL1VN30QMN2:0000000A",
+  "TimeStamp": "2019-03-06T07:50:10Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:50:10.180 +08:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-03-06 15:50:10.190 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-03-06 15:50:10.194 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-03-06 15:50:10.202 +08:00 [DBG] Processing signout callback request
+2019-03-06 15:50:10.312 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:10.328 +08:00 [DBG] No client front-channel logout URLs
+2019-03-06 15:50:10.335 +08:00 [DBG] No client back-channel logout URLs
+2019-03-06 15:50:10.340 +08:00 [INF] Successful signout callback.
+2019-03-06 15:50:10.344 +08:00 [DBG] No client front-channel iframe urls
+2019-03-06 15:50:10.349 +08:00 [DBG] No client back-channel iframe urls
+2019-03-06 15:50:21.405 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:50:21.419 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:50:21.423 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:50:21.428 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:50:21.431 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:50:21.435 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:50:21.440 +08:00 [DBG] Start discovery request
+2019-03-06 15:50:21.465 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:50:21.485 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 15:50:21.496 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 15:50:21.503 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 15:50:21.507 +08:00 [DBG] Start authorize request
+2019-03-06 15:50:21.509 +08:00 [DBG] No user present in authorize request
+2019-03-06 15:50:21.514 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:50:21.550 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:21.562 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:21.585 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:21.600 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:21.620 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:21.628 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:50:21.633 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "d1777a7907e246da8b60a778772c4ccc",
+  "Nonce": "ad4abf6b24bd453499f1bca912daae99",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "d1777a7907e246da8b60a778772c4ccc",
+    "nonce": "ad4abf6b24bd453499f1bca912daae99"
+  }
+}
+2019-03-06 15:50:21.644 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 15:50:21.700 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:50:21.740 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:21.755 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:21.778 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:21.795 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:21.815 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:21.820 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:50:21.852 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:41.461 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:50:45.670 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:50:45.706 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:45.724 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:45.752 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:45.765 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:45.802 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:45.810 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:50:45.848 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:51.549 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:50:51.634 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:50:51.637 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 15:50:51.641 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 15:50:51.643 +08:00 [DBG] Adding auth_time claim with value: 1551858651
+2019-03-06 15:50:51.647 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:50:51.657 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL1VN30QMN2:00000010",
+  "TimeStamp": "2019-03-06T07:50:51Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:50:51.684 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:51.691 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:51.700 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 15:50:51.704 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 15:50:51.708 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 15:50:51.720 +08:00 [DBG] Start authorize callback request
+2019-03-06 15:50:51.725 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:50:51.734 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:50:51.771 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:51.784 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:51.818 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:51.834 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:51.855 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:50:51.862 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:50:51.869 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "d1777a7907e246da8b60a778772c4ccc",
+  "Nonce": "ad4abf6b24bd453499f1bca912daae99",
+  "SessionId": "ac8bf515bf150eb281599247c6c69108",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "d1777a7907e246da8b60a778772c4ccc",
+    "nonce": "ad4abf6b24bd453499f1bca912daae99"
+  }
+}
+2019-03-06 15:50:51.908 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 15:50:51.921 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 15:50:51.924 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 15:50:51.927 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 15:50:51.932 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:50:51.955 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 15:50:51.960 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 15:50:51.969 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****58wg"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****M9wg"
+    }
+  ],
+  "ActivityId": "0HLL1VN30QMN2:00000011",
+  "TimeStamp": "2019-03-06T07:50:51Z",
+  "ProcessId": 13320,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:50:51.982 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "d1777a7907e246da8b60a778772c4ccc",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 15:50:51.987 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:50:51.990 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:50:53.106 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:50:53.159 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:50:53.171 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:50:53.197 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:50:53.246 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:50:53.280 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:50:53.288 +08:00 [DBG] Start discovery request
+2019-03-06 15:50:53.345 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:50:53.368 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 15:50:53.382 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:50:53.387 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:50:53.395 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 15:50:53.399 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 15:50:53.407 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 15:50:53.411 +08:00 [DBG] Start key discovery request
+2019-03-06 15:50:53.444 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:50:53.460 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:50:53.464 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:50:53.482 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:50:53.503 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:50:53.508 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:50:53.514 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 15:50:53.529 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 15:50:53.542 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 15:50:53.552 +08:00 [DBG] Start userinfo request
+2019-03-06 15:50:53.555 +08:00 [DBG] Bearer token found in header
+2019-03-06 15:50:53.632 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:53.678 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:50:53.693 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:50:53.697 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551858651,
+    "exp": 1551862251,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858651,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:50:53.720 +08:00 [DBG] Creating userinfo response
+2019-03-06 15:50:53.725 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:50:53.728 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:50:53.744 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:53.751 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 15:50:53.755 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:50:53.770 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:50:53.788 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 15:50:53.794 +08:00 [DBG] End userinfo request
+2019-03-06 15:50:53.847 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:53.867 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:50:53.876 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 15:50:53.881 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 15:50:53.891 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 15:50:53.897 +08:00 [DBG] Rendering check session result
+2019-03-06 15:51:12.018 +08:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2019-03-06 15:51:12.030 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2019-03-06 15:51:12.035 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2019-03-06 15:51:12.040 +08:00 [DBG] Processing signout request for anonymous
+2019-03-06 15:51:12.043 +08:00 [DBG] Start end session request validation
+2019-03-06 15:51:12.046 +08:00 [DBG] Start identity token validation
+2019-03-06 15:51:12.079 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:51:12.081 +08:00 [DBG] Client found: blogvuejs / MarketPlace JavaScript Client
+2019-03-06 15:51:12.096 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:51:12.100 +08:00 [DBG] Token validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "ValidateLifetime": false,
+  "Claims": {
+    "nbf": 1551858651,
+    "exp": 1551858951,
+    "iss": "http://localhost:5002",
+    "aud": "blogvuejs",
+    "nonce": "ad4abf6b24bd453499f1bca912daae99",
+    "iat": 1551858651,
+    "at_hash": "JuGscD_pmBDKRZtiTi5SIA",
+    "sid": "ac8bf515bf150eb281599247c6c69108",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858651,
+    "idp": "local",
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:51:12.105 +08:00 [INF] End session request validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "SubjectId": "unknown",
+  "PostLogOutUri": "http://localhost:6688",
+  "Raw": {
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkN2Q4NDcyMzZkYTgwNjM5ZjQxYTdiYmYwYWViMGU2IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTE4NTg2NTEsImV4cCI6MTU1MTg1ODk1MSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiYmxvZ3Z1ZWpzIiwibm9uY2UiOiJhZDRhYmY2YjI0YmQ0NTM0OTlmMWJjYTkxMmRhYWU5OSIsImlhdCI6MTU1MTg1ODY1MSwiYXRfaGFzaCI6Ikp1R3NjRF9wbUJES1JadGlUaTVTSUEiLCJzaWQiOiJhYzhiZjUxNWJmMTUwZWIyODE1OTkyNDdjNmM2OTEwOCIsInN1YiI6IjFkMTMyYTJiLWM5ZmQtNGY3Yy05YmE5LTliMDBjNDAxOTVlMCIsImF1dGhfdGltZSI6MTU1MTg1ODY1MSwiaWRwIjoibG9jYWwiLCJhbXIiOlsicHdkIl19.G-Tgm2r38GR0bbrXjbmaaoon6dVgr9NyMjZ_o4pJge_RljFJ6rt1jHzUp0ajsvAwbp4916lMAfqHtU9yhJ_0mvfCIhRD5XaciapvZD0CQqx08lzxyPX2YdpEGEJ9a3jtPtUn9ecDIDFymvXvUqo9BBWPmicVlrkrXuU_pbl3GBy0-5HVrPle-wKKkAr49cRwBV9X2P2PVh-7I7crTO51AKgurcfYDUuAJ3xCcHbkAyv02EaCnAPFtu-4Dplgkvy2w42iHQGzQJgfQkGe_8HTw1g9Ns32hddAc1f007mg2lh9dsqqnm4kcUzt-YcPaEp0xOUunUfG9yS_d_mx-X58wg",
+    "post_logout_redirect_uri": "http://localhost:6688"
+  }
+}
+2019-03-06 15:51:12.121 +08:00 [DBG] Success validating end session request from blogvuejs
+2019-03-06 15:51:22.145 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:51:22.162 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:51:22.166 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:51:22.174 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:51:22.178 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:51:22.182 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:51:22.186 +08:00 [DBG] Start discovery request
+2019-03-06 15:51:22.211 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:51:22.232 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 15:51:22.241 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 15:51:22.248 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 15:51:22.253 +08:00 [DBG] Start authorize request
+2019-03-06 15:51:22.256 +08:00 [DBG] No user present in authorize request
+2019-03-06 15:51:22.259 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:51:22.294 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:51:22.306 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:51:22.327 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:51:22.342 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:51:22.364 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:51:22.370 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:51:22.376 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "875d312bf2e64860bd49e2bfcc657210",
+  "Nonce": "39a5de8b6fb44d5b9bb6829d7e4363da",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "875d312bf2e64860bd49e2bfcc657210",
+    "nonce": "39a5de8b6fb44d5b9bb6829d7e4363da"
+  }
+}
+2019-03-06 15:51:22.383 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 15:51:22.435 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:51:22.476 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:51:22.489 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:51:22.516 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:51:22.529 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:51:22.554 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:51:22.559 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:51:22.587 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:51:56.106 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-06 15:51:56.150 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-06 15:51:56.152 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-06 15:51:56.154 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-06 15:51:56.156 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-06 15:51:56.399 +08:00 [DBG] Starting token cleanup
+2019-03-06 15:52:05.619 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:52:06.045 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:06.055 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:06.112 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:52:06.141 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:52:06.149 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:52:06.156 +08:00 [DBG] Start discovery request
+2019-03-06 15:52:06.772 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:52:06.897 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 15:52:06.921 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 15:52:06.926 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 15:52:06.933 +08:00 [DBG] Start authorize request
+2019-03-06 15:52:06.954 +08:00 [DBG] No user present in authorize request
+2019-03-06 15:52:06.976 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:07.337 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:07.399 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:07.465 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:07.495 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:07.520 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:07.535 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:07.581 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "128c8b63752c4c3ab65b0e6c6694067e",
+  "Nonce": "1e59fa27b9dd46f3a2e4b16372ff94b1",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "128c8b63752c4c3ab65b0e6c6694067e",
+    "nonce": "1e59fa27b9dd46f3a2e4b16372ff94b1"
+  }
+}
+2019-03-06 15:52:07.601 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 15:52:08.034 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:08.066 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:08.081 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:08.101 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:08.115 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:08.135 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:08.141 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:08.177 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:17.410 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:52:17.742 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:52:17.747 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 15:52:17.752 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 15:52:17.756 +08:00 [DBG] Adding auth_time claim with value: 1551858737
+2019-03-06 15:52:17.774 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:52:17.856 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL212G76L5R:00000003",
+  "TimeStamp": "2019-03-06T07:52:17Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:52:17.897 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:17.903 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:17.910 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 15:52:17.916 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 15:52:17.921 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 15:52:17.943 +08:00 [DBG] Start authorize callback request
+2019-03-06 15:52:17.953 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:52:17.956 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:17.997 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:18.011 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:18.033 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:18.048 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:18.072 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:18.076 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:18.081 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "128c8b63752c4c3ab65b0e6c6694067e",
+  "Nonce": "1e59fa27b9dd46f3a2e4b16372ff94b1",
+  "SessionId": "556d07c62e36c04ce7f9e200a2f5596d",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "128c8b63752c4c3ab65b0e6c6694067e",
+    "nonce": "1e59fa27b9dd46f3a2e4b16372ff94b1"
+  }
+}
+2019-03-06 15:52:18.185 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 15:52:18.209 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 15:52:18.224 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 15:52:18.241 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 15:52:18.244 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:52:18.395 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 15:52:18.405 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 15:52:18.432 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****EVfA"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****Bi8w"
+    }
+  ],
+  "ActivityId": "0HLL212G76L5R:00000004",
+  "TimeStamp": "2019-03-06T07:52:18Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:52:18.448 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "128c8b63752c4c3ab65b0e6c6694067e",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 15:52:18.478 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:52:18.481 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:52:19.524 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:52:19.542 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:19.548 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:19.554 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:52:19.561 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:52:19.565 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:52:19.575 +08:00 [DBG] Start discovery request
+2019-03-06 15:52:19.691 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:52:19.799 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 15:52:19.867 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:19.894 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:19.901 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 15:52:19.911 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 15:52:19.915 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 15:52:19.925 +08:00 [DBG] Start key discovery request
+2019-03-06 15:52:19.973 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:52:19.992 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:19.996 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:20.039 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:52:20.091 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:20.100 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:20.110 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 15:52:20.118 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 15:52:20.121 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 15:52:20.133 +08:00 [DBG] Start userinfo request
+2019-03-06 15:52:20.140 +08:00 [DBG] Bearer token found in header
+2019-03-06 15:52:20.250 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:20.287 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:20.306 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:52:20.318 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551858738,
+    "exp": 1551862338,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858737,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:52:20.334 +08:00 [DBG] Creating userinfo response
+2019-03-06 15:52:20.347 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:20.355 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:20.381 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:20.388 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 15:52:20.395 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:20.411 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:20.433 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 15:52:20.445 +08:00 [DBG] End userinfo request
+2019-03-06 15:52:20.526 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:20.542 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:20.559 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 15:52:20.568 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 15:52:20.584 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 15:52:20.616 +08:00 [DBG] Rendering check session result
+2019-03-06 15:52:44.178 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:52:44.191 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:44.195 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:44.199 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:52:44.204 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:52:44.207 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:52:44.212 +08:00 [DBG] Start discovery request
+2019-03-06 15:52:44.238 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:52:44.273 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 15:52:44.287 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 15:52:44.303 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 15:52:44.307 +08:00 [DBG] Start authorize request
+2019-03-06 15:52:44.310 +08:00 [DBG] No user present in authorize request
+2019-03-06 15:52:44.316 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:44.357 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:44.372 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:44.400 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:44.417 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:44.440 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:44.448 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:44.453 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "38f90fa581ad403e9d009c109e19d1a0",
+  "Nonce": "fe65a998bdad4c60a007ae5a92a2fdb1",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "38f90fa581ad403e9d009c109e19d1a0",
+    "nonce": "fe65a998bdad4c60a007ae5a92a2fdb1"
+  }
+}
+2019-03-06 15:52:44.471 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 15:52:44.521 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:44.555 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:44.568 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:44.588 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:44.602 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:44.622 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:44.628 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:44.660 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:49.880 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:52:49.935 +08:00 [WRN] Invalid password for user 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0.
+2019-03-06 15:52:49.941 +08:00 [WRN] User 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 failed to provide the correct password.
+2019-03-06 15:52:50.161 +08:00 [INF] {
+  "Name": "User Login Failure",
+  "Category": "Authentication",
+  "EventType": "Failure",
+  "Id": 1001,
+  "Username": "alice",
+  "Endpoint": "UI",
+  "Message": "invalid credentials",
+  "ActivityId": "0HLL212G76L62:00000002",
+  "TimeStamp": "2019-03-06T07:52:50Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:52:50.170 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:50.214 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:50.229 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:50.254 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:50.271 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:50.300 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:50.307 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:50.350 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:55.903 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-06 15:52:56.120 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:52:56.129 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 15:52:56.132 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 15:52:56.136 +08:00 [DBG] Adding auth_time claim with value: 1551858776
+2019-03-06 15:52:56.143 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:52:56.166 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL212G76L62:00000003",
+  "TimeStamp": "2019-03-06T07:52:56Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:52:56.199 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:56.211 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:56.226 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 15:52:56.236 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 15:52:56.260 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 15:52:56.279 +08:00 [DBG] Start authorize callback request
+2019-03-06 15:52:56.295 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:52:56.315 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 15:52:56.400 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:56.430 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:56.479 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:56.500 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:56.527 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 15:52:56.532 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 15:52:56.537 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "38f90fa581ad403e9d009c109e19d1a0",
+  "Nonce": "fe65a998bdad4c60a007ae5a92a2fdb1",
+  "SessionId": "35c624e39f7f3995823cd16f395751c5",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "38f90fa581ad403e9d009c109e19d1a0",
+    "nonce": "fe65a998bdad4c60a007ae5a92a2fdb1"
+  }
+}
+2019-03-06 15:52:56.572 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 15:52:56.586 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 15:52:56.591 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 15:52:56.597 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 15:52:56.601 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 15:52:56.632 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 15:52:56.639 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 15:52:56.649 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****-rvQ"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****qMLQ"
+    }
+  ],
+  "ActivityId": "0HLL212G76L62:00000004",
+  "TimeStamp": "2019-03-06T07:52:56Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-06 15:52:56.662 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "38f90fa581ad403e9d009c109e19d1a0",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 15:52:56.671 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 15:52:56.680 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 15:52:57.651 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 15:52:57.676 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:57.683 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:57.694 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 15:52:57.700 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 15:52:57.706 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 15:52:57.731 +08:00 [DBG] Start discovery request
+2019-03-06 15:52:57.950 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 15:52:57.971 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 15:52:57.988 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:57.996 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:58.004 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 15:52:58.013 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 15:52:58.027 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 15:52:58.048 +08:00 [DBG] Start key discovery request
+2019-03-06 15:52:58.089 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:52:58.108 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:58.119 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:58.157 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 15:52:58.201 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 15:52:58.211 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 15:52:58.250 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 15:52:58.257 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 15:52:58.263 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 15:52:58.268 +08:00 [DBG] Start userinfo request
+2019-03-06 15:52:58.284 +08:00 [DBG] Bearer token found in header
+2019-03-06 15:52:58.352 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:58.413 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 15:52:58.434 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 15:52:58.440 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551858776,
+    "exp": 1551862376,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551858776,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 15:52:58.455 +08:00 [DBG] Creating userinfo response
+2019-03-06 15:52:58.459 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:58.466 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:58.486 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:58.492 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 15:52:58.496 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 15:52:58.512 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 15:52:58.531 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 15:52:58.536 +08:00 [DBG] End userinfo request
+2019-03-06 15:52:58.604 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:58.610 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 15:52:58.630 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 15:52:58.636 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 15:52:58.657 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 15:52:58.667 +08:00 [DBG] Rendering check session result
+2019-03-06 16:26:41.512 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:26:41.722 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:26:41.768 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:26:41.785 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:26:41.796 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:26:41.808 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:26:41.834 +08:00 [DBG] Start discovery request
+2019-03-06 16:26:41.893 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:26:42.030 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:26:42.078 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:26:42.101 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 16:26:42.117 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 16:26:42.129 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 16:26:42.139 +08:00 [DBG] Rendering check session result
+2019-03-06 16:26:42.178 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:26:42.219 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:26:42.228 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:26:42.237 +08:00 [DBG] Start discovery request
+2019-03-06 16:26:42.294 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:26:42.427 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 16:26:42.433 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 16:26:42.440 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 16:26:42.443 +08:00 [DBG] Start key discovery request
+2019-03-06 16:40:40.044 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:40:40.062 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:40:40.066 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:40:40.071 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:40:40.075 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:40:40.082 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:40:40.085 +08:00 [DBG] Start discovery request
+2019-03-06 16:40:40.111 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:40:40.138 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 16:40:40.146 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 16:40:40.154 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 16:40:40.161 +08:00 [DBG] Start authorize request
+2019-03-06 16:40:40.165 +08:00 [DBG] No user present in authorize request
+2019-03-06 16:40:40.168 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:40:40.228 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:40:40.244 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:40.270 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:40.285 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:40.307 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:40.316 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:40:40.319 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "257951da026d4315ad44ec39b7d63cc0",
+  "Nonce": "2805bfb37e914f2e9a143e2e16fa48fe",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "257951da026d4315ad44ec39b7d63cc0",
+    "nonce": "2805bfb37e914f2e9a143e2e16fa48fe"
+  }
+}
+2019-03-06 16:40:40.327 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 16:40:40.451 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:40:40.485 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:40:40.498 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:40.518 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:40.532 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:40.554 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:40.562 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:40:40.601 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:40:58.754 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 16:40:58.756 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 16:40:58.759 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 16:40:58.762 +08:00 [DBG] Adding auth_time claim with value: 1551861658
+2019-03-06 16:40:58.765 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 16:40:58.781 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL212G76L6B:00000003",
+  "TimeStamp": "2019-03-06T08:40:58Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:40:58.814 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:40:58.822 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:40:58.826 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 16:40:58.834 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 16:40:58.839 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 16:40:58.845 +08:00 [DBG] Start authorize callback request
+2019-03-06 16:40:58.849 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:40:58.854 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:40:58.900 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:40:58.914 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:58.941 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:58.955 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:40:58.977 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:40:58.982 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:40:58.988 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "257951da026d4315ad44ec39b7d63cc0",
+  "Nonce": "2805bfb37e914f2e9a143e2e16fa48fe",
+  "SessionId": "ca0d85ea7867e3f27e37388ad7038773",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "257951da026d4315ad44ec39b7d63cc0",
+    "nonce": "2805bfb37e914f2e9a143e2e16fa48fe"
+  }
+}
+2019-03-06 16:40:59.024 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 16:40:59.041 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 16:40:59.045 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 16:40:59.050 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 16:40:59.053 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:40:59.075 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 16:40:59.079 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 16:40:59.092 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****upLw"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****jVNA"
+    }
+  ],
+  "ActivityId": "0HLL212G76L6B:00000004",
+  "TimeStamp": "2019-03-06T08:40:59Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:40:59.106 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "257951da026d4315ad44ec39b7d63cc0",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 16:40:59.114 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 16:40:59.118 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 16:40:59.630 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:40:59.665 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:40:59.672 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:40:59.680 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:40:59.687 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:40:59.694 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:40:59.698 +08:00 [DBG] Start discovery request
+2019-03-06 16:40:59.732 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:40:59.763 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 16:40:59.786 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:40:59.800 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:40:59.806 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 16:40:59.814 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 16:40:59.818 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 16:40:59.825 +08:00 [DBG] Start key discovery request
+2019-03-06 16:40:59.865 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 16:40:59.884 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:40:59.887 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:40:59.901 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 16:40:59.914 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:40:59.918 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:40:59.926 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 16:40:59.932 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 16:40:59.937 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 16:40:59.943 +08:00 [DBG] Start userinfo request
+2019-03-06 16:40:59.945 +08:00 [DBG] Bearer token found in header
+2019-03-06 16:40:59.979 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:00.041 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:00.070 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 16:41:00.078 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551861659,
+    "exp": 1551865259,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551861658,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 16:41:00.098 +08:00 [DBG] Creating userinfo response
+2019-03-06 16:41:00.104 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:41:00.112 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:41:00.162 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:00.169 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 16:41:00.177 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:41:00.196 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:00.316 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 16:41:00.332 +08:00 [DBG] End userinfo request
+2019-03-06 16:41:00.381 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:00.389 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:00.400 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 16:41:00.409 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 16:41:00.414 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 16:41:00.418 +08:00 [DBG] Rendering check session result
+2019-03-06 16:41:00.696 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:41:00.707 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:41:00.714 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:41:00.725 +08:00 [DBG] Start discovery request
+2019-03-06 16:41:00.769 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:41:00.920 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 16:41:00.926 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 16:41:00.930 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 16:41:00.933 +08:00 [DBG] Start key discovery request
+2019-03-06 16:41:12.181 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:12.190 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:12.194 +08:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2019-03-06 16:41:12.203 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2019-03-06 16:41:12.209 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2019-03-06 16:41:12.228 +08:00 [DBG] Processing signout request for 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:41:12.244 +08:00 [DBG] Start end session request validation
+2019-03-06 16:41:12.255 +08:00 [DBG] Start identity token validation
+2019-03-06 16:41:12.290 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:12.293 +08:00 [DBG] Client found: blogvuejs / MarketPlace JavaScript Client
+2019-03-06 16:41:12.312 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 16:41:12.317 +08:00 [DBG] Token validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "ValidateLifetime": false,
+  "Claims": {
+    "nbf": 1551861659,
+    "exp": 1551861959,
+    "iss": "http://localhost:5002",
+    "aud": "blogvuejs",
+    "nonce": "2805bfb37e914f2e9a143e2e16fa48fe",
+    "iat": 1551861659,
+    "at_hash": "ZaB4YqYljsGYRVljsGt8bw",
+    "sid": "ca0d85ea7867e3f27e37388ad7038773",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551861658,
+    "idp": "local",
+    "amr": "pwd"
+  }
+}
+2019-03-06 16:41:12.334 +08:00 [INF] End session request validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "PostLogOutUri": "http://localhost:6688",
+  "Raw": {
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkN2Q4NDcyMzZkYTgwNjM5ZjQxYTdiYmYwYWViMGU2IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTE4NjE2NTksImV4cCI6MTU1MTg2MTk1OSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiYmxvZ3Z1ZWpzIiwibm9uY2UiOiIyODA1YmZiMzdlOTE0ZjJlOWExNDNlMmUxNmZhNDhmZSIsImlhdCI6MTU1MTg2MTY1OSwiYXRfaGFzaCI6IlphQjRZcVlsanNHWVJWbGpzR3Q4YnciLCJzaWQiOiJjYTBkODVlYTc4NjdlM2YyN2UzNzM4OGFkNzAzODc3MyIsInN1YiI6IjFkMTMyYTJiLWM5ZmQtNGY3Yy05YmE5LTliMDBjNDAxOTVlMCIsImF1dGhfdGltZSI6MTU1MTg2MTY1OCwiaWRwIjoibG9jYWwiLCJhbXIiOlsicHdkIl19.OOC-qcz-7HiN3ds1fsYUVXMTlDwLvw99SRp4_rXPQa0xmyj_cfsbNV-BljW8O_otSLus2eNYsaEiuJ0MEKf_bnD4lowmxsBIwOD-j8sfVYprOjLMJssYzkUxKhiyE6IO_ci1Q0W2QX3CpPJlqsn9fY2fnvr2sZJC-eeKoyL7SR7tWW5XWO2ylT-3ECD8zIn0ym9nmaA8pXSodEqKbN56ZcvYtxeKYoLBZDN6PSZku4p7pqQU5-4nHzHHim56pCNvPaGRo6fWvNxfBpz-gZRDsmSQk9wQNxUjGo-cxwoSqROxeNTR3P0HQNRTAmRtOB4mBvHq_QZxODPsDTXlXFupLw",
+    "post_logout_redirect_uri": "http://localhost:6688"
+  }
+}
+2019-03-06 16:41:12.356 +08:00 [DBG] Success validating end session request from blogvuejs
+2019-03-06 16:41:12.389 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:12.398 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:41:12.503 +08:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-03-06 16:41:12.523 +08:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-03-06 16:41:12.530 +08:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-03-06 16:41:12.543 +08:00 [INF] {
+  "Name": "User Logout Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1002,
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "Alice Smith",
+  "ActivityId": "0HLL212G76L6B:00000007",
+  "TimeStamp": "2019-03-06T08:41:12Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:41:12.988 +08:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-03-06 16:41:13.031 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-03-06 16:41:13.041 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-03-06 16:41:13.059 +08:00 [DBG] Processing signout callback request
+2019-03-06 16:41:13.124 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:13.127 +08:00 [DBG] No client front-channel logout URLs
+2019-03-06 16:41:13.131 +08:00 [DBG] No client back-channel logout URLs
+2019-03-06 16:41:13.133 +08:00 [INF] Successful signout callback.
+2019-03-06 16:41:13.141 +08:00 [DBG] No client front-channel iframe urls
+2019-03-06 16:41:13.144 +08:00 [DBG] No client back-channel iframe urls
+2019-03-06 16:41:16.727 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:41:16.744 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:41:16.750 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:41:16.756 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:41:16.761 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:41:16.768 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:41:16.772 +08:00 [DBG] Start discovery request
+2019-03-06 16:41:16.802 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:41:16.822 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 16:41:16.831 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 16:41:16.834 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 16:41:16.838 +08:00 [DBG] Start authorize request
+2019-03-06 16:41:16.843 +08:00 [DBG] No user present in authorize request
+2019-03-06 16:41:16.847 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:41:16.884 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:16.899 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:16.924 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:41:16.939 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:16.959 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:41:16.965 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:41:16.970 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "a8c5604bb1a54682bcaf9bb2402bcb78",
+  "Nonce": "ee1c2680f4a64e5182411a75e58aa2f5",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "a8c5604bb1a54682bcaf9bb2402bcb78",
+    "nonce": "ee1c2680f4a64e5182411a75e58aa2f5"
+  }
+}
+2019-03-06 16:41:16.978 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 16:41:17.020 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:41:17.069 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:41:17.083 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:17.114 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:41:17.132 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:41:17.157 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:41:17.164 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:41:17.199 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:42:40.683 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:42:40.699 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:42:40.706 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:42:40.711 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:42:40.716 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:42:40.720 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:42:40.724 +08:00 [DBG] Start discovery request
+2019-03-06 16:42:40.769 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:42:40.808 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 16:42:40.817 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 16:42:40.828 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 16:42:40.837 +08:00 [DBG] Start authorize request
+2019-03-06 16:42:40.840 +08:00 [DBG] No user present in authorize request
+2019-03-06 16:42:40.845 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:42:40.919 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:42:40.937 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:42:40.961 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:42:40.992 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:42:41.018 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:42:41.025 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:42:41.031 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "0f4e7da13c1a437c8f2295f88c84ccbc",
+  "Nonce": "783e27c7e79844879ca200d7f4fc4505",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "0f4e7da13c1a437c8f2295f88c84ccbc",
+    "nonce": "783e27c7e79844879ca200d7f4fc4505"
+  }
+}
+2019-03-06 16:42:41.037 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 16:42:41.092 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:42:41.125 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:42:41.153 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:42:41.181 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:42:41.197 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:42:41.243 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:42:41.249 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:42:41.279 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:03.472 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 16:43:03.475 +08:00 [DBG] Adding idp claim with value: local
+2019-03-06 16:43:03.481 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-06 16:43:03.484 +08:00 [DBG] Adding auth_time claim with value: 1551861783
+2019-03-06 16:43:03.489 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 16:43:03.500 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL212G76L6B:0000000D",
+  "TimeStamp": "2019-03-06T08:43:03Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:43:03.536 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:03.544 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:03.551 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-06 16:43:03.555 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-06 16:43:03.563 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-06 16:43:03.568 +08:00 [DBG] Start authorize callback request
+2019-03-06 16:43:03.571 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:43:03.579 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:43:03.637 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:03.652 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:03.687 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:03.704 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:03.723 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:03.729 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:43:03.733 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "0f4e7da13c1a437c8f2295f88c84ccbc",
+  "Nonce": "783e27c7e79844879ca200d7f4fc4505",
+  "SessionId": "68b2f6c9a0c86e61ffc51113476f2bd6",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "0f4e7da13c1a437c8f2295f88c84ccbc",
+    "nonce": "783e27c7e79844879ca200d7f4fc4505"
+  }
+}
+2019-03-06 16:43:03.777 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-06 16:43:03.790 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-06 16:43:03.793 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-06 16:43:03.800 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-06 16:43:03.803 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:43:03.831 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-06 16:43:03.859 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-06 16:43:03.873 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****xWfg"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****_J3A"
+    }
+  ],
+  "ActivityId": "0HLL212G76L6B:0000000E",
+  "TimeStamp": "2019-03-06T08:43:03Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:43:03.886 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "0f4e7da13c1a437c8f2295f88c84ccbc",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-06 16:43:03.893 +08:00 [DBG] Augmenting SignInContext
+2019-03-06 16:43:03.900 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-06 16:43:04.737 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:43:04.769 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:43:04.789 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:43:04.802 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:43:04.808 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:43:04.818 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:43:04.827 +08:00 [DBG] Start discovery request
+2019-03-06 16:43:04.899 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:43:04.927 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-06 16:43:04.963 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:43:04.979 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:43:04.990 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-06 16:43:04.994 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-06 16:43:05.005 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-06 16:43:05.011 +08:00 [DBG] Start key discovery request
+2019-03-06 16:43:05.100 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 16:43:05.119 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:43:05.126 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:43:05.145 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-06 16:43:05.197 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:43:05.211 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:43:05.220 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-06 16:43:05.226 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-06 16:43:05.235 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-06 16:43:05.242 +08:00 [DBG] Start userinfo request
+2019-03-06 16:43:05.271 +08:00 [DBG] Bearer token found in header
+2019-03-06 16:43:05.376 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:05.448 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:05.464 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 16:43:05.470 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551861783,
+    "exp": 1551865383,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551861783,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-06 16:43:05.502 +08:00 [DBG] Creating userinfo response
+2019-03-06 16:43:05.510 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:43:05.518 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:43:05.537 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:05.542 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-06 16:43:05.546 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-06 16:43:05.591 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:05.619 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-06 16:43:05.627 +08:00 [DBG] End userinfo request
+2019-03-06 16:43:05.665 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:05.676 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:05.684 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-06 16:43:05.694 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-06 16:43:05.699 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-06 16:43:05.711 +08:00 [DBG] Rendering check session result
+2019-03-06 16:43:19.339 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:19.346 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:19.350 +08:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2019-03-06 16:43:19.358 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2019-03-06 16:43:19.378 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2019-03-06 16:43:19.385 +08:00 [DBG] Processing signout request for 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-06 16:43:19.399 +08:00 [DBG] Start end session request validation
+2019-03-06 16:43:19.406 +08:00 [DBG] Start identity token validation
+2019-03-06 16:43:19.463 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:19.467 +08:00 [DBG] Client found: blogvuejs / MarketPlace JavaScript Client
+2019-03-06 16:43:19.484 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-06 16:43:19.489 +08:00 [DBG] Token validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "ValidateLifetime": false,
+  "Claims": {
+    "nbf": 1551861783,
+    "exp": 1551862083,
+    "iss": "http://localhost:5002",
+    "aud": "blogvuejs",
+    "nonce": "783e27c7e79844879ca200d7f4fc4505",
+    "iat": 1551861783,
+    "at_hash": "wSdXIHRIexj_FhE9O0QMOA",
+    "sid": "68b2f6c9a0c86e61ffc51113476f2bd6",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551861783,
+    "idp": "local",
+    "amr": "pwd"
+  }
+}
+2019-03-06 16:43:19.494 +08:00 [INF] End session request validation success
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "PostLogOutUri": "http://localhost:6688",
+  "Raw": {
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhkN2Q4NDcyMzZkYTgwNjM5ZjQxYTdiYmYwYWViMGU2IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NTE4NjE3ODMsImV4cCI6MTU1MTg2MjA4MywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiYmxvZ3Z1ZWpzIiwibm9uY2UiOiI3ODNlMjdjN2U3OTg0NDg3OWNhMjAwZDdmNGZjNDUwNSIsImlhdCI6MTU1MTg2MTc4MywiYXRfaGFzaCI6IndTZFhJSFJJZXhqX0ZoRTlPMFFNT0EiLCJzaWQiOiI2OGIyZjZjOWEwYzg2ZTYxZmZjNTExMTM0NzZmMmJkNiIsInN1YiI6IjFkMTMyYTJiLWM5ZmQtNGY3Yy05YmE5LTliMDBjNDAxOTVlMCIsImF1dGhfdGltZSI6MTU1MTg2MTc4MywiaWRwIjoibG9jYWwiLCJhbXIiOlsicHdkIl19.fyVTxwJ9h7rrAKLOpYZjI_VGWV04CcCWsupDcxUCsANHpGacrgNt1Wh7nxOu0Dl-LMWyvhwD4OZiVYXlXLLiVkB1PzX4WJH9F4GNtiXHK6oNCK8oivJlBY2gcika5fJYvFQGjclE7UVfQia3LU3cpCbieLt2dO4_wmLUjQTP7cZ5rN9uc7-NX-yH9CXLroeFligB11uuOSNu00GjAEn3mCg8X0fyNLL8MPNpjE5nMlpe9w0jP0Za9be9xwqKRhIJ7apKgyXmUertvsF4W662iD_j_EeMkSO6j4pWQwgNzFp6SPYKj4xinvvQyJSwvWOCGVlr8PHqcmS0OT6J-bxWfg",
+    "post_logout_redirect_uri": "http://localhost:6688"
+  }
+}
+2019-03-06 16:43:19.508 +08:00 [DBG] Success validating end session request from blogvuejs
+2019-03-06 16:43:19.527 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:19.541 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-06 16:43:19.576 +08:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2019-03-06 16:43:19.591 +08:00 [INF] AuthenticationScheme: Identity.External signed out.
+2019-03-06 16:43:19.624 +08:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2019-03-06 16:43:19.639 +08:00 [INF] {
+  "Name": "User Logout Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1002,
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "Alice Smith",
+  "ActivityId": "0HLL212G76L6B:00000011",
+  "TimeStamp": "2019-03-06T08:43:19Z",
+  "ProcessId": 6188,
+  "LocalIpAddress": "127.0.0.1:5002",
+  "RemoteIpAddress": "127.0.0.1"
+}
+2019-03-06 16:43:19.716 +08:00 [DBG] Request path /connect/endsession/callback matched to endpoint type Endsession
+2019-03-06 16:43:19.752 +08:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionCallbackEndpoint
+2019-03-06 16:43:19.788 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionCallbackEndpoint for /connect/endsession/callback
+2019-03-06 16:43:19.806 +08:00 [DBG] Processing signout callback request
+2019-03-06 16:43:19.891 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:19.894 +08:00 [DBG] No client front-channel logout URLs
+2019-03-06 16:43:19.897 +08:00 [DBG] No client back-channel logout URLs
+2019-03-06 16:43:19.900 +08:00 [INF] Successful signout callback.
+2019-03-06 16:43:19.907 +08:00 [DBG] No client front-channel iframe urls
+2019-03-06 16:43:19.910 +08:00 [DBG] No client back-channel iframe urls
+2019-03-06 16:43:33.243 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-06 16:43:33.259 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-06 16:43:33.263 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-06 16:43:33.271 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-06 16:43:33.275 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-06 16:43:33.278 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-06 16:43:33.288 +08:00 [DBG] Start discovery request
+2019-03-06 16:43:33.336 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-06 16:43:33.364 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-06 16:43:33.372 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-06 16:43:33.389 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-06 16:43:33.396 +08:00 [DBG] Start authorize request
+2019-03-06 16:43:33.401 +08:00 [DBG] No user present in authorize request
+2019-03-06 16:43:33.405 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:43:33.445 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:33.474 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:33.507 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:33.532 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:33.593 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:33.600 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:43:33.608 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "abcffc969047439ea8cd2918b3220952",
+  "Nonce": "81f97059d6a24ae58b827e076655591c",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "abcffc969047439ea8cd2918b3220952",
+    "nonce": "81f97059d6a24ae58b827e076655591c"
+  }
+}
+2019-03-06 16:43:33.627 +08:00 [INF] Showing login: User is not authenticated
+2019-03-06 16:43:33.673 +08:00 [DBG] Start authorize request protocol validation
+2019-03-06 16:43:33.723 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:43:33.738 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:33.797 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:33.819 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-06 16:43:33.863 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-06 16:43:33.871 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-06 16:43:33.913 +08:00 [DBG] blogvuejs found in database: true
+2019-03-06 16:51:56.492 +08:00 [WRN] The LINQ expression 'where ([x].Expiration < Convert(DateTime.UtcNow, Nullable`1))' could not be translated and will be evaluated locally.
+2019-03-06 16:51:56.500 +08:00 [WRN] The LINQ expression 'Take(__p_0)' could not be translated and will be evaluated locally.
+2019-03-06 16:51:56.525 +08:00 [INF] Clearing 0 tokens
+2019-03-06 17:51:56.687 +08:00 [INF] Clearing 0 tokens
+2019-03-06 18:51:56.838 +08:00 [INF] Clearing 0 tokens
+2019-03-06 20:50:42.860 +08:00 [INF] Clearing 0 tokens
+2019-03-06 21:58:29.354 +08:00 [INF] Clearing 0 tokens
+2019-03-06 23:22:28.358 +08:00 [INF] Clearing 0 tokens
+2019-03-07 00:36:02.051 +08:00 [INF] Clearing 0 tokens
+2019-03-07 02:00:34.168 +08:00 [INF] Clearing 0 tokens
+2019-03-07 04:20:02.871 +08:00 [INF] Clearing 0 tokens
+2019-03-07 05:50:49.531 +08:00 [INF] Clearing 0 tokens
+2019-03-07 07:07:35.886 +08:00 [INF] Clearing 0 tokens
+2019-03-07 08:51:25.318 +08:00 [INF] Clearing 0 tokens
+2019-03-07 10:20:30.826 +08:00 [INF] Clearing 0 tokens
+2019-03-07 18:55:08.435 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-07 18:55:08.537 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-07 18:55:08.539 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-07 18:55:08.541 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-07 18:55:08.545 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-07 18:55:09.301 +08:00 [DBG] Starting token cleanup
+2019-03-07 18:57:16.185 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-07 18:57:17.507 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-07 18:57:17.516 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-07 18:57:17.811 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-07 18:57:17.922 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-07 18:57:17.928 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-07 18:57:17.938 +08:00 [DBG] Start discovery request
+2019-03-07 18:57:18.776 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-07 18:57:18.957 +08:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2019-03-07 18:57:18.986 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2019-03-07 18:57:18.992 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-03-07 18:57:19.000 +08:00 [DBG] Start authorize request
+2019-03-07 18:57:19.025 +08:00 [DBG] No user present in authorize request
+2019-03-07 18:57:19.110 +08:00 [DBG] Start authorize request protocol validation
+2019-03-07 18:57:19.544 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 18:57:19.601 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 18:57:19.674 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 18:57:19.703 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 18:57:19.729 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 18:57:19.745 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-07 18:57:19.779 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "anonymous",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "b81d365ab4d04050bdcc62566f40ca17",
+  "Nonce": "20f274a1722b4f958882730dcfe275b9",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "b81d365ab4d04050bdcc62566f40ca17",
+    "nonce": "20f274a1722b4f958882730dcfe275b9"
+  }
+}
+2019-03-07 18:57:19.796 +08:00 [INF] Showing login: User is not authenticated
+2019-03-07 18:57:21.953 +08:00 [DBG] Start authorize request protocol validation
+2019-03-07 18:57:21.996 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 18:57:22.012 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 18:57:22.039 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 18:57:22.054 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 18:57:22.081 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 18:57:22.087 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-07 18:57:22.144 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 19:03:13.667 +08:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2019-03-07 19:03:14.460 +08:00 [DBG] Augmenting SignInContext
+2019-03-07 19:03:14.465 +08:00 [DBG] Adding idp claim with value: local
+2019-03-07 19:03:14.468 +08:00 [DBG] Adding amr claim with value: pwd
+2019-03-07 19:03:14.473 +08:00 [DBG] Adding auth_time claim with value: 1551956594
+2019-03-07 19:03:14.500 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-07 19:03:14.614 +08:00 [INF] {
+  "Name": "User Login Success",
+  "Category": "Authentication",
+  "EventType": "Success",
+  "Id": 1000,
+  "Username": "alice",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "DisplayName": "alice",
+  "Endpoint": "UI",
+  "ActivityId": "0HLL2TEKE3KE3:00000001",
+  "TimeStamp": "2019-03-07T11:03:14Z",
+  "ProcessId": 27964,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-07 19:03:14.668 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-07 19:03:14.676 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-07 19:03:14.679 +08:00 [DBG] Request path /connect/authorize/callback matched to endpoint type Authorize
+2019-03-07 19:03:14.686 +08:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint
+2019-03-07 19:03:14.690 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-03-07 19:03:14.699 +08:00 [DBG] Start authorize callback request
+2019-03-07 19:03:14.761 +08:00 [DBG] User in authorize request: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-07 19:03:14.768 +08:00 [DBG] Start authorize request protocol validation
+2019-03-07 19:03:14.804 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 19:03:14.816 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 19:03:14.838 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 19:03:14.860 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 19:03:14.883 +08:00 [DBG] Found ["blog.core.api"] API scopes in database
+2019-03-07 19:03:14.887 +08:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2019-03-07 19:03:14.892 +08:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "AllowedRedirectUris": [
+    "http://localhost:6688/callback"
+  ],
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ResponseType": "id_token token",
+  "ResponseMode": "fragment",
+  "GrantType": "implicit",
+  "RequestedScopes": "openid profile roles blog.core.api",
+  "State": "b81d365ab4d04050bdcc62566f40ca17",
+  "Nonce": "20f274a1722b4f958882730dcfe275b9",
+  "SessionId": "ca003b52d98ae36cfd24532f3c1f9b2a",
+  "Raw": {
+    "client_id": "blogvuejs",
+    "redirect_uri": "http://localhost:6688/callback",
+    "response_type": "id_token token",
+    "scope": "openid profile roles blog.core.api",
+    "state": "b81d365ab4d04050bdcc62566f40ca17",
+    "nonce": "20f274a1722b4f958882730dcfe275b9"
+  }
+}
+2019-03-07 19:03:14.988 +08:00 [DBG] NbHDrLnnxBRB0j6EYovRLxIVBLXqGdvsaget3AVjAxU= found in database: true
+2019-03-07 19:03:15.011 +08:00 [DBG] Consent found in consent store is same as current request, consent is not required
+2019-03-07 19:03:15.025 +08:00 [DBG] Creating Implicit Flow response.
+2019-03-07 19:03:15.041 +08:00 [DBG] Getting claims for access token for client: blogvuejs
+2019-03-07 19:03:15.047 +08:00 [DBG] Getting claims for access token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0
+2019-03-07 19:03:15.271 +08:00 [DBG] Getting claims for identity token for subject: 1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0 and client: blogvuejs
+2019-03-07 19:03:15.278 +08:00 [DBG] In addition to an id_token, an access_token was requested. No claims other than sub are included in the id_token. To obtain more user claims, either use the user info endpoint or set AlwaysIncludeUserClaimsInIdToken on the client configuration.
+2019-03-07 19:03:15.303 +08:00 [INF] {
+  "Name": "Token Issued Success",
+  "Category": "Token",
+  "EventType": "Success",
+  "Id": 2000,
+  "ClientId": "blogvuejs",
+  "ClientName": "MarketPlace JavaScript Client",
+  "RedirectUri": "http://localhost:6688/callback",
+  "Endpoint": "Authorize",
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "Scopes": "openid profile roles blog.core.api",
+  "GrantType": "implicit",
+  "Tokens": [
+    {
+      "TokenType": "id_token",
+      "TokenValue": "****YGWA"
+    },
+    {
+      "TokenType": "access_token",
+      "TokenValue": "****-oOw"
+    }
+  ],
+  "ActivityId": "0HLL2TEKE3KE3:00000002",
+  "TimeStamp": "2019-03-07T11:03:15Z",
+  "ProcessId": 27964,
+  "LocalIpAddress": "::1:5002",
+  "RemoteIpAddress": "::1"
+}
+2019-03-07 19:03:15.318 +08:00 [INF] Authorize endpoint response
+{
+  "SubjectId": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+  "ClientId": "blogvuejs",
+  "RedirectUri": "http://localhost:6688/callback",
+  "State": "b81d365ab4d04050bdcc62566f40ca17",
+  "Scope": "openid profile roles blog.core.api"
+}
+2019-03-07 19:03:15.350 +08:00 [DBG] Augmenting SignInContext
+2019-03-07 19:03:15.354 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-03-07 19:03:16.479 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration from origin: http://localhost:6688
+2019-03-07 19:03:16.539 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-07 19:03:16.548 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-07 19:03:16.554 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-07 19:03:16.564 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-07 19:03:16.598 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-07 19:03:16.674 +08:00 [DBG] Start discovery request
+2019-03-07 19:03:16.770 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-07 19:03:16.795 +08:00 [DBG] CORS request made for path: /.well-known/openid-configuration/jwks from origin: http://localhost:6688
+2019-03-07 19:03:16.808 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-07 19:03:16.814 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-07 19:03:16.822 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-07 19:03:16.829 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-07 19:03:16.833 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-07 19:03:16.840 +08:00 [DBG] Start key discovery request
+2019-03-07 19:03:16.896 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-07 19:03:16.914 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-07 19:03:16.919 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-07 19:03:16.950 +08:00 [DBG] CORS request made for path: /connect/userinfo from origin: http://localhost:6688
+2019-03-07 19:03:16.975 +08:00 [DBG] Origin http://localhost:6688 is allowed: true
+2019-03-07 19:03:16.984 +08:00 [DBG] CorsPolicyService allowed origin: http://localhost:6688
+2019-03-07 19:03:16.993 +08:00 [DBG] Request path /connect/userinfo matched to endpoint type Userinfo
+2019-03-07 19:03:17.004 +08:00 [DBG] Endpoint enabled: Userinfo, successfully created handler: IdentityServer4.Endpoints.UserInfoEndpoint
+2019-03-07 19:03:17.008 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.UserInfoEndpoint for /connect/userinfo
+2019-03-07 19:03:17.026 +08:00 [DBG] Start userinfo request
+2019-03-07 19:03:17.034 +08:00 [DBG] Bearer token found in header
+2019-03-07 19:03:17.150 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 19:03:17.180 +08:00 [DBG] blogvuejs found in database: true
+2019-03-07 19:03:17.193 +08:00 [DBG] Calling into custom token validator: IdentityServer4.Validation.DefaultCustomTokenValidator
+2019-03-07 19:03:17.201 +08:00 [DBG] Token validation success
+{
+  "ValidateLifetime": true,
+  "AccessTokenType": "Jwt",
+  "ExpectedScope": "openid",
+  "Claims": {
+    "nbf": 1551956595,
+    "exp": 1551960195,
+    "iss": "http://localhost:5002",
+    "aud": [
+      "http://localhost:5002/resources",
+      "blog.core.api"
+    ],
+    "client_id": "blogvuejs",
+    "sub": "1d132a2b-c9fd-4f7c-9ba9-9b00c40195e0",
+    "auth_time": 1551956594,
+    "idp": "local",
+    "name": "Alice Smith",
+    "role": "Admin",
+    "scope": [
+      "openid",
+      "profile",
+      "roles",
+      "blog.core.api"
+    ],
+    "amr": "pwd"
+  }
+}
+2019-03-07 19:03:17.214 +08:00 [DBG] Creating userinfo response
+2019-03-07 19:03:17.223 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-07 19:03:17.230 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-07 19:03:17.245 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 19:03:17.252 +08:00 [DBG] Requested claim types: sub name family_name given_name middle_name nickname preferred_username profile picture website gender birthdate zoneinfo locale updated_at role
+2019-03-07 19:03:17.255 +08:00 [DBG] Scopes in access token: openid profile roles blog.core.api
+2019-03-07 19:03:17.268 +08:00 [DBG] Found ["openid","profile","roles"] identity scopes in database
+2019-03-07 19:03:17.285 +08:00 [INF] Profile service returned to the following claim types: sub name given_name family_name website role preferred_username
+2019-03-07 19:03:17.290 +08:00 [DBG] End userinfo request
+2019-03-07 19:03:17.364 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-07 19:03:17.388 +08:00 [INF] AuthenticationScheme: Identity.Application was successfully authenticated.
+2019-03-07 19:03:17.420 +08:00 [DBG] Request path /connect/checksession matched to endpoint type Checksession
+2019-03-07 19:03:17.426 +08:00 [DBG] Endpoint enabled: Checksession, successfully created handler: IdentityServer4.Endpoints.CheckSessionEndpoint
+2019-03-07 19:03:17.436 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.CheckSessionEndpoint for /connect/checksession
+2019-03-07 19:03:17.442 +08:00 [DBG] Rendering check session result
+2019-03-07 19:03:17.937 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-07 19:03:17.944 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-07 19:03:17.954 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-07 19:03:17.966 +08:00 [DBG] Start discovery request
+2019-03-07 19:03:18.003 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-07 19:03:18.225 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2019-03-07 19:03:18.231 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2019-03-07 19:03:18.242 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-03-07 19:03:18.253 +08:00 [DBG] Start key discovery request
+2019-03-07 19:55:09.516 +08:00 [WRN] The LINQ expression 'where ([x].Expiration < Convert(DateTime.UtcNow, Nullable`1))' could not be translated and will be evaluated locally.
+2019-03-07 19:55:09.526 +08:00 [WRN] The LINQ expression 'Take(__p_0)' could not be translated and will be evaluated locally.
+2019-03-07 19:55:09.546 +08:00 [INF] Clearing 0 tokens
+2019-03-07 21:14:27.546 +08:00 [INF] Clearing 0 tokens
+2019-03-07 22:22:13.620 +08:00 [INF] Clearing 0 tokens
+2019-03-08 00:07:43.651 +08:00 [INF] Clearing 0 tokens
+2019-03-08 02:15:32.966 +08:00 [INF] Clearing 0 tokens
+2019-03-08 03:53:46.020 +08:00 [INF] Clearing 0 tokens
+2019-03-08 05:32:03.654 +08:00 [INF] Clearing 0 tokens
+2019-03-08 06:53:28.120 +08:00 [INF] Clearing 0 tokens
+2019-03-08 07:53:52.380 +08:00 [INF] Clearing 0 tokens
+2019-03-08 09:09:13.898 +08:00 [INF] Clearing 0 tokens
+2019-03-08 10:34:35.137 +08:00 [INF] Clearing 0 tokens
+2019-03-08 17:53:54.429 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-08 17:53:54.497 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-08 17:53:54.500 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-08 17:53:54.502 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-08 17:53:54.504 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-08 17:53:54.833 +08:00 [DBG] Starting token cleanup
+2019-03-08 17:54:28.162 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 17:54:28.187 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 17:54:28.198 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-08 17:54:28.222 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-08 17:54:28.226 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-08 17:54:28.234 +08:00 [DBG] Start discovery request
+2019-03-08 17:54:29.536 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-08 17:58:53.103 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-08 17:58:53.145 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-08 17:58:53.148 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-08 17:58:53.150 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-08 17:58:53.152 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-08 17:58:53.365 +08:00 [DBG] Starting token cleanup
+2019-03-08 18:06:55.578 +08:00 [DBG] Using Identity.Application as default scheme for authentication
+2019-03-08 18:06:55.625 +08:00 [DBG] Using Identity.External as default scheme for sign-in
+2019-03-08 18:06:55.627 +08:00 [DBG] Using Identity.External as default scheme for sign-out
+2019-03-08 18:06:55.630 +08:00 [DBG] Using Identity.Application as default scheme for challenge
+2019-03-08 18:06:55.632 +08:00 [DBG] Using Identity.Application as default scheme for forbid
+2019-03-08 18:06:55.868 +08:00 [DBG] Starting token cleanup
+2019-03-08 18:07:04.112 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:07:04.133 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:07:15.998 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:07:16.005 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:07:16.013 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-08 18:07:16.037 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-08 18:07:16.044 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-08 18:07:16.054 +08:00 [DBG] Start discovery request
+2019-03-08 18:07:17.385 +08:00 [DBG] Found ["openid","profile","roles","blog.core.api"] as all scopes in database
+2019-03-08 18:27:26.698 +08:00 [INF] Starting IdentityServer4 version 2.3.2.0
+2019-03-08 18:27:27.032 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-03-08 18:27:27.033 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-03-08 18:27:27.033 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-03-08 18:27:27.034 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-03-08 18:27:27.034 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-03-08 18:27:27.035 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-03-08 18:27:27.230 +08:00 [DBG] Starting grant removal
+2019-03-08 18:27:41.160 +08:00 [DBG] Login Url: /Account/Login
+2019-03-08 18:27:41.164 +08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2019-03-08 18:27:41.167 +08:00 [DBG] Logout Url: /Account/Logout
+2019-03-08 18:27:41.168 +08:00 [DBG] ConsentUrl Url: /consent
+2019-03-08 18:27:41.168 +08:00 [DBG] Consent Return Url Parameter: returnUrl
+2019-03-08 18:27:41.169 +08:00 [DBG] Error Url: /home/error
+2019-03-08 18:27:41.170 +08:00 [DBG] Error Id Parameter: errorId
+2019-03-08 18:27:41.299 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:27:41.314 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:27:43.293 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:27:43.296 +08:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-03-08 18:27:43.300 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2019-03-08 18:27:43.315 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2019-03-08 18:27:43.320 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-03-08 18:27:43.324 +08:00 [DBG] Start discovery request
+2019-03-08 18:27:44.013 +08:00 [ERR] Failed executing DbCommand (116ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "x"."Id", "x"."Created", "x"."Description", "x"."DisplayName", "x"."Emphasize", "x"."Enabled", "x"."Name", "x"."NonEditable", "x"."Required", "x"."ShowInDiscoveryDocument", "x"."Updated"
+FROM "IdentityResources" AS "x"
+ORDER BY "x"."Id"
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+2019-03-08 18:27:44.162 +08:00 [ERR] An exception occurred while iterating over the results of a query for context type 'IdentityServer4.EntityFramework.DbContexts.ConfigurationDbContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2019-03-08 18:27:44.407 +08:00 [INF] {"Details":"Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.\r\n   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)\r\n   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()\r\n   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)\r\n   at System.Data.Common.DbCommand.ExecuteReader()\r\n   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)\r\n   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()\r\n   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()\r\n   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()\r\n   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)\r\n   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)\r\n   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)\r\n   at IdentityServer4.EntityFramework.Stores.ResourceStore.GetAllResourcesAsync() in C:\\local\\identity\\server4\\EntityFramework.Storage\\src\\Stores\\ResourceStore.cs:line 138\r\n   at IdentityServer4.Stores.IResourceStoreExtensions.GetAllEnabledResourcesAsync(IResourceStore store) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Extensions\\IResourceStoreExtensions.cs:line 105\r\n   at IdentityServer4.ResponseHandling.DiscoveryResponseGenerator.CreateDiscoveryDocumentAsync(String baseUrl, String issuerUri) in C:\\local\\identity\\server4\\IdentityServer4\\src\\ResponseHandling\\Default\\DiscoveryResponseGenerator.cs:line 169\r\n   at IdentityServer4.Endpoints.DiscoveryEndpoint.ProcessAsync(HttpContext context) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Endpoints\\DiscoveryEndpoint.cs:line 58\r\n   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\\local\\identity\\server4\\IdentityServer4\\src\\Hosting\\IdentityServerMiddleware.cs:line 54","Category":"Error","Name":"Unhandled Exception","EventType":"Error","Id":3000,"Message":"SQLite Error 1: 'no such column: x.Created'.","ActivityId":"0HLL3M2OQNIJJ:00000002","TimeStamp":"2019-03-08T10:27:44.0000000Z","ProcessId":18500,"LocalIpAddress":"::1:5002","RemoteIpAddress":"::1","$type":"UnhandledExceptionEvent"}
+2019-03-08 18:27:44.434 +08:00 [FTL] Unhandled exception: SQLite Error 1: 'no such column: x.Created'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: x.Created'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.SelectEnumerableIterator`2.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Collections.Generic.LargeArrayBuilder`1.AddRange(IEnumerable`1 items)
+   at System.Collections.Generic.EnumerableHelpers.ToArray[T](IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at IdentityServer4.EntityFramework.Stores.ResourceStore.GetAllResourcesAsync() in C:\local\identity\server4\EntityFramework.Storage\src\Stores\ResourceStore.cs:line 138
+   at IdentityServer4.Stores.IResourceStoreExtensions.GetAllEnabledResourcesAsync(IResourceStore store) in C:\local\identity\server4\IdentityServer4\src\Extensions\IResourceStoreExtensions.cs:line 105
+   at IdentityServer4.ResponseHandling.DiscoveryResponseGenerator.CreateDiscoveryDocumentAsync(String baseUrl, String issuerUri) in C:\local\identity\server4\IdentityServer4\src\ResponseHandling\Default\DiscoveryResponseGenerator.cs:line 169
+   at IdentityServer4.Endpoints.DiscoveryEndpoint.ProcessAsync(HttpContext context) in C:\local\identity\server4\IdentityServer4\src\Endpoints\DiscoveryEndpoint.cs:line 58
+   at IdentityServer4.Hosting.IdentityServerMiddleware.Invoke(HttpContext context, IEndpointRouter router, IUserSession session, IEventService events) in C:\local\identity\server4\IdentityServer4\src\Hosting\IdentityServerMiddleware.cs:line 54
+2019-03-08 18:29:08.737 +08:00 [INF] Starting IdentityServer4 version 2.3.2.0
+2019-03-08 18:29:09.061 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-03-08 18:29:09.062 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2019-03-08 18:29:09.063 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2019-03-08 18:29:09.063 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2019-03-08 18:29:09.063 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2019-03-08 18:29:09.064 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2019-03-08 18:29:09.283 +08:00 [DBG] Starting grant removal
