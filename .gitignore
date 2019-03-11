@@ -260,4 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 
-Blog.IdentityServer/identityserver4_log.txt
+*Logs/
