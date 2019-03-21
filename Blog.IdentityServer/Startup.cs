@@ -9,6 +9,7 @@ using Blog.IdentityServer.Data;
 using Blog.IdentityServer.Models;
 using System.Reflection;
 using Microsoft.IdentityModel.Tokens;
+using System.IO;
 
 namespace Blog.IdentityServer
 {
@@ -25,11 +26,16 @@ namespace Blog.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            string connectionStringFile = Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = File.Exists(connectionStringFile) ? File.ReadAllText(connectionStringFile).Trim() : "";
+            if (connectionString == "")
+            {
+                throw new Exception("数据库配置异常");
+            }
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(connectionString));
+                options.UseSqlServer(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -55,14 +61,14 @@ namespace Blog.IdentityServer
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = b =>
-                        b.UseSqlite(connectionString,
+                        b.UseSqlServer(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = b =>
-                        b.UseSqlite(connectionString,
+                        b.UseSqlServer(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
 
                     // this enables automatic token cleanup. this is optional.

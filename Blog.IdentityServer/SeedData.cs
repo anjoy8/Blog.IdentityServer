@@ -17,6 +17,10 @@ namespace Blog.IdentityServer
     {
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
+            //1.dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+            //2.dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
+            //3.dotnet ef migrations add AppDbMigration -c ApplicationDbContext -o Data
+            //4.dotnet run /seed
             Console.WriteLine("Seeding database...");
 
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
