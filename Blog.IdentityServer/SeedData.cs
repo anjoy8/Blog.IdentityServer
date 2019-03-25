@@ -65,7 +65,7 @@ namespace Blog.IdentityServer
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
-                        Console.WriteLine("alice created");
+                        Console.WriteLine("alice created");//AspNetUserClaims 表
                     }
                     else
                     {
