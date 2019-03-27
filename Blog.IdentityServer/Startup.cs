@@ -10,6 +10,7 @@ using Blog.IdentityServer.Models;
 using System.Reflection;
 using Microsoft.IdentityModel.Tokens;
 using System.IO;
+using IdentityServer4.Quickstart.UI;
 
 namespace Blog.IdentityServer
 {
@@ -56,6 +57,20 @@ namespace Blog.IdentityServer
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
                 })
+
+                //// in-memory, code config
+                //.AddTestUsers(TestUsers.Users)
+                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
+                //.AddInMemoryApiResources(Config.GetApiResources())
+                //.AddInMemoryClients(Config.GetClients())
+
+                //// in-memory, json config
+                //.AddTestUsers(TestUsers.Users)
+                //.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
+                //.AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
+                //.AddInMemoryClients(Configuration.GetSection("clients"))
+
+                // in-sqlserver
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
