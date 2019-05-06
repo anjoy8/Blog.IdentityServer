@@ -10,11 +10,15 @@ using Blog.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Blog.Core.Common.Helper;
+using System.Collections.Generic;
 
 namespace Blog.IdentityServer
 {
     public class SeedData
     {
+        private static string GitJsonFileFormat = "https://github.com/anjoy8/Blog.Data.Share/raw/master/Blog.Core.Data.json/{0}.tsv";
+
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
             //1.dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
@@ -38,74 +42,67 @@ namespace Blog.IdentityServer
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                    var alice = userMgr.FindByNameAsync("alice").Result;
-                    if (alice == null)
-                    {
-                        alice = new ApplicationUser
-                        {
-                            UserName = "alice"
-                        };
-                        var result = userMgr.CreateAsync(alice, "Pass123$").Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
 
-                        result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Alice"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                    var BlogCore_Users = JsonHelper.ParseFormByJson<List<sysUserInfo>>(GetNetData.Get(string.Format(GitJsonFileFormat, "sysUserInfo")));
+                    var BlogCore_Roles = JsonHelper.ParseFormByJson<List<Role>>(GetNetData.Get(string.Format(GitJsonFileFormat, "Role")));
+                    var BlogCore_UserRoles = JsonHelper.ParseFormByJson<List<UserRole>>(GetNetData.Get(string.Format(GitJsonFileFormat, "UserRole")));
+
+                    foreach (var item in BlogCore_Users)
+                    {
+                        if (item == null || item.uLoginName == null)
+                        {
+                            continue;
+                        }
+                        var userItem = userMgr.FindByNameAsync(item.uLoginName).Result;
+                        var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == item.uID)?.RoleId;
+                        var rName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
+
+                        if (userItem == null && rid > 0 && !string.IsNullOrEmpty(rName))
+                        {
+                            userItem = new ApplicationUser
+                            {
+                                UserName = item.uLoginName,
+                                name = item.name,
+                                sex = item.sex,
+                                age = item.age,
+                                birth = item.birth,
+                                addr = item.addr,
+                                tdIsDelete = item.tdIsDelete
+
+                            };
+                            var result = userMgr.CreateAsync(userItem, "Blogabp123$" + item.uLoginPWD).Result;
+                            if (!result.Succeeded)
+                            {
+                                throw new Exception(result.Errors.First().Description);
+                            }
+
+                            result = userMgr.AddClaimsAsync(userItem, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, item.uRealName),
+                            new Claim(JwtClaimTypes.GivenName, item.uRealName),
+                            new Claim(JwtClaimTypes.FamilyName, item.uRealName),
+                            new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                            new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                            new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
-                            new Claim(JwtClaimTypes.Role, "Admin")
+                            new Claim(JwtClaimTypes.WebSite, $"http://{item.uLoginName}.com"),
+                            new Claim(JwtClaimTypes.Address, item.addr+"blogabp", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim(JwtClaimTypes.Role, rName)
                         }).Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
-                        Console.WriteLine("alice created");//AspNetUserClaims 表
-                    }
-                    else
-                    {
-                        Console.WriteLine("alice already exists");
-                    }
 
-                    var bob = userMgr.FindByNameAsync("bob").Result;
-                    if (bob == null)
-                    {
-                        bob = new ApplicationUser
+                            if (!result.Succeeded)
+                            {
+                                throw new Exception(result.Errors.First().Description);
+                            }
+                            Console.WriteLine($"{userItem?.UserName} created");//AspNetUserClaims 表
+                        }
+                        else
                         {
-                            UserName = "bob"
-                        };
-                        var result = userMgr.CreateAsync(bob, "Pass123$").Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
+                            Console.WriteLine($"{userItem?.UserName} already exists");
                         }
 
-                        result = userMgr.AddClaimsAsync(bob, new Claim[]{
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
-                        new Claim("location", "somewhere"),
-                        new Claim(JwtClaimTypes.Role, "System")
-                    }).Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
-                        Console.WriteLine("bob created");
                     }
-                    else
-                    {
-                        Console.WriteLine("bob already exists");
-                    }
+
+
+
+
                 }
             }
 

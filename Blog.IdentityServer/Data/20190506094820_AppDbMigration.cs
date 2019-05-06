@@ -40,7 +40,14 @@ namespace Blog.IdentityServer.Data
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    name = table.Column<string>(nullable: true),
+                    RealName = table.Column<string>(nullable: true),
+                    sex = table.Column<int>(nullable: false),
+                    age = table.Column<int>(nullable: false),
+                    birth = table.Column<DateTime>(nullable: false),
+                    addr = table.Column<string>(nullable: true),
+                    tdIsDelete = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

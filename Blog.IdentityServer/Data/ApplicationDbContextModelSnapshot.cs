@@ -50,12 +50,26 @@ namespace Blog.IdentityServer.Data
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<string>("RealName");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<string>("addr");
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("birth");
+
+                    b.Property<string>("name");
+
+                    b.Property<int>("sex");
+
+                    b.Property<bool>("tdIsDelete");
 
                     b.HasKey("Id");
 
