@@ -57,41 +57,49 @@ namespace Blog.IdentityServer
                         var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == item.uID)?.RoleId;
                         var rName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
 
-                        if (userItem == null && rid > 0 && !string.IsNullOrEmpty(rName))
+                        if (userItem == null)
                         {
-                            userItem = new ApplicationUser
+                            if (rid > 0 && !string.IsNullOrEmpty(rName))
                             {
-                                UserName = item.uLoginName,
-                                name = item.name,
-                                sex = item.sex,
-                                age = item.age,
-                                birth = item.birth,
-                                addr = item.addr,
-                                tdIsDelete = item.tdIsDelete
+                                userItem = new ApplicationUser
+                                {
+                                    UserName = item.uLoginName,
+                                    name = item.name,
+                                    sex = item.sex,
+                                    age = item.age,
+                                    birth = item.birth,
+                                    addr = item.addr,
+                                    tdIsDelete = item.tdIsDelete
 
-                            };
-                            var result = userMgr.CreateAsync(userItem, "Blogabp123$" + item.uLoginPWD).Result;
-                            if (!result.Succeeded)
-                            {
-                                throw new Exception(result.Errors.First().Description);
-                            }
+                                };
+                                var result = userMgr.CreateAsync(userItem, "BlogIdp123$" + item.uLoginPWD).Result;
+                                if (!result.Succeeded)
+                                {
+                                    throw new Exception(result.Errors.First().Description);
+                                }
 
-                            result = userMgr.AddClaimsAsync(userItem, new Claim[]{
+                                result = userMgr.AddClaimsAsync(userItem, new Claim[]{
                             new Claim(JwtClaimTypes.Name, item.uRealName),
                             new Claim(JwtClaimTypes.GivenName, item.uRealName),
                             new Claim(JwtClaimTypes.FamilyName, item.uRealName),
                             new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.WebSite, $"http://{item.uLoginName}.com"),
-                            new Claim(JwtClaimTypes.Address, item.addr+"blogabp", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim(JwtClaimTypes.Address, item.addr+"blogIdp", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
                             new Claim(JwtClaimTypes.Role, rName)
                         }).Result;
 
-                            if (!result.Succeeded)
-                            {
-                                throw new Exception(result.Errors.First().Description);
+                                if (!result.Succeeded)
+                                {
+                                    throw new Exception(result.Errors.First().Description);
+                                }
+                                Console.WriteLine($"{userItem?.UserName} created");//AspNetUserClaims 表
+
                             }
-                            Console.WriteLine($"{userItem?.UserName} created");//AspNetUserClaims 表
+                            else
+                            {
+                                Console.WriteLine($"{item?.uLoginName} doesn't have a corresponding role.");
+                            }
                         }
                         else
                         {
@@ -99,9 +107,6 @@ namespace Blog.IdentityServer
                         }
 
                     }
-
-
-
 
                 }
             }

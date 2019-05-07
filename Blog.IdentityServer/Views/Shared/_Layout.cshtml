@@ -35,7 +35,6 @@
                     </span>
                 </a>
             </div>
-
             @if (!string.IsNullOrWhiteSpace(name))
             {
                 <ul class="nav navbar-nav">
@@ -45,6 +44,12 @@
                             <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
                         </ul>
                     </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="nav navbar-nav">
+                    <li><a asp-action="Login" asp-controller="Account">Login</a></li>
                 </ul>
             }
         </div>
