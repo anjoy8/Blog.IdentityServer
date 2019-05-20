@@ -7,7 +7,7 @@ namespace Blog.IdentityServer.Models
     public class ApplicationUser : IdentityUser
     {
 
-        public string name { get; set; }
+        public string LoginName { get; set; }
 
         public string RealName { get; set; }
 

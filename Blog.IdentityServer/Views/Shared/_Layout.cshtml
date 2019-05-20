@@ -44,6 +44,7 @@
                             <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
                         </ul>
                     </li>
+                    <li><a asp-action="Users" asp-controller="Account">Users</a></li>
                 </ul>
             }
             else
@@ -54,11 +55,9 @@
             }
         </div>
     </div>
-
     <div class="container body-content">
         @RenderBody()
     </div>
-
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     @RenderSection("scripts", required: false)

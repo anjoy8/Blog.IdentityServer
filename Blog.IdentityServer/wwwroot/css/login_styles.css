@@ -84,6 +84,15 @@ form {
     position: relative;
     z-index: 2;
 }
+.login-container {
+    border-radius: 5px;
+    background-clip: padding-box;
+    margin: auto;
+    padding: 35px 35px 15px 35px;
+    border: 1px solid #eaeaea;
+    -webkit-box-shadow: 0 0 25px #cac6c6;
+    box-shadow: 0 0 25px #cac6c6;
+}
 
     form input.login-name, form input.login-pass {
         -webkit-appearance: none;
@@ -155,6 +164,12 @@ form {
             color:#53e3a6;
         }
 
+.to-register  {
+    margin:20px;
+}
+.to-register a {
+    color: #f9ac4b !important;
+}
 .bg-bubbles {
     position: absolute;
     top: 0;

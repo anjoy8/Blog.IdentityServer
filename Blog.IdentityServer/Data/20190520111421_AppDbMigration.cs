@@ -41,7 +41,7 @@ namespace Blog.IdentityServer.Data
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    name = table.Column<string>(nullable: true),
+                    LoginName = table.Column<string>(nullable: true),
                     RealName = table.Column<string>(nullable: true),
                     sex = table.Column<int>(nullable: false),
                     age = table.Column<int>(nullable: false),

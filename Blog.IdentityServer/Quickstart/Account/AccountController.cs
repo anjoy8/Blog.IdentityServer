@@ -537,5 +537,172 @@ namespace IdentityServer4.Quickstart.UI
         private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
         }
+
+
+
+
+        [HttpGet]
+        [Route("account/register")]
+        public IActionResult Register(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [Route("account/register")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null, string rName = "AdminTest")
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _userManager.FindByNameAsync(model.LoginName).Result;
+
+                if (userItem == null)
+                {
+
+                    var user = new ApplicationUser
+                    {
+                        UserName = model.LoginName,
+                        LoginName = model.RealName,
+                        sex = model.Sex,
+                        age = model.Birth.Year - DateTime.Now.Year,
+                        birth = model.Birth,
+                        addr = "",
+                        tdIsDelete = false
+                    };
+
+
+                    result = await _userManager.CreateAsync(user, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        result = await _userManager.AddClaimsAsync(user, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, model.LoginName),
+                            new Claim(JwtClaimTypes.Email, model.Email),
+                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                            new Claim(JwtClaimTypes.Role, rName)
+                        });
+
+                        if (result.Succeeded)
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+
+                            return RedirectToLocal(returnUrl);
+                        }
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} already exists");
+
+                }
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        [HttpGet]
+        [Route("account/users")]
+        public IActionResult Users(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            var users = _userManager.Users.ToList();
+
+            return View(users);
+        }
+
+
+
+        [HttpGet]
+        [Route("account/register")]
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email, ""));
+        }
+
+
+        [HttpPost]
+        [Route("account/edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditViewModel model, string returnUrl = null, string rName = "AdminTest")
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _userManager.FindByIdAsync(model.Id).Result;
+
+                if (userItem != null)
+                {
+                    userItem.UserName = model.LoginName;
+                    userItem.LoginName = model.RealName;
+                    userItem.Email = model.Email;
+                    userItem.RealName = model.RealName;
+
+
+                    result = await _userManager.UpdateAsync(userItem);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                }
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+        }
     }
 }

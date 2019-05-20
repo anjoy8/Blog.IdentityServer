@@ -2,6 +2,7 @@
 
 <link href="~/css/login_styles.css" rel="stylesheet" />
 
+
 <div class="htmleaf-container">
     <div class="wrapper">
         <div class="containerLogin">
@@ -12,9 +13,9 @@
 
             @if (Model.EnableLocalLogin)
             {
-                <form asp-route="Login" class="form">
+                <form asp-route="Login" class="form login-container">
                     <input type="hidden" asp-for="ReturnUrl" />
-                    <input class="login-name" placeholder="Username" asp-for="Username" >
+                    <input class="login-name" placeholder="Username" asp-for="Username">
                     <input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">
 
 
@@ -29,8 +30,9 @@
                     }
 
                     <div>
-                        <p>用之前系统的账号和密码登录</p>
-                        <p>注意：密码在导入数据库的时候，统一在之前加上了字符BlogIdp123$</p>
+                        <br />
+                        <p>注意：如何是Seed导入的数据，密码之前都加上了字符BlogIdp123$</p>
+                        <p>如果是新注册的，则没有加上边的特定字符的情况</p>
                     </div>
 
 
@@ -38,6 +40,7 @@
                     <button name="button" value="cancel">Cancel</button>
 
 
+                    <p class="to-register"><a  href="register">没有账号? 去注册</a></p>
                 </form>
 
             }
@@ -91,6 +94,5 @@
         </ul>
     </div>
 </div>
-
 
 

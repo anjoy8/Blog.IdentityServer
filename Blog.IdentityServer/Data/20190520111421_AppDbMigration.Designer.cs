@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.IdentityServer.Data
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190506094820_AppDbMigration")]
+    [Migration("20190520111421_AppDbMigration")]
     partial class AppDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,8 @@ namespace Blog.IdentityServer.Data
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
+                    b.Property<string>("LoginName");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
@@ -66,8 +68,6 @@ namespace Blog.IdentityServer.Data
                     b.Property<int>("age");
 
                     b.Property<DateTime>("birth");
-
-                    b.Property<string>("name");
 
                     b.Property<int>("sex");
 

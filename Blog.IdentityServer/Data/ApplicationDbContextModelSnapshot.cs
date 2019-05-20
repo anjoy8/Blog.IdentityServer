@@ -38,6 +38,8 @@ namespace Blog.IdentityServer.Data
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
+                    b.Property<string>("LoginName");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
@@ -64,8 +66,6 @@ namespace Blog.IdentityServer.Data
                     b.Property<int>("age");
 
                     b.Property<DateTime>("birth");
-
-                    b.Property<string>("name");
 
                     b.Property<int>("sex");
 

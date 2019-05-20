@@ -64,7 +64,7 @@ namespace Blog.IdentityServer
                                 userItem = new ApplicationUser
                                 {
                                     UserName = item.uLoginName,
-                                    name = item.name,
+                                    LoginName = item.uRealName,
                                     sex = item.sex,
                                     age = item.age,
                                     birth = item.birth,
@@ -79,13 +79,8 @@ namespace Blog.IdentityServer
                                 }
 
                                 result = userMgr.AddClaimsAsync(userItem, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, item.uRealName),
-                            new Claim(JwtClaimTypes.GivenName, item.uRealName),
-                            new Claim(JwtClaimTypes.FamilyName, item.uRealName),
+                            new Claim(JwtClaimTypes.Name, item.uLoginName),
                             new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
-                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                            new Claim(JwtClaimTypes.WebSite, $"http://{item.uLoginName}.com"),
-                            new Claim(JwtClaimTypes.Address, item.addr+"blogIdp", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
                             new Claim(JwtClaimTypes.Role, rName)
                         }).Result;
 
