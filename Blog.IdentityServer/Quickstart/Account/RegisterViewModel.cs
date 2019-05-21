@@ -27,7 +27,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [DataType(DataType.Password)]
         [Display(Name = "确认密码")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "The 密码 and 确认密码 do not match.")]
         public string ConfirmPassword { get; set; }
 
 

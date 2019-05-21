@@ -79,7 +79,7 @@ namespace Blog.IdentityServer
                                 }
 
                                 result = userMgr.AddClaimsAsync(userItem, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, item.uLoginName),
+                            new Claim(JwtClaimTypes.Name, item.uRealName),
                             new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
                             new Claim(JwtClaimTypes.Role, rName)
                         }).Result;

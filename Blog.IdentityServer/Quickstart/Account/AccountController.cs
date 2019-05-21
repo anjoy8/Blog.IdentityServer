@@ -1,4 +1,4 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
@@ -19,6 +19,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using Blog.IdentityServer.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -581,7 +582,7 @@ namespace IdentityServer4.Quickstart.UI
                     if (result.Succeeded)
                     {
                         result = await _userManager.AddClaimsAsync(user, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, model.LoginName),
+                            new Claim(JwtClaimTypes.Name, model.RealName),
                             new Claim(JwtClaimTypes.Email, model.Email),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.Role, rName)
@@ -589,7 +590,8 @@ namespace IdentityServer4.Quickstart.UI
 
                         if (result.Succeeded)
                         {
-                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            // 可以直接登录
+                            //await _signInManager.SignInAsync(user, isPersistent: false);
 
                             return RedirectToLocal(returnUrl);
                         }
@@ -612,6 +614,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpGet]
         [Route("account/users")]
+        [Authorize]
         public IActionResult Users(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -622,10 +625,11 @@ namespace IdentityServer4.Quickstart.UI
 
 
 
-        [HttpGet]
-        [Route("account/register")]
-        public async Task<IActionResult> Edit(string id)
+        [HttpGet("{id}")]
+        [Route("account/edit/{id}")]
+        public async Task<IActionResult> Edit(string id, string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             if (id == null)
             {
                 return NotFound();
@@ -638,14 +642,14 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email, ""));
+            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email));
         }
 
 
         [HttpPost]
-        [Route("account/edit")]
+        [Route("account/edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(EditViewModel model, string returnUrl = null, string rName = "AdminTest")
+        public async Task<IActionResult> Edit(EditViewModel model, string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             IdentityResult result = new IdentityResult();
@@ -657,9 +661,9 @@ namespace IdentityServer4.Quickstart.UI
                 if (userItem != null)
                 {
                     userItem.UserName = model.LoginName;
-                    userItem.LoginName = model.RealName;
+                    userItem.LoginName = model.UserName;
                     userItem.Email = model.Email;
-                    userItem.RealName = model.RealName;
+                    userItem.RealName = model.UserName;
 
 
                     result = await _userManager.UpdateAsync(userItem);
