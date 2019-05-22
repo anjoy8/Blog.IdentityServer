@@ -2,15 +2,17 @@
 @{
     ViewData["Title"] = "Users";
 }
+<link href="~/css/showtip.css" rel="stylesheet" />
 <div>
     <h2>@ViewData["Title"]</h2>
 </div>
 <hr />
+
 <div class="row">
     <div class="col-md-12">
         <div>
             <div class="pull-left">
-                <a asp-action="Register" asp-route-returnUrl="/account/users"  class="btn btn-primary">
+                <a asp-action="Register" asp-route-returnUrl="/account/users" class="btn btn-primary">
                     <span title="Register New" class="glyphicon glyphicon-plus-sign"></span> Register New
                 </a>
             </div>
@@ -49,10 +51,11 @@
                         <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/account/users" title="Edit" class="btn btn-warning">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        
-                        <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
+
+
+                        <button type="button" class="btn btn-danger viewbtn" title="History" data-id="@item.Id" data-toggle="modal" data-target="#DeleteUser">
                             <span class="glyphicon glyphicon-trash"></span>
-                        </a>
+                        </button>
 
                     </td>
                 </tr>
@@ -61,4 +64,24 @@
     </table>
 </div>
 
+<div class="modal fade" id="DeleteUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">警告</h4>
+            </div>
+            <div class="modal-body">确定要删除当前这条记录么？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary deletebutton">删除</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
+
+
+
+
+<script src="~/js/User.js"></script>

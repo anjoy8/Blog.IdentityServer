@@ -165,10 +165,11 @@ form {
         }
 
 .to-register  {
-    margin:20px;
+    margin:20px 0;
 }
-.to-register a {
-    color: #f9ac4b !important;
+.to-register a.register {
+    color: #fff !important;
+    margin-right:20px;
 }
 .bg-bubbles {
     position: absolute;

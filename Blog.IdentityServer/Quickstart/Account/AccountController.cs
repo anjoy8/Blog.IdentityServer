@@ -97,20 +97,25 @@ namespace IdentityServer4.Quickstart.UI
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
-                if (result.Succeeded)
+                var user = await _userManager.FindByNameAsync(model.Username);
+
+
+                if (!user.tdIsDelete)
                 {
-                    var user = await _userManager.FindByNameAsync(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
-
-                    // make sure the returnUrl is still valid, and if so redirect back to authorize endpoint or a local page
-                    // the IsLocalUrl check is only necessary if you want to support additional local pages, otherwise IsValidReturnUrl is more strict
-                    if (_interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
+                    var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
+                    if (result.Succeeded)
                     {
-                        return Redirect(model.ReturnUrl);
-                    }
+                        await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
 
-                    return Redirect("~/");
+                        // make sure the returnUrl is still valid, and if so redirect back to authorize endpoint or a local page
+                        // the IsLocalUrl check is only necessary if you want to support additional local pages, otherwise IsValidReturnUrl is more strict
+                        if (_interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
+                        {
+                            return Redirect(model.ReturnUrl);
+                        }
+
+                        return Redirect("~/");
+                    }
                 }
 
                 await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
@@ -567,6 +572,7 @@ namespace IdentityServer4.Quickstart.UI
 
                     var user = new ApplicationUser
                     {
+                        Email = model.Email,
                         UserName = model.LoginName,
                         LoginName = model.RealName,
                         sex = model.Sex,
@@ -584,7 +590,7 @@ namespace IdentityServer4.Quickstart.UI
                         result = await _userManager.AddClaimsAsync(user, new Claim[]{
                             new Claim(JwtClaimTypes.Name, model.RealName),
                             new Claim(JwtClaimTypes.Email, model.Email),
-                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                            new Claim(JwtClaimTypes.EmailVerified, "false", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.Role, rName)
                         });
 
@@ -618,7 +624,7 @@ namespace IdentityServer4.Quickstart.UI
         public IActionResult Users(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var users = _userManager.Users.ToList();
+            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderByDescending(d => d.Id).ToList();
 
             return View(users);
         }
@@ -627,6 +633,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpGet("{id}")]
         [Route("account/edit/{id}")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Edit(string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -649,6 +656,7 @@ namespace IdentityServer4.Quickstart.UI
         [HttpPost]
         [Route("account/edit/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> Edit(EditViewModel model, string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -688,6 +696,162 @@ namespace IdentityServer4.Quickstart.UI
 
 
 
+        [HttpPost]
+        [Route("account/delete/{id}")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<JsonResult> Delete(string id)
+        {
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _userManager.FindByIdAsync(id).Result;
+
+                if (userItem != null)
+                {
+                    userItem.tdIsDelete = true;
+
+
+                    result = await _userManager.UpdateAsync(userItem);
+
+                    if (result.Succeeded)
+                    {
+                        return Json(result);
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                }
+
+                AddErrors(result);
+            }
+
+            return Json(result.Errors);
+
+        }
+
+        [HttpGet]
+        [Route("account/confirm-email")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        [HttpGet]
+        [Route("account/forgot-password")]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("account/forgot-password")]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                //if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                if (user == null)
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return RedirectToAction(nameof(ForgotPasswordConfirmation));
+                }
+
+                // For more information on how to enable account confirmation and password reset please
+                // visit https://go.microsoft.com/fwlink/?LinkID=532713
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+
+
+                var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
+
+                return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = ResetPassword });
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [HttpGet]
+        [Route("account/forgot-password-confirmation")]
+        [AllowAnonymous]
+        public IActionResult ForgotPasswordConfirmation(string ResetPassword)
+        {
+            ViewBag.ResetPassword = ResetPassword;
+            return View();
+        }
+
+        [HttpGet]
+        [Route("account/reset-password")]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string code = null)
+        {
+            if (code == null)
+            {
+                throw new ApplicationException("A code must be supplied for password reset.");
+            }
+            var model = new ResetPasswordViewModel { Code = code };
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("account/reset-password")]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction(nameof(ResetPasswordConfirmation));
+            }
+            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return RedirectToAction(nameof(ResetPasswordConfirmation));
+            }
+            AddErrors(result);
+            return View();
+        }
+
+        [HttpGet]
+        [Route("account/reset-password-confirmation")]
+        [AllowAnonymous]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        //[Route("account/access-denied")]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
         private void AddErrors(IdentityResult result)
         {

@@ -1,0 +1,5 @@
+.alert {
+    position: fixed !important;
+    top: 200px !important;
+    left: 50% !important;
+}
