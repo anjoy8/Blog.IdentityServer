@@ -1599,9 +1599,10 @@ pre code {
   }
 }
 @media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
+    .container {
+        width: 100%;
+        max-width: 1440px;
+    }
 }
 .container-fluid {
   padding-right: 15px;

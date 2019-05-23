@@ -25,40 +25,46 @@
         <thead>
             <tr>
                 <th>
-                    name
+                    Name
                 </th>
                 <th>
                     UserName
                 </th>
+                <th>
+                    Email
+                </th>
                 <th>PasswordHash</th>
-                <th></th>
+                <th>Operate</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LoginName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PasswordHash)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/account/users" title="Edit" class="btn btn-warning">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoginName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/account/users" title="Edit" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
 
 
-                        <button type="button" class="btn btn-danger viewbtn" title="History" data-id="@item.Id" data-toggle="modal" data-target="#DeleteUser">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
+                    <button type="button" class="btn btn-danger viewbtn" title="History" data-id="@item.Id" data-toggle="modal" data-target="#DeleteUser">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
 
-                    </td>
-                </tr>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
