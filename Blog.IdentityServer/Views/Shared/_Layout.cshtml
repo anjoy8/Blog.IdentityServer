@@ -37,28 +37,28 @@
                 <a href="~/">
                     <span class="navbar-brand">
                         <img src="~/icon.png" class="icon-banner">
-                        IdentityServer4
+                        Blog.Idp
                     </span>
                 </a>
             </div>
-            @if (!string.IsNullOrWhiteSpace(name))
-            {
-                <ul class="nav navbar-nav">
+
+            <ul class="nav navbar-nav">
+                @if (!string.IsNullOrWhiteSpace(name))
+                {
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
                         </ul>
                     </li>
-                    <li><a asp-action="Users" asp-controller="Account">Users</a></li>
-                </ul>
-            }
-            else
-            {
-                <ul class="nav navbar-nav">
+                }
+                else
+                {
                     <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                </ul>
-            }
+                }
+                <li><a asp-action="Users" asp-controller="Account">Users</a></li>
+            </ul>
+
         </div>
     </div>
     <div class="container body-content">
