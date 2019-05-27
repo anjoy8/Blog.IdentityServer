@@ -2,6 +2,7 @@
 
 <link href="~/css/login_styles.css" rel="stylesheet" />
 
+<script src="~/js/bootstrap-show-password.js"></script>
 
 <div class="htmleaf-container">
     <div class="wrapper">
@@ -16,7 +17,22 @@
                 <form asp-route="Login" class="form login-container">
                     <input type="hidden" asp-for="ReturnUrl" />
                     <input class="login-name" placeholder="Username" asp-for="Username">
-                    <input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">
+                    @*<input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">*@
+
+                    <p class="pass-with-show">
+                        <input data-toggle="password"
+                               data-placement="after"
+                               class="login-pass form-control"
+                               type="password"
+                               value="123"
+                               asp-for="Password"
+                               placeholder="密码"
+                               data-eye-class="material-icons"
+                               data-eye-open-class="visibility"
+                               data-eye-close-class="visibility_off"
+                               data-eye-class-position-inside="true"
+                               data-message="点击隐藏或显示密码">
+                    </p>
 
 
                     @if (Model.AllowRememberLogin)
