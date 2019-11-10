@@ -27,6 +27,7 @@ namespace IdentityServer4.Quickstart.UI
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
@@ -35,6 +36,7 @@ namespace IdentityServer4.Quickstart.UI
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
@@ -42,6 +44,7 @@ namespace IdentityServer4.Quickstart.UI
             IEventService events)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _signInManager = signInManager;
             _interaction = interaction;
             _clientStore = clientStore;
@@ -871,6 +874,183 @@ namespace IdentityServer4.Quickstart.UI
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
+        }
+
+
+        // Role Manager
+
+
+
+        [HttpGet]
+        [Route("account/Roleregister")]
+        public IActionResult RoleRegister(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [Route("account/Roleregister")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RoleRegister(RegisterViewModel model, string returnUrl = null, string rName = "AdminTest")
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _roleManager.FindByNameAsync(model.LoginName).Result;
+
+                if (userItem == null)
+                {
+
+                    var role = new ApplicationRole
+                    {
+                        Name = ""
+                    };
+
+
+                    result = await _roleManager.CreateAsync(role);
+
+                    if (result.Succeeded)
+                    {
+
+                        if (result.Succeeded)
+                        {
+                            // 可以直接登录
+                            //await _signInManager.SignInAsync(user, isPersistent: false);
+
+                            return RedirectToLocal(returnUrl);
+                        }
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.Name} already exists");
+
+                }
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        [HttpGet]
+        [Route("account/Roles")]
+        [Authorize]
+        public IActionResult Roles(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderBy(d => d.UserName).ToList();
+
+            return View(users);
+        }
+
+
+
+        [HttpGet("{id}")]
+        [Route("account/Roleedit/{id}")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> RoleEdit(string id, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email));
+        }
+
+
+        [HttpPost]
+        [Route("account/Roleedit/{id}")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> RoleEdit(EditViewModel model, string id, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _userManager.FindByIdAsync(model.Id).Result;
+
+                if (userItem != null)
+                {
+                    userItem.UserName = model.LoginName;
+                    userItem.LoginName = model.UserName;
+                    userItem.Email = model.Email;
+                    userItem.RealName = model.UserName;
+
+
+                    result = await _userManager.UpdateAsync(userItem);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                }
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        [Route("account/Roledelete/{id}")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<JsonResult> RoleDelete(string id)
+        {
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var userItem = _userManager.FindByIdAsync(id).Result;
+
+                if (userItem != null)
+                {
+                    userItem.tdIsDelete = true;
+
+
+                    result = await _userManager.UpdateAsync(userItem);
+
+                    if (result.Succeeded)
+                    {
+                        return Json(result);
+                    }
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                }
+
+                AddErrors(result);
+            }
+
+            return Json(result.Errors);
+
         }
     }
 }

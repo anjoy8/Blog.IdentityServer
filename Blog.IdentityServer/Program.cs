@@ -3,6 +3,7 @@ using System.Linq;
 using Blog.IdentityServer;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
@@ -32,7 +33,7 @@ namespace Blog.IdentityServer
                 args = args.Except(new[] { "/seed" }).ToArray();
             }
 
-            var host = BuildWebHost(args);
+            var host = CreateHostBuilder(args).Build();
 
             if (seed)
             {
@@ -42,15 +43,25 @@ namespace Blog.IdentityServer
             host.Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureLogging(builder =>
-                {
-                    builder.ClearProviders();
-                    builder.AddSerilog();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+         Host.CreateDefaultBuilder(args)
+           .ConfigureWebHostDefaults(webBuilder =>
+           {
+               webBuilder
+               .ConfigureKestrel(serverOptions =>
+               {
+                   serverOptions.AllowSynchronousIO = true;//启用同步 IO
                 })
-                .UseStartup<Startup>()
-                .UseUrls("http://localhost:5002")
-                .Build();
+               .UseStartup<Startup>()
+               .UseUrls("http://localhost:5002")
+               .ConfigureLogging((hostingContext, builder) =>
+               {
+                   builder.ClearProviders();
+                   builder.SetMinimumLevel(LogLevel.Trace);
+                   builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                   builder.AddConsole();
+                   builder.AddDebug();
+               });
+           });
     }
 }

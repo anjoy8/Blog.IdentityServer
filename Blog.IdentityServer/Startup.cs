@@ -11,15 +11,16 @@ using System.Reflection;
 using Microsoft.IdentityModel.Tokens;
 using System.IO;
 using IdentityServer4.Quickstart.UI;
+using Microsoft.Extensions.Hosting;
 
 namespace Blog.IdentityServer
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public IHostingEnvironment Environment { get; }
+        public IWebHostEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration, IHostingEnvironment environment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
@@ -27,16 +28,15 @@ namespace Blog.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionStringFile = Configuration.GetConnectionString("DefaultConnection");
-            var connectionString = File.Exists(connectionStringFile) ? File.ReadAllText(connectionStringFile).Trim() : "";
+            string connectionStringFile = Configuration.GetConnectionString("DefaultConnection_file");
+            var connectionString = File.Exists(connectionStringFile) ? File.ReadAllText(connectionStringFile).Trim() : Configuration.GetConnectionString("DefaultConnection");
             if (connectionString == "")
             {
                 throw new Exception("数据库配置异常");
             }
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -58,32 +58,20 @@ namespace Blog.IdentityServer
                     options.Events.RaiseSuccessEvents = true;
                 })
 
-                //// in-memory, code config
-                //.AddTestUsers(TestUsers.Users)
-                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
-                //.AddInMemoryApiResources(Config.GetApiResources())
-                //.AddInMemoryClients(Config.GetClients())
-
-                //// in-memory, json config
-                //.AddTestUsers(TestUsers.Users)
-                //.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"))
-                //.AddInMemoryApiResources(Configuration.GetSection("ApiResources"))
-                //.AddInMemoryClients(Configuration.GetSection("clients"))
-
-                // in-sqlserver
+                // in-Sqlite
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
                 {
                     options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connectionString,
+                        b.UseSqlite(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
                     options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connectionString,
+                        b.UseSqlite(connectionString,
                             sql => sql.MigrationsAssembly(migrationsAssembly));
 
                     // this enables automatic token cleanup. this is optional.
@@ -103,12 +91,12 @@ namespace Blog.IdentityServer
             services.AddAuthentication();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -116,8 +104,18 @@ namespace Blog.IdentityServer
             }
 
             app.UseStaticFiles();
+            app.UseRouting();
             app.UseIdentityServer();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+           {
+               endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Home}/{action=Index}/{id?}");
+           });
         }
     }
 }
