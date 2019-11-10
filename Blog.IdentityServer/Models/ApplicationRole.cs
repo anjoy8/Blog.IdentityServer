@@ -7,6 +7,7 @@ namespace Blog.IdentityServer.Models
     public class ApplicationRole : IdentityRole
     {
 
-     
+        public bool IsDeleted { get; set; }
+
     }
 }

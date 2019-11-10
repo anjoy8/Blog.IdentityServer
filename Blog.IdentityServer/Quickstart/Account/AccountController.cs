@@ -945,9 +945,9 @@ namespace IdentityServer4.Quickstart.UI
         public IActionResult Roles(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderBy(d => d.UserName).ToList();
+            var roles = _roleManager.Roles.Where(d => !d.IsDeleted).ToList();
 
-            return View(users);
+            return View(roles);
         }
 
 
@@ -963,14 +963,14 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            var user = await _userManager.FindByIdAsync(id);
+            var user = await _roleManager.FindByIdAsync(id);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email));
+            return View(new RoleEditViewModel(user.Id, user.Name));
         }
 
 
@@ -978,24 +978,21 @@ namespace IdentityServer4.Quickstart.UI
         [Route("account/Roleedit/{id}")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "SuperAdmin")]
-        public async Task<IActionResult> RoleEdit(EditViewModel model, string id, string returnUrl = null)
+        public async Task<IActionResult> RoleEdit(RoleEditViewModel model, string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             IdentityResult result = new IdentityResult();
 
             if (ModelState.IsValid)
             {
-                var userItem = _userManager.FindByIdAsync(model.Id).Result;
+                var roleItem = _roleManager.FindByIdAsync(model.Id).Result;
 
-                if (userItem != null)
+                if (roleItem != null)
                 {
-                    userItem.UserName = model.LoginName;
-                    userItem.LoginName = model.UserName;
-                    userItem.Email = model.Email;
-                    userItem.RealName = model.UserName;
+                    roleItem.Name = model.RoleName;
 
 
-                    result = await _userManager.UpdateAsync(userItem);
+                    result = await _roleManager.UpdateAsync(roleItem);
 
                     if (result.Succeeded)
                     {
@@ -1005,7 +1002,7 @@ namespace IdentityServer4.Quickstart.UI
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                    ModelState.AddModelError(string.Empty, $"{roleItem?.Name} no exist!");
                 }
 
                 AddErrors(result);
