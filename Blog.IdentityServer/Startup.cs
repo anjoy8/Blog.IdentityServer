@@ -38,9 +38,10 @@ namespace Blog.IdentityServer
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
 
             services.AddMvc();
 

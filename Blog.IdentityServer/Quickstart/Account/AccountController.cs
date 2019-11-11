@@ -892,21 +892,21 @@ namespace IdentityServer4.Quickstart.UI
         [HttpPost]
         [Route("account/Roleregister")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RoleRegister(RegisterViewModel model, string returnUrl = null, string rName = "AdminTest")
+        public async Task<IActionResult> RoleRegister(RoleRegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             IdentityResult result = new IdentityResult();
 
             if (ModelState.IsValid)
             {
-                var userItem = _roleManager.FindByNameAsync(model.LoginName).Result;
+                var roleItem = _roleManager.FindByNameAsync(model.RoleName).Result;
 
-                if (userItem == null)
+                if (roleItem == null)
                 {
 
                     var role = new ApplicationRole
                     {
-                        Name = ""
+                        Name = model.RoleName
                     };
 
 
@@ -927,7 +927,7 @@ namespace IdentityServer4.Quickstart.UI
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, $"{userItem?.Name} already exists");
+                    ModelState.AddModelError(string.Empty, $"{roleItem?.Name} already exists");
 
                 }
 
@@ -1023,14 +1023,14 @@ namespace IdentityServer4.Quickstart.UI
 
             if (ModelState.IsValid)
             {
-                var userItem = _userManager.FindByIdAsync(id).Result;
+                var roleItem = _roleManager.FindByIdAsync(id).Result;
 
-                if (userItem != null)
+                if (roleItem != null)
                 {
-                    userItem.tdIsDelete = true;
+                    roleItem.IsDeleted = true;
 
 
-                    result = await _userManager.UpdateAsync(userItem);
+                    result = await _roleManager.UpdateAsync(roleItem);
 
                     if (result.Succeeded)
                     {
@@ -1040,7 +1040,7 @@ namespace IdentityServer4.Quickstart.UI
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                    ModelState.AddModelError(string.Empty, $"{roleItem?.Name} no exist!");
                 }
 
                 AddErrors(result);
