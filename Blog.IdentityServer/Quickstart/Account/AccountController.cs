@@ -108,7 +108,7 @@ namespace IdentityServer4.Quickstart.UI
                     var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
                     if (result.Succeeded)
                     {
-                        await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName));
+                        await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.UserName));
 
                         // make sure the returnUrl is still valid, and if so redirect back to authorize endpoint or a local page
                         // the IsLocalUrl check is only necessary if you want to support additional local pages, otherwise IsValidReturnUrl is more strict
@@ -195,9 +195,9 @@ namespace IdentityServer4.Quickstart.UI
             // it doesn't expose an API to issue additional claims from the login workflow
             var principal = await _signInManager.CreateUserPrincipalAsync(user);
             additionalLocalClaims.AddRange(principal.Claims);
-            var name = principal.FindFirst(JwtClaimTypes.Name)?.Value ?? user.Id;
-            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id, name));
-            await HttpContext.SignInAsync(user.Id, name, provider, localSignInProps, additionalLocalClaims.ToArray());
+            var name = principal.FindFirst(JwtClaimTypes.Name)?.Value ?? user.Id.ToString();
+            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.Id.ToString(), name));
+            await HttpContext.SignInAsync(user.Id.ToString(), name, provider, localSignInProps, additionalLocalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -652,7 +652,7 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            return View(new EditViewModel(user.Id, user.LoginName, user.UserName, user.Email));
+            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email));
         }
 
 
@@ -781,7 +781,7 @@ namespace IdentityServer4.Quickstart.UI
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
 
 
                 var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
@@ -970,7 +970,7 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            return View(new RoleEditViewModel(user.Id, user.Name));
+            return View(new RoleEditViewModel(user.Id.ToString(), user.Name));
         }
 
 

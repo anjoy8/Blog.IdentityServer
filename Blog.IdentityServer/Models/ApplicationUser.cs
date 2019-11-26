@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 
 namespace Blog.IdentityServer.Models
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<int>
     {
 
         public string LoginName { get; set; }
@@ -20,5 +21,7 @@ namespace Blog.IdentityServer.Models
         public string addr { get; set; }
 
         public bool tdIsDelete { get; set; }
+
+        public ICollection<ApplicationUserRole> UserRoles { get; set; }
     }
 }
