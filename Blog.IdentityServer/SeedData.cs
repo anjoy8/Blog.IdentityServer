@@ -42,11 +42,13 @@ namespace Blog.IdentityServer
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
                     var BlogCore_Users = JsonHelper.ParseFormByJson<List<sysUserInfo>>(GetNetData.Get(string.Format(GitJsonFileFormat, "sysUserInfo")));
                     var BlogCore_Roles = JsonHelper.ParseFormByJson<List<Role>>(GetNetData.Get(string.Format(GitJsonFileFormat, "Role")));
                     var BlogCore_UserRoles = JsonHelper.ParseFormByJson<List<UserRole>>(GetNetData.Get(string.Format(GitJsonFileFormat, "UserRole")));
 
+                    // 迁移【用户】信息
                     foreach (var item in BlogCore_Users)
                     {
                         if (item == null || item.uLoginName == null)
@@ -54,13 +56,21 @@ namespace Blog.IdentityServer
                             continue;
                         }
                         var userItem = userMgr.FindByNameAsync(item.uLoginName).Result;
-                        var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == item.uID)?.RoleId;
-                        var rName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
+                        var userRoles = BlogCore_UserRoles.Where(d => d.UserId == item.uID).ToList();
+                        //var rName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
 
                         if (userItem == null)
                         {
-                            if (rid > 0 && !string.IsNullOrEmpty(rName))
+                            if (userRoles.Count > 0)
                             {
+                                var applicationUserRole = new List<ApplicationUserRole>();
+                                foreach (var userRoleItemS in userRoles)
+                                {
+                                    applicationUserRole.Add(new ApplicationUserRole() { 
+                                        
+                                    });
+                                }
+
                                 userItem = new ApplicationUser
                                 {
                                     UserName = item.uLoginName,
@@ -69,8 +79,8 @@ namespace Blog.IdentityServer
                                     age = item.age,
                                     birth = item.birth,
                                     addr = item.addr,
-                                    tdIsDelete = item.tdIsDelete
-
+                                    tdIsDelete = item.tdIsDelete,
+                                    RealName=item.uRealName,
                                 };
 
                                 //var result = userMgr.CreateAsync(userItem, "BlogIdp123$" + item.uLoginPWD).Result;
@@ -82,11 +92,12 @@ namespace Blog.IdentityServer
                                     throw new Exception(result.Errors.First().Description);
                                 }
 
+
                                 result = userMgr.AddClaimsAsync(userItem, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, item.uRealName),
-                            new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
-                            new Claim(JwtClaimTypes.Role, rName)
-                        }).Result;
+                                    new Claim(JwtClaimTypes.Name, item.uRealName),
+                                    new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
+                                    new Claim(JwtClaimTypes.Role, rName)
+                                }).Result;
 
                                 if (!result.Succeeded)
                                 {
@@ -103,6 +114,47 @@ namespace Blog.IdentityServer
                         else
                         {
                             Console.WriteLine($"{userItem?.UserName} already exists");
+                        }
+
+                    }
+
+                    // 迁移【角色】信息，Role信息统一在这里处理，Blog.Core 只负责读，不负责写
+                    foreach (var item in BlogCore_Roles)
+                    {
+                        if (item == null || item.Name == null)
+                        {
+                            continue;
+                        }
+
+                        var roleModel = roleMgr.FindByNameAsync(item.Name).Result;
+
+                        if (roleModel == null)
+                        {
+                            roleModel = new ApplicationRole
+                            {
+                                Name = item.Name,
+                                Description = item.Description,
+                                IsDeleted = (bool)(item.IsDeleted),
+                                CreateBy = item.CreateBy,
+                                CreateId = item.CreateId,
+                                CreateTime = item.CreateTime,
+                                ModifyBy = item.ModifyBy,
+                                ModifyId = item.ModifyId,
+                                ModifyTime = item.ModifyTime,
+                                Enabled = item.Enabled,
+                                OrderSort = item.OrderSort,
+                                NormalizedName = item.Name,
+                            };
+
+                            var result = roleMgr.CreateAsync(roleModel).Result;
+                            if (!result.Succeeded)
+                            {
+                                throw new Exception(result.Errors.First().Description);
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{roleModel?.Name} already exists");
                         }
 
                     }
