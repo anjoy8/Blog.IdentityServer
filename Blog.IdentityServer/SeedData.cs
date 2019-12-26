@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Blog.Core.Common.Helper;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Blog.IdentityServer
 {
@@ -42,34 +43,35 @@ namespace Blog.IdentityServer
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
                     var BlogCore_Users = JsonHelper.ParseFormByJson<List<sysUserInfo>>(GetNetData.Get(string.Format(GitJsonFileFormat, "sysUserInfo")));
                     var BlogCore_Roles = JsonHelper.ParseFormByJson<List<Role>>(GetNetData.Get(string.Format(GitJsonFileFormat, "Role")));
                     var BlogCore_UserRoles = JsonHelper.ParseFormByJson<List<UserRole>>(GetNetData.Get(string.Format(GitJsonFileFormat, "UserRole")));
 
-                    foreach (var item in BlogCore_Users)
+                    foreach (var user in BlogCore_Users)
                     {
-                        if (item == null || item.uLoginName == null)
+                        if (user == null || user.uLoginName == null)
                         {
                             continue;
                         }
-                        var userItem = userMgr.FindByNameAsync(item.uLoginName).Result;
-                        var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == item.uID)?.RoleId;
-                        var rName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
+                        var userItem = userMgr.FindByNameAsync(user.uLoginName).Result;
+                        var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == user.uID)?.RoleId;
+                        var rName = BlogCore_Roles.Where(d => d.Id == rid).Select(d=>d.Id).ToList();
 
                         if (userItem == null)
                         {
-                            if (rid > 0 && !string.IsNullOrEmpty(rName))
+                            if (rid > 0 && rName.Count>0)
                             {
                                 userItem = new ApplicationUser
                                 {
-                                    UserName = item.uLoginName,
-                                    LoginName = item.uRealName,
-                                    sex = item.sex,
-                                    age = item.age,
-                                    birth = item.birth,
-                                    addr = item.addr,
-                                    tdIsDelete = item.tdIsDelete
+                                    UserName = user.uLoginName,
+                                    LoginName = user.uRealName,
+                                    sex = user.sex,
+                                    age = user.age,
+                                    birth = user.birth,
+                                    addr = user.addr,
+                                    tdIsDelete = user.tdIsDelete
 
                                 };
 
@@ -82,11 +84,16 @@ namespace Blog.IdentityServer
                                     throw new Exception(result.Errors.First().Description);
                                 }
 
-                                result = userMgr.AddClaimsAsync(userItem, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, item.uRealName),
-                            new Claim(JwtClaimTypes.Email, $"{item.uLoginName}@email.com"),
-                            new Claim(JwtClaimTypes.Role, rName)
-                        }).Result;
+                                var claims = new List<Claim>{
+                            new Claim(JwtClaimTypes.Name, user.uRealName),
+                            new Claim(JwtClaimTypes.Email, $"{user.uLoginName}@email.com"),
+                        };
+
+                                claims.AddRange(rName.Select(s => new Claim(JwtClaimTypes.Role, s.ToString())));
+
+
+                                result = userMgr.AddClaimsAsync(userItem,claims ).Result;
+
 
                                 if (!result.Succeeded)
                                 {
@@ -97,12 +104,56 @@ namespace Blog.IdentityServer
                             }
                             else
                             {
-                                Console.WriteLine($"{item?.uLoginName} doesn't have a corresponding role.");
+                                Console.WriteLine($"{user?.uLoginName} doesn't have a corresponding role.");
                             }
                         }
                         else
                         {
                             Console.WriteLine($"{userItem?.UserName} already exists");
+                        }
+
+                    }
+
+                    foreach (var role in BlogCore_Roles)
+                    {
+                        if (role == null || role.Name == null)
+                        {
+                            continue;
+                        }
+                        var roleItem = roleMgr.FindByNameAsync(role.Name).Result;
+
+                        if (roleItem == null)
+                        {
+
+                            roleItem = new ApplicationRole
+                            {
+                               CreateBy=role.CreateBy,
+                               Description=role.Description,
+                               IsDeleted= role.IsDeleted ?? (bool)role.IsDeleted,
+                               CreateId=role.CreateId,
+                               CreateTime=role.CreateTime,
+                               Enabled=role.Enabled,
+                               Name=role.Name,
+                               OrderSort=role.OrderSort,
+                            };
+
+                            var result = roleMgr.CreateAsync(roleItem).Result;
+                            if (!result.Succeeded)
+                            {
+                                throw new Exception(result.Errors.First().Description);
+                            }
+
+                            if (!result.Succeeded)
+                            {
+                                throw new Exception(result.Errors.First().Description);
+                            }
+                            Console.WriteLine($"{roleItem?.Name} created");//AspNetUserClaims 表
+
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{roleItem?.Name} already exists");
                         }
 
                     }
