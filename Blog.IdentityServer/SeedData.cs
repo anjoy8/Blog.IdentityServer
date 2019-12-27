@@ -122,39 +122,34 @@ namespace Blog.IdentityServer
                         }
                         var roleItem = roleMgr.FindByNameAsync(role.Name).Result;
 
-                        if (roleItem == null)
+                        if (roleItem != null)
                         {
-
-                            roleItem = new ApplicationRole
-                            {
-                               CreateBy=role.CreateBy,
-                               Description=role.Description,
-                               IsDeleted= role.IsDeleted ?? (bool)role.IsDeleted,
-                               CreateId=role.CreateId,
-                               CreateTime=role.CreateTime,
-                               Enabled=role.Enabled,
-                               Name=role.Name,
-                               OrderSort=role.OrderSort,
-                            };
-
-                            var result = roleMgr.CreateAsync(roleItem).Result;
-                            if (!result.Succeeded)
-                            {
-                                throw new Exception(result.Errors.First().Description);
-                            }
-
-                            if (!result.Succeeded)
-                            {
-                                throw new Exception(result.Errors.First().Description);
-                            }
-                            Console.WriteLine($"{roleItem?.Name} created");//AspNetUserClaims 表
-
-
+                            role.Name = role.Name + Guid.NewGuid().ToString("N");
                         }
-                        else
+
+                        roleItem = new ApplicationRole
                         {
-                            Console.WriteLine($"{roleItem?.Name} already exists");
+                            CreateBy = role.CreateBy,
+                            Description = role.Description,
+                            IsDeleted = role.IsDeleted != null ? (bool)role.IsDeleted : true,
+                            CreateId = role.CreateId,
+                            CreateTime = role.CreateTime,
+                            Enabled = role.Enabled,
+                            Name = role.Name,
+                            OrderSort = role.OrderSort,
+                        };
+
+                        var result = roleMgr.CreateAsync(roleItem).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
                         }
+
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        Console.WriteLine($"{roleItem?.Name} created");//AspNetUserClaims 表
 
                     }
 
