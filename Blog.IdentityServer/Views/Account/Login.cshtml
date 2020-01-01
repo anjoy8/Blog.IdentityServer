@@ -16,7 +16,7 @@
             {
                 <form asp-route="Login" class="form login-container">
                     <input type="hidden" asp-for="ReturnUrl" />
-                    <input class="login-name" placeholder="Username" asp-for="Username">
+                    <input class="login-name" value="test" placeholder="Username" asp-for="Username">
                     @*<input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">*@
 
                     <p class="pass-with-show">
@@ -24,7 +24,7 @@
                                data-placement="after"
                                class="login-pass form-control"
                                type="password"
-                               value="123"
+                               value="BlogIdp123$InitPwd"
                                asp-for="Password"
                                placeholder="密码"
                                data-eye-class="material-icons"
@@ -47,9 +47,7 @@
 
                         <div>
                             <br />
-                            <p>注意：如何是Seed导入的数据，你的数据库密码统一都是：BlogIdp123$InitPwd</p>
-                            <p>但是本在线Demo的测试账号：test 密码：BlogIdp123$test</p>
-                            <p>如果登录不上，自己注册即可</p>
+                            <p>注意：账号test、test2的密码统一都是：BlogIdp123$InitPwd</p>
                         </div>
 
 

@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IO;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Hosting;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Blog.IdentityServer
 {
@@ -59,6 +60,11 @@ namespace Blog.IdentityServer
                     options.Events.RaiseSuccessEvents = true;
                 })
 
+                //.AddDeveloperSigningCredential(true, ConstanceHelper.AppSettings.CredentialFileName)
+                //.AddSigningCredential(new X509Certificate2(Path.Combine(Environment.WebRootPath,
+                //        Configuration["Certificates:Path"]),
+                //        Configuration["Certificates:Password"]))
+
                 // in-Sqlite
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources)
@@ -81,15 +87,11 @@ namespace Blog.IdentityServer
                 });
 
             builder.AddDeveloperSigningCredential();
-
             if (Environment.IsDevelopment())
             {
                 builder.AddDeveloperSigningCredential();
             }
-            else
-            {
-                throw new Exception("need to configure key material");
-            }
+           
 
             services.AddAuthentication();
         }

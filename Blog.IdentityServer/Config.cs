@@ -59,7 +59,6 @@ namespace Blog.IdentityServer
                     ClientName = "Blog.Admin JavaScript Client",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
-                    AccessTokenLifetime=60,
 
                     RedirectUris =           { "http://vueadmin.neters.club/callback" },
                     PostLogoutRedirectUris = { "http://vueadmin.neters.club" },

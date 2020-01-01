@@ -78,7 +78,12 @@ namespace Blog.IdentityServer
                                 //var result = userMgr.CreateAsync(userItem, "BlogIdp123$" + item.uLoginPWD).Result;
 
                                 // 因为导入的密码是 MD5密文，所以这里统一都用初始密码了
-                                var result = userMgr.CreateAsync(userItem, "BlogIdp123$InitPwd").Result;
+                                var pwdInit = "BlogIdp123$InitPwd";
+                                //if (userItem.UserName== "blogadmin")
+                                //{
+                                //    pwdInit = "#InitPwd";
+                                //}
+                                var result = userMgr.CreateAsync(userItem, pwdInit).Result;
                                 if (!result.Succeeded)
                                 {
                                     throw new Exception(result.Errors.First().Description);
