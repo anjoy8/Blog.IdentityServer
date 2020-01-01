@@ -3,7 +3,7 @@
     "Blog.IdentityServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5002",
+      "launchUrl": "http://localhost:5004",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

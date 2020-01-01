@@ -80,6 +80,8 @@ namespace Blog.IdentityServer
                     // options.TokenCleanupInterval = 15; // frequency in seconds to cleanup stale grants. 15 is useful during debugging
                 });
 
+            builder.AddDeveloperSigningCredential();
+
             if (Environment.IsDevelopment())
             {
                 builder.AddDeveloperSigningCredential();
