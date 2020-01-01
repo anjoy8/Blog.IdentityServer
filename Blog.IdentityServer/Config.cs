@@ -53,6 +53,24 @@ namespace Blog.IdentityServer
                         "roles",
                         "blog.core.api"
                     }
+                },
+                new Client {
+                    ClientId = "blogadminjs",
+                    ClientName = "Blog.Admin JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    AccessTokenLifetime=60,
+
+                    RedirectUris =           { "http://localhost:2364/callback" },
+                    PostLogoutRedirectUris = { "http://localhost:2364" },
+                    AllowedCorsOrigins =     { "http://localhost:2364" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
+                        "blog.core.api"
+                    }
                 }
             };
         }

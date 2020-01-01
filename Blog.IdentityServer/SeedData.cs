@@ -18,7 +18,7 @@ namespace Blog.IdentityServer
 {
     public class SeedData
     {
-        private static string GitJsonFileFormat = "https://github.com/anjoy8/Blog.Data.Share/raw/master/BlogCore.Data.json/{0}.tsv";
+        private static string GitJsonFileFormat = "https://gitee.com/laozhangIsPhi/Blog.Data.Share/raw/master/BlogCore.Data.json/{0}.tsv";
 
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
