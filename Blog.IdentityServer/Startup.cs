@@ -29,6 +29,8 @@ namespace Blog.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSameSiteCookiePolicy();
+          
             string connectionStringFile = Configuration.GetConnectionString("DefaultConnection_file");
             var connectionString = File.Exists(connectionStringFile) ? File.ReadAllText(connectionStringFile).Trim() : Configuration.GetConnectionString("DefaultConnection");
             if (connectionString == "")
@@ -58,8 +60,8 @@ namespace Blog.IdentityServer
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
-                    options.IssuerUri = "http://ids.neters.club";
-                    options.PublicOrigin = "http://ids.neters.club";
+                    //options.IssuerUri = "http://ids.neters.club";
+                    //options.PublicOrigin = "http://ids.neters.club";
                 })
 
                 //.AddDeveloperSigningCredential(true, ConstanceHelper.AppSettings.CredentialFileName)
@@ -100,6 +102,8 @@ namespace Blog.IdentityServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCookiePolicy();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
