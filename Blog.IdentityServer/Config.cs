@@ -27,7 +27,11 @@ namespace Blog.IdentityServer
                 new ApiResource("blog.core.api", "Blog.Core API") {
                     // include the following using claims in access token (in addition to subject id)
                     //requires using using IdentityModel;
-                    UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Role }
+                    UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Role },
+                    ApiSecrets = new List<Secret>()
+                    {
+                        new Secret("api_secret".Sha256())
+                    },
                 }
             };
         }
