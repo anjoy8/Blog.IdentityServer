@@ -60,8 +60,8 @@ namespace Blog.IdentityServer
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
-                    options.IssuerUri = "http://ids.neters.club";
-                    options.PublicOrigin = "http://ids.neters.club";
+                    options.IssuerUri = "https://ids.neters.club";
+                    options.PublicOrigin = "https://ids.neters.club";
                 })
 
                 //.AddDeveloperSigningCredential(true, ConstanceHelper.AppSettings.CredentialFileName)
