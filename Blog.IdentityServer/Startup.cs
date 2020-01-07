@@ -13,6 +13,7 @@ using System.IO;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Hosting;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Http;
 
 namespace Blog.IdentityServer
 {
@@ -30,7 +31,7 @@ namespace Blog.IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSameSiteCookiePolicy();
-          
+
             string connectionStringFile = Configuration.GetConnectionString("DefaultConnection_file");
             var connectionString = File.Exists(connectionStringFile) ? File.ReadAllText(connectionStringFile).Trim() : Configuration.GetConnectionString("DefaultConnection");
             if (connectionString == "")
@@ -44,7 +45,10 @@ namespace Blog.IdentityServer
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = new PathString("/oauth2/authorize");
+            });
 
             services.AddMvc();
 
@@ -60,8 +64,21 @@ namespace Blog.IdentityServer
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
-                    options.IssuerUri = "https://ids.neters.club";
-                    options.PublicOrigin = "https://ids.neters.club";
+                    //options.IssuerUri = "https://ids.neters.club";
+                    //options.PublicOrigin = "https://ids.neters.club";
+                    options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
+                    {
+                        LoginUrl = "/oauth2/authorize",//登录地址  
+                        LogoutUrl = "/Account/Logout",//退出地址 
+                        ConsentUrl = "/Account/Consent",//允许授权同意页面地址
+                        ErrorUrl = "/Account/Error", //错误页面地址
+                        LoginReturnUrlParameter = "Return3Url",//设置传递给登录页面的返回URL参数的名称。默认为returnUrl 
+                        LogoutIdParameter = "logoutId", //设置传递给注销页面的注销消息ID参数的名称。缺省为logoutId 
+                        ConsentReturnUrlParameter = "Retur3nUrl", //设置传递给同意页面的返回URL参数的名称。默认为returnUrl
+                        ErrorIdParameter = "errorId", //设置传递给错误页面的错误消息ID参数的名称。缺省为errorId
+                        CustomRedirectReturnUrlParameter = "ReturnUrl", //设置从授权端点传递给自定义重定向的返回URL参数的名称。默认为returnUrl                   
+                        CookieMessageThreshold = 5 //由于浏览器对Cookie的大小有限制，设置Cookies数量的限制，有效的保证了浏览器打开多个选项卡，一旦超出了Cookies限制就会清除以前的Cookies值
+                    };
                 })
 
                 //.AddDeveloperSigningCredential(true, ConstanceHelper.AppSettings.CredentialFileName)
@@ -95,7 +112,7 @@ namespace Blog.IdentityServer
             {
                 builder.AddDeveloperSigningCredential();
             }
-           
+
 
             services.AddAuthentication();
         }
@@ -103,7 +120,7 @@ namespace Blog.IdentityServer
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCookiePolicy();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
