@@ -69,15 +69,6 @@ namespace Blog.IdentityServer
                     options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
                     {
                         LoginUrl = "/oauth2/authorize",//登录地址  
-                        LogoutUrl = "/Account/Logout",//退出地址 
-                        ConsentUrl = "/Account/Consent",//允许授权同意页面地址
-                        ErrorUrl = "/Account/Error", //错误页面地址
-                        LoginReturnUrlParameter = "Return3Url",//设置传递给登录页面的返回URL参数的名称。默认为returnUrl 
-                        LogoutIdParameter = "logoutId", //设置传递给注销页面的注销消息ID参数的名称。缺省为logoutId 
-                        ConsentReturnUrlParameter = "Retur3nUrl", //设置传递给同意页面的返回URL参数的名称。默认为returnUrl
-                        ErrorIdParameter = "errorId", //设置传递给错误页面的错误消息ID参数的名称。缺省为errorId
-                        CustomRedirectReturnUrlParameter = "ReturnUrl", //设置从授权端点传递给自定义重定向的返回URL参数的名称。默认为returnUrl                   
-                        CookieMessageThreshold = 5 //由于浏览器对Cookie的大小有限制，设置Cookies数量的限制，有效的保证了浏览器打开多个选项卡，一旦超出了Cookies限制就会清除以前的Cookies值
                     };
                 })
 
