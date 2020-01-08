@@ -23,6 +23,7 @@ namespace Blog.IdentityServer
 
         public static IEnumerable<ApiResource> GetApiResources()
         {
+            // blog.core 项目
             return new List<ApiResource> {
                 new ApiResource("blog.core.api", "Blog.Core API") {
                     // include the following using claims in access token (in addition to subject id)
@@ -39,8 +40,9 @@ namespace Blog.IdentityServer
         // clients want to access resources (aka scopes)
         public static IEnumerable<Client> GetClients()
         {
-            // javascript client
+            // client
             return new List<Client> {
+                // blog.vue 前端vue项目
                 new Client {
                     ClientId = "blogvuejs",
                     ClientName = "Blog.Vue JavaScript Client",
@@ -58,6 +60,7 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
+                // blog.admin 前端vue项目
                 new Client {
                     ClientId = "blogadminjs",
                     ClientName = "Blog.Admin JavaScript Client",
@@ -74,6 +77,21 @@ namespace Blog.IdentityServer
                         "roles",
                         "blog.core.api"
                     }
+                },
+                new Client{
+                    ClientId="dddmvc",
+                    AllowedGrantTypes=GrantTypes.Code,//模式：授权模式
+                    ClientSecrets={//私钥
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes={//运行访问的资源
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        "roles",
+                    },
+                    RedirectUris={"http://localhost:4773/signin-oidc"},//跳转登录到的客户端的地址
+                    PostLogoutRedirectUris={"http://localhost:4773/signout-callback-oidc"},//跳转登出到的客户端的地址
+                    RequireConsent=false//是否需要用户点击确认进行跳转
                 }
             };
         }
