@@ -78,20 +78,28 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
-                new Client{
-                    ClientId="dddmvc",
-                    AllowedGrantTypes=GrantTypes.Code,//模式：授权模式
-                    ClientSecrets={//私钥
-                        new Secret("secret".Sha256())
-                    },
-                    AllowedScopes={//运行访问的资源
-                        IdentityServerConstants.StandardScopes.Profile,
+                // interactive ASP.NET Core MVC client
+                new Client
+                {
+                    ClientId = "chrisdddmvc",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                
+                    // where to redirect to after login
+                    RedirectUris = { "http://ddd.neters.club/signin-oidc" },
+
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "http://ddd.neters.club/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        "roles",
-                    },
-                    RedirectUris={"http://localhost:4773/signin-oidc"},//跳转登录到的客户端的地址
-                    PostLogoutRedirectUris={"http://localhost:4773/signout-callback-oidc"},//跳转登出到的客户端的地址
-                    RequireConsent=false//是否需要用户点击确认进行跳转
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "roles"
+                    }
                 }
             };
         }
