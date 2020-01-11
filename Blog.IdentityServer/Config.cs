@@ -89,16 +89,15 @@ namespace Blog.IdentityServer
                     RequirePkce = true,
                 
                     // where to redirect to after login
-                    RedirectUris = { "http://ddd.neters.club/signin-oidc" },
+                    RedirectUris = { "http://localhost:4773/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://ddd.neters.club/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:4773/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        "roles"
+                        IdentityServerConstants.StandardScopes.Profile
                     }
                 }
             };
