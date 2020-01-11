@@ -89,10 +89,10 @@ namespace Blog.IdentityServer
                     RequirePkce = true,
                 
                     // where to redirect to after login
-                    RedirectUris = { "http://localhost:4773/signin-oidc" },
+                    RedirectUris = { "http://ddd.neters.club/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://localhost:4773/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "http://ddd.neters.club/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
