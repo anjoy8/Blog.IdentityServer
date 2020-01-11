@@ -53,7 +53,7 @@ namespace Blog.IdentityServer
                    serverOptions.AllowSynchronousIO = true;//启用同步 IO
                 })
                .UseStartup<Startup>()
-               .UseUrls("http://localhost:5004")
+               .UseUrls("http://localhost:5005")
                .ConfigureLogging((hostingContext, builder) =>
                {
                    builder.ClearProviders();
