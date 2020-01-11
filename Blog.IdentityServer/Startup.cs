@@ -64,8 +64,8 @@ namespace Blog.IdentityServer
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
-                    options.IssuerUri = "http://ids4.neters.club";
-                    options.PublicOrigin = "http://ids4.neters.club";
+                    options.IssuerUri = "https://ids.neters.club";
+                    options.PublicOrigin = "https://ids.neters.club";
                     options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
                     {
                         LoginUrl = "/oauth2/authorize",//登录地址  
