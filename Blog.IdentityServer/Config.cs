@@ -17,6 +17,7 @@ namespace Blog.IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResources.Email(),
                 new IdentityResource("roles", "角色", new List<string> { JwtClaimTypes.Role }),
             };
         }
@@ -87,6 +88,7 @@ namespace Blog.IdentityServer
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireConsent = false,
                     RequirePkce = true,
+                    AlwaysIncludeUserClaimsInIdToken=true,//将用户所有的claims包含在IdToken内
                 
                     // where to redirect to after login
                     RedirectUris = { "http://ddd.neters.club/signin-oidc" },
@@ -97,7 +99,9 @@ namespace Blog.IdentityServer
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "roles",
                     }
                 }
             };
