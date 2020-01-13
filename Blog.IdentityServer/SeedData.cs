@@ -58,6 +58,7 @@ namespace Blog.IdentityServer
                         var userItem = userMgr.FindByNameAsync(user.uLoginName).Result;
                         var rid = BlogCore_UserRoles.FirstOrDefault(d => d.UserId == user.uID)?.RoleId;
                         var rName = BlogCore_Roles.Where(d => d.Id == rid).Select(d=>d.Id).ToList();
+                        var roleName = BlogCore_Roles.FirstOrDefault(d => d.Id == rid)?.Name;
 
                         if (userItem == null)
                         {
@@ -90,9 +91,10 @@ namespace Blog.IdentityServer
                                 }
 
                                 var claims = new List<Claim>{
-                            new Claim(JwtClaimTypes.Name, user.uRealName),
-                            new Claim(JwtClaimTypes.Email, $"{user.uLoginName}@email.com"),
-                        };
+                                    new Claim(JwtClaimTypes.Name, user.uRealName),
+                                    new Claim(JwtClaimTypes.Email, $"{user.uLoginName}@email.com"),
+                                    new Claim("rolename", roleName),
+                                };
 
                                 claims.AddRange(rName.Select(s => new Claim(JwtClaimTypes.Role, s.ToString())));
 

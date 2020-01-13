@@ -19,6 +19,7 @@ namespace Blog.IdentityServer
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
                 new IdentityResource("roles", "角色", new List<string> { JwtClaimTypes.Role }),
+                new IdentityResource("rolename", "角色名", new List<string> { "rolename" }),
             };
         }
 
@@ -102,6 +103,7 @@ namespace Blog.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "roles",
+                        "rolename",
                     }
                 }
             };
