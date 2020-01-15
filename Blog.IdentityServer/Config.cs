@@ -80,6 +80,24 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
+                // nuxt.tbug 前端nuxt项目
+                new Client {
+                    ClientId = "tibugnuxtjs",
+                    ClientName = "Nuxt.tBug JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris =           { "http://tibug.neters.club/callback" },
+                    PostLogoutRedirectUris = { "http://tibug.neters.club" },
+                    AllowedCorsOrigins =     { "http://tibug.neters.club" },
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
+                        "blog.core.api"
+                    }
+                },
                 // interactive ASP.NET Core MVC client
                 new Client
                 {
