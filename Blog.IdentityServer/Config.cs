@@ -51,7 +51,10 @@ namespace Blog.IdentityServer
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
 
-                    RedirectUris =           { "http://vueblog.neters.club/callback" },
+                    RedirectUris =           {
+                        "http://vueblog.neters.club/callback",
+                        "http://apk.neters.club/oauth2-redirect.html"
+                    },
                     PostLogoutRedirectUris = { "http://vueblog.neters.club" },
                     AllowedCorsOrigins =     { "http://vueblog.neters.club" },
 
@@ -69,7 +72,11 @@ namespace Blog.IdentityServer
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
 
-                    RedirectUris =           { "http://vueadmin.neters.club/callback" },
+                    RedirectUris =
+                    {
+                        "http://vueadmin.neters.club/callback",
+                        "http://apk.neters.club/oauth2-redirect.html"
+                    },
                     PostLogoutRedirectUris = { "http://vueadmin.neters.club" },
                     AllowedCorsOrigins =     { "http://vueadmin.neters.club" },
 
