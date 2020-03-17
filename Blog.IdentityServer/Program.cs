@@ -40,6 +40,8 @@ namespace Blog.IdentityServer
                 SeedData.EnsureSeedData(host.Services);
             }
 
+            Console.WriteLine("项目启动成功，端口：5004");
+
             host.Run();
         }
 
