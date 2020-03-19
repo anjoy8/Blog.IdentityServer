@@ -130,6 +130,19 @@ namespace Blog.IdentityServer
                         "roles",
                         "rolename",
                     }
+                },
+                // 控制台客户端
+                new Client
+                {
+                    ClientId = "Console",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+            
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+
+                    AllowedScopes = new List<string>
+                    {                      
+                        "blog.core.api"
+                    }
                 }
             };
         }
