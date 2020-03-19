@@ -1,10 +1,12 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using Blog.IdentityServer.Extensions;
 using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Blog.IdentityServer
 {
@@ -136,11 +138,17 @@ namespace Blog.IdentityServer
                 {
                     ClientId = "Console",
                     ClientSecrets = { new Secret("secret".Sha256()) },
-            
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+
+
+                    AllowedGrantTypes = new List<string>()
+                    {
+                        GrantTypes.ResourceOwnerPasswordAndClientCredentials.FirstOrDefault(),
+                        GrantTypeCustom.ResourceWeixinOpen,
+                    },
+
 
                     AllowedScopes = new List<string>
-                    {                      
+                    {
                         "blog.core.api"
                     }
                 }

@@ -14,6 +14,7 @@ using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Hosting;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Http;
+using Blog.IdentityServer.Extensions;
 
 namespace Blog.IdentityServer
 {
@@ -45,6 +46,7 @@ namespace Blog.IdentityServer
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = new PathString("/oauth2/authorize");
@@ -72,12 +74,9 @@ namespace Blog.IdentityServer
                     };
                 })
 
-                //.AddDeveloperSigningCredential(true, ConstanceHelper.AppSettings.CredentialFileName)
-                //.AddSigningCredential(new X509Certificate2(Path.Combine(Environment.WebRootPath,
-                //        Configuration["Certificates:Path"]),
-                //        Configuration["Certificates:Password"]))
+                .AddExtensionGrantValidator<WeiXinOpenGrantValidator>()
 
-                // in-Sqlite
+                // 数据库模式
                 .AddAspNetIdentity<ApplicationUser>()
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
