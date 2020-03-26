@@ -74,10 +74,13 @@ namespace Blog.IdentityServer
                     };
                 })
 
+                // 自定义验证，可以不走Identity
+                //.AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .AddExtensionGrantValidator<WeiXinOpenGrantValidator>()
 
                 // 数据库模式
                 .AddAspNetIdentity<ApplicationUser>()
+
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
                 {
