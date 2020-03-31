@@ -72,19 +72,16 @@ namespace Blog.IdentityServer
                                     age = user.age,
                                     birth = user.birth,
                                     addr = user.addr,
-                                    tdIsDelete = user.tdIsDelete
-
+                                    tdIsDelete = user.tdIsDelete,
+                                    Email = user.uLoginName + "@blog.com",
+                                    EmailConfirmed=true,
+                                    RealName=user.uRealName,
                                 };
 
                                 //var result = userMgr.CreateAsync(userItem, "BlogIdp123$" + item.uLoginPWD).Result;
 
-                                // 因为导入的密码是 MD5密文，所以这里统一都用初始密码了
-                                var pwdInit = "BlogIdp123$InitPwd";
-                                //if (userItem.UserName== "blogadmin")
-                                //{
-                                //    pwdInit = "#InitPwd";
-                                //}
-                                var result = userMgr.CreateAsync(userItem, pwdInit).Result;
+                                // 因为导入的密码是 MD5密文，所以这里统一都用初始密码了,可以先登录，然后修改密码
+                                var result = userMgr.CreateAsync(userItem, "BlogIdp123$InitPwd").Result;
                                 if (!result.Succeeded)
                                 {
                                     throw new Exception(result.Errors.First().Description);
