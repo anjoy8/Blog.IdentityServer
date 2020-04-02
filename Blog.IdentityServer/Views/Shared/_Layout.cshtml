@@ -52,11 +52,27 @@
                             <li><a asp-action="Logout" asp-controller="Account">退出登录</a></li>
                         </ul>
                     </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-action="users" asp-controller="Account">用户</a></li>
+                            <li><a asp-action="roles" asp-controller="Account">角色</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">资源管理 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-action="index" asp-controller="ClientsManager">客户端</a></li>
+                            <li><a asp-action="index" asp-controller="ApiResources">资源api</a></li>
+                        </ul>
+                    </li>
                 }
                 else
                 {
                     @*<li><a asp-action="Login" asp-controller="Account">Login</a></li>*@
                 }
+
             </ul>
 
         </div>

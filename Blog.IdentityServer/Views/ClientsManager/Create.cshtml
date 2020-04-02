@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .toggle-more {
+        position: relative;
+        margin: 0px;
+        font-size: 13px;
+        height: 460px;
+        width: 800px;
+        max-width: 800px;
+        padding: 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <h4>Create a new client.</h4>
+        <hr />
+        <div class="form-group">
+            <label>输入客户端 JSON 数据</label>
+            <textarea class="toggle-more" id="clientJson" placeholder="add client json data...">
+{
+    "ClientId": "mvc",
+    "ClientName": "mvc client",
+    "ClientSecrets": [
+        {
+            "Type": "SharedSecret",
+            "Value": "vLFfghR5tNV3K9DKhmwArV+SbjWAcgZZzIDTnJ0JgCo="
+        }
+    ],
+    "AllowedCorsOrigins": [        
+    ],
+    "AllowedGrantTypes": [
+        "implicit"
+    ],
+    "AllowedScopes": [
+        "openid",
+        "profile"
+    ],
+    "AlwaysIncludeUserClaimsInIdToken": false,
+    "Description": "mvc示例模型",
+    "Enabled": true,
+    "PostLogoutRedirectUris": [
+        "http:\/\/admin.wmowm.com\/signout-callback-oidc"
+    ],
+    "RedirectUris": [
+        "http:\/\/admin.wmowm.com\/signin-oidc"
+    ],
+    "RequireClientSecret": true
+}
+</textarea>
+        </div>
+
+
+        <input id="addClient" type="button" class="btn btn-default" value="Submit">
+    </div>
+</div>
+

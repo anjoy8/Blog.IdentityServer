@@ -1,0 +1,76 @@
+﻿@model List<IdentityServer4.EntityFramework.Entities.Client>
+@using IdentityServer4.EntityFramework.Mappers
+
+@{
+    ViewData["Title"] = "Clients";
+}
+<link href="~/css/showtip.css" rel="stylesheet" />
+<div>
+    <h2>@ViewData["Title"]</h2>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div class="pull-left">
+                <a asp-action="Create" asp-route-returnUrl="/ClientsManager/" class="btn btn-primary">
+                    <span title="Create New" class="glyphicon glyphicon-plus-sign"></span> Add New
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>客户端Id</th>
+                <th>客户端名</th>
+                <th>授权类型</th>
+                <th>作用域</th>
+                <th>允许跨域</th>
+                <th>回调地址</th>
+                <th>退出回调</th>
+                <th>Operate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var clientModel = item.ToModel();
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @string.Join(",", clientModel.AllowedGrantTypes)
+                    </td>
+                    <td>
+                        @string.Join(",", clientModel.AllowedScopes)
+                    </td>
+                    <td>
+                        @string.Join(",", clientModel.AllowedCorsOrigins)
+                    </td>
+                    <td>
+                        @string.Join(",", clientModel.RedirectUris)
+                    </td>
+                    <td>
+                        @string.Join(",", clientModel.PostLogoutRedirectUris)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/ClientsManager" title="Edit" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
