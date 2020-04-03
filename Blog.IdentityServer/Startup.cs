@@ -8,13 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Blog.IdentityServer.Data;
 using Blog.IdentityServer.Models;
 using System.Reflection;
-using Microsoft.IdentityModel.Tokens;
 using System.IO;
-using IdentityServer4.Quickstart.UI;
 using Microsoft.Extensions.Hosting;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Http;
 using Blog.IdentityServer.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Blog.IdentityServer.Authorization;
 
 namespace Blog.IdentityServer
 {
@@ -107,7 +106,14 @@ namespace Blog.IdentityServer
             }
 
 
-            services.AddAuthentication();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.Requirements.Add(new ClaimRequirement("rolename", "Admin")));
+                options.AddPolicy("SuperAdmin", policy => policy.Requirements.Add(new ClaimRequirement("rolename", "SuperAdmin")));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, ClaimsRequirementHandler>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

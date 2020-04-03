@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    section.todoapp {
+        width: 600px;
+    }
+
+    input.Client-input {
+        float: right;
+        width: 470px;
+        height: 28px;
+        margin: 5px;
+        border: 0;
+        border-bottom: 1px dashed;
+    }
+
+    section.main {
+        height: 38px;
+        text-align: end;
+        text-align: -webkit-right;
+        line-height: 38px;
+    }
+
+    footer.info {
+        margin-top: 20px;
+        float: right;
+    }
+</style>
+<script src="~/js/axios.min.js"></script>
+<script src="~/js/vue.min.js"></script>
+<section class="todoapp">
+    <h3>{{ title }}</h3>
+
+    <section class="main" v-cloak>
+        客户端Id：
+        <input class="Client-input" type="text" v-model="clientDto.clientId">
+    </section>
+    <section class="main" v-cloak>
+        客户端名称：
+        <input class="Client-input" type="text" v-model="clientDto.clientName">
+    </section>
+    <section class="main" v-cloak>
+        客户端密钥：
+        <input class="Client-input" type="text" v-model="clientDto.clientSecrets">
+    </section>
+    <section class="main" v-cloak>
+        描述：
+        <input class="Client-input" type="text" v-model="clientDto.description">
+    </section>
+    <section class="main" v-cloak>
+        允许的授权类型：
+        <input class="Client-input" type="text" v-model="clientDto.allowedGrantTypes">
+    </section>
+    <section class="main" v-cloak>
+        作用域：
+        <input class="Client-input" type="text" v-model="clientDto.allowedScopes">
+    </section>
+    <section class="main" v-cloak>
+        允许的跨域域名：
+        <input class="Client-input" type="text" v-model="clientDto.allowedCorsOrigins">
+    </section>
+    <section class="main" v-cloak>
+        回调地址：
+        <input class="Client-input" type="text" v-model="clientDto.redirectUris">
+    </section>
+    <section class="main" v-cloak>
+        退出的回调：
+        <input class="Client-input" type="text" v-model="clientDto.postLogoutRedirectUris">
+    </section>
+    <footer class="info">
+        <input type="button" onclick="{ window.location.href='/clientsManager/index' }" class="btn btn-default" value="< Back">
+        <input type="button" class="btn btn-default" @@click="saveClients" value="Submit">
+
+    </footer>
+    <script>
+    // app Vue instance
+    var app = new Vue({
+        // app initial state
+        data: {
+            clientDto: {
+                clientId:'',
+                clientName:'',
+                clientSecrets:'',
+                description:'',
+                allowedGrantTypes:'',
+                allowedScopes:'',
+                allowedCorsOrigins:'',
+                redirectUris:'',
+                postLogoutRedirectUris:'',
+            },
+            id: @(ViewBag.ClientId),
+            title: '添加',
+            editedTodo: null,
+            visibility: 'all'
+        },
+        created: function () {
+            let _this = this;
+            if (_this.id > 0) {
+                    _this.title = '编辑';
+            }
+            axios.get('/ClientsManager/GetDataById?id='+_this.id)
+                .then(function (response) {
+                    _this.clientDto = (response.data.response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+
+        // methods that implement data logic.
+        // note there's no DOM manipulation here at all.
+        methods: {
+            saveClients: function () {
+                let _this = this;
+                _this.clientDto.id = _this.id;
+                console.log(_this.clientDto);
+                if (!_this.clientDto.clientId) {
+                    alert('数据不能为空');
+                    return;
+                }
+                axios.post('/ClientsManager/SaveData', _this.clientDto )
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.data.success) {
+                            alert("提交成功");
+                            window.location.href='/clientsManager/index'
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
+
+
+        },
+
+    })
+
+
+    // mount
+    app.$mount('.todoapp')
+
+
+    </script>

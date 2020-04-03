@@ -636,7 +636,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpGet("{id}")]
         [Route("account/edit/{id}")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<IActionResult> Edit(string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -659,7 +659,7 @@ namespace IdentityServer4.Quickstart.UI
         [HttpPost]
         [Route("account/edit/{id}")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<IActionResult> Edit(EditViewModel model, string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -701,7 +701,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpPost]
         [Route("account/delete/{id}")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<JsonResult> Delete(string id)
         {
             IdentityResult result = new IdentityResult();
@@ -954,7 +954,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpGet("{id}")]
         [Route("account/Roleedit/{id}")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<IActionResult> RoleEdit(string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -977,7 +977,7 @@ namespace IdentityServer4.Quickstart.UI
         [HttpPost]
         [Route("account/Roleedit/{id}")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<IActionResult> RoleEdit(RoleEditViewModel model, string id, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -1016,7 +1016,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpPost]
         [Route("account/Roledelete/{id}")]
-        [Authorize(Roles = "SuperAdmin")]
+        [Authorize(Policy = "SuperAdmin")]
         public async Task<JsonResult> RoleDelete(string id)
         {
             IdentityResult result = new IdentityResult();

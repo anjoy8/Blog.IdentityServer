@@ -5,6 +5,12 @@
     ViewData["Title"] = "Clients";
 }
 <link href="~/css/showtip.css" rel="stylesheet" />
+<style>
+    table {
+        table-layout: fixed;
+        word-break: break-all;
+    }
+</style>
 <div>
     <h2>@ViewData["Title"]</h2>
 </div>
@@ -14,7 +20,7 @@
     <div class="col-md-12">
         <div>
             <div class="pull-left">
-                <a asp-action="Create" asp-route-returnUrl="/ClientsManager/" class="btn btn-primary">
+                <a asp-action="CreateOrEdit" asp-route-id="0" class="btn btn-primary">
                     <span title="Create New" class="glyphicon glyphicon-plus-sign"></span> Add New
                 </a>
             </div>
@@ -33,7 +39,7 @@
                 <th>允许跨域</th>
                 <th>回调地址</th>
                 <th>退出回调</th>
-                <th>Operate</th>
+                <th style="width:80px;">Operate</th>
             </tr>
         </thead>
         <tbody>
@@ -63,7 +69,7 @@
                         @string.Join(",", clientModel.PostLogoutRedirectUris)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/ClientsManager" title="Edit" class="btn btn-warning">
+                        <a asp-action="CreateOrEdit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
 

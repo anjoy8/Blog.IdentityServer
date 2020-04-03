@@ -8,6 +8,7 @@ using IdentityServer4;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,12 @@ namespace Blog.IdentityServer.Controllers.Client
             _configurationDbContext = configurationDbContext;
         }
 
+        /// <summary>
+        /// 数据列表页
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _configurationDbContext.Clients
@@ -37,36 +43,186 @@ namespace Blog.IdentityServer.Controllers.Client
                 .Include(d => d.PostLogoutRedirectUris)
                 .ToListAsync());
         }
-        [HttpGet]
-        public IActionResult Create()
-        {
-            //var jsontest = JsonHelper.GetJSON<IdentityServer4.Models.Client>(new IdentityServer4.Models.Client
-            //{
-            //    ClientId = "mvc",
-            //    Description = "mvc示例模型",
-            //    RequireConsent = false,
-            //    ClientSecrets = new[] { new Secret("111111".Sha256()) },
-            //    AllowedGrantTypes = IdentityServer4.Models.GrantTypes.Implicit,
-            //    RedirectUris = { "http://admin.wmowm.com/signin-oidc" },
-            //    PostLogoutRedirectUris = { "http://admin.wmowm.com/signout-callback-oidc" },
-            //    AllowedScopes = new List<string>
-            //        {
-            //            IdentityServerConstants.StandardScopes.OpenId,
-            //            IdentityServerConstants.StandardScopes.Profile
-            //        },
-            //    AllowAccessTokensViaBrowser = true // can return access_token to this client
-            //});
 
-            //ViewBag.DemoClient = jsontest;
+        /// <summary>
+        /// 数据修改页
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize(Policy = "SuperAdmin")]
+        public IActionResult CreateOrEdit(int id)
+        {
+            ViewBag.ClientId = id;
             return View();
         }
 
-        [HttpPost]
-        public async Task<MessageModel<string>> Create(IdentityServer4.Models.Client request)
+
+        [HttpGet]
+        [Authorize(Policy = "SuperAdmin")]
+        public async Task<MessageModel<ClientDto>> GetDataById(int id = 0)
         {
-            //var request = Newtonsoft.Json.JsonConvert.DeserializeObject<IdentityServer4.Models.Client>($"[{jsonstring}]");
-            var model = (await _configurationDbContext.Clients.AddAsync(request.ToEntity())).Entity;
-            await _configurationDbContext.SaveChangesAsync();
+            var model = (await _configurationDbContext.Clients
+                .Include(d => d.AllowedGrantTypes)
+                .Include(d => d.AllowedScopes)
+                .Include(d => d.AllowedCorsOrigins)
+                .Include(d => d.RedirectUris)
+                .Include(d => d.PostLogoutRedirectUris)
+                .Include(d => d.ClientSecrets)
+                .ToListAsync()).FirstOrDefault(d => d.Id == id).ToModel();
+
+            var clientDto = new ClientDto();
+            if (model != null)
+            {
+                clientDto = new ClientDto()
+                {
+                    ClientId = model?.ClientId,
+                    ClientName = model?.ClientName,
+                    Description = model?.Description,
+                    AllowedCorsOrigins = string.Join(",", model?.AllowedCorsOrigins),
+                    AllowedGrantTypes = string.Join(",", model?.AllowedGrantTypes),
+                    AllowedScopes = string.Join(",", model?.AllowedScopes),
+                    PostLogoutRedirectUris = string.Join(",", model?.PostLogoutRedirectUris),
+                    RedirectUris = string.Join(",", model?.RedirectUris),
+                    ClientSecrets = string.Join(",", model?.ClientSecrets.Select(d => d.Value)),
+                };
+            }
+
+            return new MessageModel<ClientDto>()
+            {
+                success = true,
+                msg = "获取成功",
+                response = clientDto
+            };
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "SuperAdmin")]
+        public async Task<MessageModel<string>> SaveData(ClientDto request)
+        {
+            if (request != null && request.id == 0)
+            {
+                IdentityServer4.Models.Client client = new IdentityServer4.Models.Client()
+                {
+                    ClientId = request?.ClientId,
+                    ClientName = request?.ClientName,
+                    Description = request?.Description,
+                    AllowedCorsOrigins = request?.AllowedCorsOrigins?.Split(","),
+                    AllowedGrantTypes = request?.AllowedGrantTypes?.Split(","),
+                    AllowedScopes = request?.AllowedScopes?.Split(","),
+                    PostLogoutRedirectUris = request?.PostLogoutRedirectUris?.Split(","),
+                    RedirectUris = request?.RedirectUris?.Split(","),
+                };
+
+                if (!string.IsNullOrEmpty(request.ClientSecrets))
+                {
+                    client.ClientSecrets = new List<Secret>() { new Secret(request.ClientSecrets.Sha256()) };
+                }
+
+                var result = (await _configurationDbContext.Clients.AddAsync(client.ToEntity()));
+                await _configurationDbContext.SaveChangesAsync();
+            }
+
+            if (request != null && request.id > 0)
+            {
+
+                var modelEF = (await _configurationDbContext.Clients
+                    .Include(d => d.AllowedGrantTypes)
+                    .Include(d => d.AllowedScopes)
+                    .Include(d => d.AllowedCorsOrigins)
+                    .Include(d => d.RedirectUris)
+                    .Include(d => d.PostLogoutRedirectUris)
+                    .ToListAsync()).FirstOrDefault(d => d.Id == request.id);
+
+                modelEF.ClientId = request?.ClientId;
+                modelEF.ClientName = request?.ClientName;
+                modelEF.Description = request?.Description;
+
+                var AllowedCorsOrigins = new List<IdentityServer4.EntityFramework.Entities.ClientCorsOrigin>();
+                if (!string.IsNullOrEmpty(request?.AllowedCorsOrigins))
+                {
+                    request?.AllowedCorsOrigins.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                               {
+                                   AllowedCorsOrigins.Add(new IdentityServer4.EntityFramework.Entities.ClientCorsOrigin()
+                                   {
+                                       Client = modelEF,
+                                       ClientId = modelEF.Id,
+                                       Origin = s
+                                   });
+                               });
+                    modelEF.AllowedCorsOrigins = AllowedCorsOrigins;
+                }
+
+
+
+                var AllowedGrantTypes = new List<IdentityServer4.EntityFramework.Entities.ClientGrantType>();
+                if (!string.IsNullOrEmpty(request?.AllowedGrantTypes))
+                {
+                    request?.AllowedGrantTypes.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    {
+                        AllowedGrantTypes.Add(new IdentityServer4.EntityFramework.Entities.ClientGrantType()
+                        {
+                            Client = modelEF,
+                            ClientId = modelEF.Id,
+                            GrantType = s
+                        });
+                    });
+                    modelEF.AllowedGrantTypes = AllowedGrantTypes;
+                }
+
+
+
+                var AllowedScopes = new List<IdentityServer4.EntityFramework.Entities.ClientScope>();
+                if (!string.IsNullOrEmpty(request?.AllowedScopes))
+                {
+                    request?.AllowedScopes.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    {
+                        AllowedScopes.Add(new IdentityServer4.EntityFramework.Entities.ClientScope()
+                        {
+                            Client = modelEF,
+                            ClientId = modelEF.Id,
+                            Scope = s
+                        });
+                    });
+                    modelEF.AllowedScopes = AllowedScopes;
+                }
+
+
+                var PostLogoutRedirectUris = new List<IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri>();
+                if (!string.IsNullOrEmpty(request?.PostLogoutRedirectUris))
+                {
+                    request?.PostLogoutRedirectUris.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    {
+                        PostLogoutRedirectUris.Add(new IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri()
+                        {
+                            Client = modelEF,
+                            ClientId = modelEF.Id,
+                            PostLogoutRedirectUri = s
+                        });
+                    });
+                    modelEF.PostLogoutRedirectUris = PostLogoutRedirectUris;
+                }
+
+
+                var RedirectUris = new List<IdentityServer4.EntityFramework.Entities.ClientRedirectUri>();
+                if (!string.IsNullOrEmpty(request?.RedirectUris))
+                {
+                    request?.RedirectUris.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    {
+                        RedirectUris.Add(new IdentityServer4.EntityFramework.Entities.ClientRedirectUri()
+                        {
+                            Client = modelEF,
+                            ClientId = modelEF.Id,
+                            RedirectUri = s
+                        });
+                    });
+                    modelEF.RedirectUris = RedirectUris;
+                }
+
+                var result = (_configurationDbContext.Clients.Update(modelEF));
+                await _configurationDbContext.SaveChangesAsync();
+            }
+
 
             return new MessageModel<string>()
             {
