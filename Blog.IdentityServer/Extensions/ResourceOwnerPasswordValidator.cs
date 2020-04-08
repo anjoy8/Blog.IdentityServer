@@ -48,6 +48,11 @@ namespace Blog.IdentityServer.Extensions
         private async Task<List<Claim>> ValidateUserAsync(string loginName, string password)
         {
             var user = new ApplicationUser();
+            
+            await Task.Run(() =>
+            {
+              // TODO
+            });
 
             if (user == null)
                 throw new Exception("登录失败，用户名和密码不正确");

@@ -53,6 +53,11 @@ namespace Blog.IdentityServer.Extensions
             // 数据库查询
             var user = new ApplicationUser();
 
+            await Task.Run(() =>
+            {
+                // TODO
+            });
+
             if (user == null)
             {
                 //注册用户
