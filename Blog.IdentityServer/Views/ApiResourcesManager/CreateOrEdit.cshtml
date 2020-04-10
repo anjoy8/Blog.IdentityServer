@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    section.todoapp {
+        width: 600px;
+    }
+
+    input.Client-input {
+        float: right;
+        width: 470px;
+        height: 28px;
+        margin: 5px;
+        border: 0;
+        border-bottom: 1px dashed;
+    }
+
+    section.main {
+        height: 38px;
+        text-align: end;
+        text-align: -webkit-right;
+        line-height: 38px;
+    }
+
+    footer.info {
+        margin-top: 20px;
+        float: right;
+    }
+</style>
+<script src="~/js/axios.min.js"></script>
+<script src="~/js/vue.min.js"></script>
+<section class="todoapp">
+    <h3>{{ title }}</h3>
+
+    <section class="main" v-cloak>
+        Api资源名称：
+        <input class="Client-input" type="text" v-model="clientDto.name">
+    </section>
+    <section class="main" v-cloak>
+        显示名称：
+        <input class="Client-input" type="text" v-model="clientDto.displayName">
+    </section>
+    <section class="main" v-cloak>
+        描述：
+        <input class="Client-input" type="text" v-model="clientDto.description">
+    </section>
+    <section class="main" v-cloak>
+        允许的声明：
+        <input class="Client-input" type="text" v-model="clientDto.userClaims">
+    </section>
+   
+    <footer class="info">
+        <input type="button" onclick="{ window.location.href='/ApiResourcesManager/index' }" class="btn btn-default" value="< Back">
+        <input type="button" class="btn btn-default" @@click="saveClients" value="Submit">
+
+    </footer>
+    <script>
+    // app Vue instance
+    var app = new Vue({
+        // app initial state
+        data: {
+            clientDto: {
+                name:'',
+                displayName:'',
+                description:'',
+                userClaims:'',
+            },
+            id: @(ViewBag.ApiResourceId),
+            title: '添加',
+            editedTodo: null,
+            visibility: 'all'
+        },
+        created: function () {
+            let _this = this;
+            if (_this.id > 0) {
+                    _this.title = '编辑';
+            }
+            axios.get('/ApiResourcesManager/GetDataById?id='+_this.id)
+                .then(function (response) {
+                    _this.clientDto = (response.data.response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+
+        // methods that implement data logic.
+        // note there's no DOM manipulation here at all.
+        methods: {
+            saveClients: function () {
+                let _this = this;
+                _this.clientDto.id = _this.id;
+                console.log(_this.clientDto);
+                if (!_this.clientDto.name) {
+                    alert('数据不能为空');
+                    return;
+                }
+                axios.post('/ApiResourcesManager/SaveData', _this.clientDto )
+                    .then(function (response) {
+                        console.log(response);
+                        if (response.data.success) {
+                            alert("提交成功");
+                            window.location.href='/ApiResourcesManager/index'
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
+
+
+        },
+
+    })
+
+
+    // mount
+    app.$mount('.todoapp')
+
+
+    </script>

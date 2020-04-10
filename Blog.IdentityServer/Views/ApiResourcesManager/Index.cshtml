@@ -1,0 +1,71 @@
+﻿@model List<IdentityServer4.EntityFramework.Entities.ApiResource>
+@using IdentityServer4.EntityFramework.Mappers
+
+@{
+    ViewData["Title"] = "Clients";
+}
+<link href="~/css/showtip.css" rel="stylesheet" />
+<style>
+    table {
+        table-layout: fixed;
+        word-break: break-all;
+    }
+</style>
+<div>
+    <h2>@ViewData["Title"]</h2>
+</div>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div class="pull-left">
+                <a asp-action="CreateOrEdit" asp-route-id="0" class="btn btn-primary">
+                    <span title="Create New" class="glyphicon glyphicon-plus-sign"></span> Add New
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>资源名称</th>
+                <th>显示名称</th>
+                <th>描述</th>
+                <th>声明</th>
+                <th style="width:80px;">Operate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var clientModel = item.ToModel();
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @string.Join(",", clientModel.UserClaims)
+                </td>
+               
+                <td>
+                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
