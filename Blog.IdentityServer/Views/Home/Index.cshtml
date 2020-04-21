@@ -1,59 +1,78 @@
-﻿@{
-    var version = typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.GetName().Version.ToString();
+﻿@using IdentityServer4.Extensions
+@{
+    string name = null;
+    if (!true.Equals(ViewData["signed-out"]))
+    {
+        name = Context.User?.GetDisplayName();
+    }
 }
 
-<link href="~/css/login_styles.css" rel="stylesheet" />
 
-<div class="wrapper">
-    <div class="home-from">
-        <form class="form">
-            <div class="row page-header ">
-                <div class="col-sm-10">
-                    <h1>
-                        <img class="icon" src="~/icon.png">
-                        Welcome to BlogIdp
-                        <small>(version 0.1.0)</small>
+<div class="container">
+    <div class="welcome-block px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">
+            <img class="icon" alt="Logo" src="/logofull.png">
+            <br />
+        </h1>
+        <p class="lead">欢迎来到 Blog.IdentityServer</p>
+    </div>
+
+    <div class="card-deck mb-3 text-center">
+        @if (!string.IsNullOrWhiteSpace(name))
+        {
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">持久授权</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">
+                        <span class="oi oi-lock-locked" title="查看" aria-hidden="true"></span>
                     </h1>
-                </div>
-            </div>
-            <div class="row form">
-                <div class="col-sm-8">
-                    <p>
-                        IdentityServer publishes a
-                        <a href="~/.well-known/openid-configuration">discovery document</a>
-                        where you can find metadata and links to all the endpoints, key material, etc.
-                    </p>
-                </div>
-                <div class="col-sm-8">
-                    <p>
-                        Click <a href="~/grants">here</a> to manage your stored grants.
-                    </p>
-                </div>
-            </div>
-            <div class="row form">
-                <div class="col-sm-8">
-                    <p>
-                        Here are links to the
-                        <a href="https://github.com/anjoy8/Blog.IdentityServer" target="_blank">source code repository</a>
-                    </p>
+                    <a class="btn btn-lg btn-block btn-primary" href="/Grants">查看</a>
                 </div>
             </div>
 
 
-        </form>
+        }
+        else
+        {
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">登录</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">
+                        <span class="oi oi-lock-locked" title="登录" aria-hidden="true"></span>
+                    </h1>
+                    <a class="btn btn-lg btn-block btn-primary" href="/oauth2/authorize">登录</a>
+                </div>
+            </div>
+        }
+
+
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">发现文档</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title">
+                    <span class="oi oi-monitor" title="发现文档" aria-hidden="true"></span>
+                </h1>
+                <a href="/.well-known/openid-configuration" class="btn btn-lg btn-block btn-outline-primary">发现文档</a>
+            </div>
+        </div>
 
     </div>
-    <ul class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
 
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-6 col-md">
+                Blog.IdentityServer
+                <small class="d-block mb-3 text-muted">© 2018-2020 老张的哲学 The style design idea comes from koruba IdentityServer4</small>
+            </div>
+            <div class="col-md-6 text-right">
+
+            </div>
+        </div>
+    </footer>
+</div>

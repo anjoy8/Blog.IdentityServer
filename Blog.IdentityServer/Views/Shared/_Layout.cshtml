@@ -15,37 +15,68 @@
     <title>IdentityServer4</title>
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+
+
+    <link href="~/css/bundle.min.css" rel="stylesheet" />
+    <link href="~/css/web.css" rel="stylesheet" />
 
     <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    @*<script src="~/lib/bootstrap/js/bootstrap.min.js"></script>*@
+    <script src="~/js/bundle.min.js"></script>
     <script src="~/js/showTip.js"></script>
-
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="~/">
-                    <span class="navbar-brand">
-                        <img src="~/icon.png" class="icon-banner">
-                        Blog.Idp
-                    </span>
-                </a>
-            </div>
+    @if (!string.IsNullOrWhiteSpace(name))
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                @*<div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="~/">
+                            <span class="navbar-brand">
+                                <img src="~/icon.png" class="icon-banner">
+                                Blog.Idp
+                            </span>
+                        </a>
+                    </div>*@
 
-            <ul class="nav navbar-nav">
-                @if (!string.IsNullOrWhiteSpace(name))
-                {
-                    <li class="dropdown">
+
+                <div class="width100p menu width100% d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+                    <!--Site name -->
+                    <h3 class="menu-logo my-0 mr-md-auto font-weight-normal"><a class="logo" href="/">Blog.Idp</a></h3>
+                    <!--Menu item -->
+                    <!--Menu item -->
+                    <!--Menu item -->
+                    <div class="menu-item my-2 my-md-0 mr-md-3 dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            设置 - @name
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/Account/users">用户</a>
+                            <a class="dropdown-item" href="/ClientsManager/index">客户端</a>
+                            <a class="dropdown-item" href="/ApiResourcesManager/index">资源api</a>
+                            <a class="dropdown-item" href="/Account/forgot-password">更改密码</a>
+                            <a class="dropdown-item" href="/Grants">授权</a>
+                        </div>
+                    </div>
+                    <a class="menu-item my-2 btn btn-outline-primary" href="/Account/Logout">注销</a>
+
+                    <!--Menu button - show in < MD -->
+                    <a class="my-2 btn btn-outline-primary menu-button" href="#">
+                        <span class="oi oi-menu" title="menu" aria-hidden="true"></span> 菜单
+                    </a>
+                </div>
+
+
+                @*<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a asp-action="forgot-password" asp-controller="Account">修改密码</a></li>
@@ -66,18 +97,15 @@
                             <li><a asp-action="index" asp-controller="ClientsManager">客户端</a></li>
                             <li><a asp-action="index" asp-controller="ApiResourcesManager">资源api</a></li>
                         </ul>
-                    </li>
-                }
-                else
-                {
-                    @*<li><a asp-action="Login" asp-controller="Account">Login</a></li>*@
-                }
+                    </li>*@
 
-            </ul>
 
+
+
+            </div>
         </div>
-    </div>
-    <div class="container body-content">
+    }
+    <div class="content-bd">
         @RenderBody()
     </div>
     @RenderSection("scripts", required: false)
