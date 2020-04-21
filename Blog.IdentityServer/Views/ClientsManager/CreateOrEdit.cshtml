@@ -4,12 +4,11 @@
 }
 <style>
     section.todoapp {
-        width: 600px;
     }
 
     input.Client-input {
-        float: right;
-        width: 470px;
+        /*float: right;*/
+        width: 100%;
         height: 28px;
         margin: 5px;
         border: 0;
@@ -18,14 +17,22 @@
 
     section.main {
         height: 38px;
-        text-align: end;
-        text-align: -webkit-right;
+        text-align: left;
         line-height: 38px;
     }
 
     footer.info {
         margin-top: 20px;
-        float: right;
+    }
+
+    .todoapp .title {
+        float: left;
+        width: 130px;
+    }
+
+    .todoapp .contents {
+        float: left;
+        width: calc(100% - 200px);
     }
 </style>
 <script src="~/js/axios.min.js"></script>
@@ -34,44 +41,44 @@
     <h3>{{ title }}</h3>
 
     <section class="main" v-cloak>
-        客户端Id：
-        <input class="Client-input" type="text" v-model="clientDto.clientId">
+        <div class="title">客户端Id：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.clientId"></div>
     </section>
     <section class="main" v-cloak>
-        客户端名称：
-        <input class="Client-input" type="text" v-model="clientDto.clientName">
+        <div class="title">客户端名称：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.clientName"></div>
     </section>
     <section class="main" v-cloak>
-        客户端密钥：
-        <input class="Client-input" type="text" v-model="clientDto.clientSecrets">
+        <div class="title">客户端密钥：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.clientSecrets"></div>
     </section>
     <section class="main" v-cloak>
-        描述：
-        <input class="Client-input" type="text" v-model="clientDto.description">
+        <div class="title">描述：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.description"></div>
     </section>
     <section class="main" v-cloak>
-        允许的授权类型：
-        <input class="Client-input" type="text" v-model="clientDto.allowedGrantTypes">
+        <div class="title">允许的授权类型：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.allowedGrantTypes"></div>
     </section>
     <section class="main" v-cloak>
-        作用域：
-        <input class="Client-input" type="text" v-model="clientDto.allowedScopes">
+        <div class="title">作用域：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.allowedScopes"></div>
     </section>
     <section class="main" v-cloak>
-        允许的跨域域名：
-        <input class="Client-input" type="text" v-model="clientDto.allowedCorsOrigins">
+        <div class="title">允许的跨域域名：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.allowedCorsOrigins"></div>
     </section>
     <section class="main" v-cloak>
-        回调地址：
-        <input class="Client-input" type="text" v-model="clientDto.redirectUris">
+        <div class="title">回调地址：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.redirectUris"></div>
     </section>
     <section class="main" v-cloak>
-        退出的回调：
-        <input class="Client-input" type="text" v-model="clientDto.postLogoutRedirectUris">
+        <div class="title">退出的回调：</div>
+        <div class="contents"><input class="Client-input" type="text" v-model="clientDto.postLogoutRedirectUris"></div>
     </section>
     <footer class="info">
         <input type="button" onclick="{ window.location.href='/clientsManager/index' }" class="btn btn-default" value="< Back">
-        <input type="button" class="btn btn-default" @@click="saveClients" value="Submit">
+        <input type="button" class="btn btn-primary" @@click="saveClients" value="Submit">
 
     </footer>
     <script>
