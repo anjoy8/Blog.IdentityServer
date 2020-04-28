@@ -83,6 +83,7 @@ form {
     position: relative;
     z-index: 2;
 }
+
 .login-container {
     border-radius: 5px;
     background-clip: padding-box;
@@ -93,45 +94,65 @@ form {
     box-shadow: 0 0 25px #cac6c6;
 }
 
-    form input.login-name, form input.login-pass {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        outline: 0;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        background-color: rgba(255, 255, 255, 0.2);
-        width: 250px;
-        border-radius: 3px;
-        padding: 10px 15px;
-        margin: 0 auto 10px auto;
-        display: block;
-        text-align: center;
-        font-size: 18px;
-        color: white;
-        -webkit-transition-duration: 0.25s;
-        transition-duration: 0.25s;
-        font-weight: 300;
+form input.login-name, form input.login-pass {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 250px;
+    max-width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}
+
+    form input.login-name:hover, form input.login-pass:hover {
+        background-color: rgba(255, 255, 255, 0.4);
     }
 
-        form input.login-name:hover, form input.login-pass:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
+    form input.login-name:focus, form input.login-pass:focus {
+        background-color: white;
+        width: 300px;
+        color: #53e3a6;
+    }
 
-        form input.login-name:focus, form input.login-pass:focus {
-            background-color: white;
-            width: 300px;
-            color: #53e3a6;
-        }
+form button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 0;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 3px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
 
-    form button {
+
+    form button.login {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
         outline: 0;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: white;
         border: 0;
         padding: 10px 15px;
-        color: #fff;
+        color: #000;
+        font-weight: bold;
         border-radius: 3px;
         width: 250px;
         cursor: pointer;
@@ -140,37 +161,20 @@ form {
         transition-duration: 0.25s;
     }
 
+    form button:hover {
+        background-color: #f5f7f9;
+        color: #53e3a6;
+    }
 
-        form button.login {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            outline: 0;
-            background-color: white;
-            border: 0;
-            padding: 10px 15px;
-            color: #000;
-            font-weight: bold;
-            border-radius: 3px;
-            width: 250px;
-            cursor: pointer;
-            font-size: 18px;
-            -webkit-transition-duration: 0.25s;
-            transition-duration: 0.25s;
-        }
-
-        form button:hover {
-            background-color: #f5f7f9;
-            color:#53e3a6;
-        }
-
-.to-register  {
-    margin:20px 0;
+.to-register {
+    margin: 20px 0;
 }
-.to-register a.register {
-    color: #fff !important;
-    margin-right:20px;
-}
+
+    .to-register a.register {
+        color: #fff !important;
+        margin-right: 20px;
+    }
+
 .bg-bubbles {
     position: absolute;
     top: 0;
@@ -299,8 +303,9 @@ form {
 
 
 .home-from {
-    margin:60px;
+    margin: 60px;
 }
+
     .home-from a {
         color: #f9ac4b;
     }
@@ -332,4 +337,14 @@ form {
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+}
+
+.add-on.input-group-addon {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.pass-with-show input {
+    width: 250px;
 }
