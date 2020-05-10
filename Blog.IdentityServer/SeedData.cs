@@ -24,8 +24,8 @@ namespace Blog.IdentityServer
         {
             /*
              * mysql和sqlserver的迁移操作步骤一致，不过本项目已经迁移好，在Data文件夹下：
-             * msql使用MigrationsMySql文件夹下的迁移记录，卸载另一个文件夹
-             * sqlserver使用Migrations文件夹下的迁移记录，卸载另一个文件夹
+             * msql使用MigrationsMySql文件夹下的迁移记录，卸载另一个Migrations文件夹
+             * sqlserver使用Migrations文件夹下的迁移记录，卸载另一个MigrationsMySql文件夹
              * 
              * 当然你也可以都删掉，自己重新做迁移。
              * 迁移完成后，执行dotnet run /seed

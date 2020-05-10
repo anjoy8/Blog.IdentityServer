@@ -55,6 +55,13 @@ namespace Blog.IdentityServer
                 options.LoginPath = new PathString("/oauth2/authorize");
             });
 
+
+            //配置session的有效时间,单位秒
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(30);
+            });
+
             services.AddMvc();
 
             services.Configure<IISOptions>(iis =>
@@ -132,6 +139,7 @@ namespace Blog.IdentityServer
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseSession();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseIdentityServer();
