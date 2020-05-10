@@ -40,7 +40,11 @@ namespace Blog.IdentityServer
             }
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            // sqlserver
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+            // mysql
+            services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -83,16 +87,14 @@ namespace Blog.IdentityServer
                 // this adds the config data from DB (clients, resources)
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    //options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                    //options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;

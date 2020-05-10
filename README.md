@@ -11,7 +11,43 @@
 
 ## Tips：
 ```
-持续更新中。。。
+ /*
+  * mysql和sqlserver的迁移操作步骤一致，不过本项目已经迁移好，在Data文件夹下：
+  * msql使用MigrationsMySql文件夹下的迁移记录，卸载另一个文件夹
+  * sqlserver使用Migrations文件夹下的迁移记录，卸载另一个文件夹
+  * 
+  * 当然你也可以都删掉，自己重新做迁移。
+  * 迁移完成后，执行dotnet run /seed
+  *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigrationMysql -c PersistedGrantDbContext -o Data/MigrationsMySql/IdentityServer/PersistedGrantDb 
+     Build started...
+     Build succeeded.
+     To undo this action, use Remove-Migration.
+     2、PM> update-database -c PersistedGrantDbContext
+     Build started...
+     Build succeeded.
+     Applying migration '20200509165052_InitialIdentityServerPersistedGrantDbMigrationMysql'.
+     Done.
+     3、PM> add-migration InitialIdentityServerConfigurationDbMigrationMysql -c ConfigurationDbContext -o Data/MigrationsMySql/IdentityServer/ConfigurationDb
+     Build started...
+     Build succeeded.
+     To undo this action, use Remove-Migration.
+     4、PM> update-database -c ConfigurationDbContext
+     Build started...
+     Build succeeded.
+     Applying migration '20200509165153_InitialIdentityServerConfigurationDbMigrationMysql'.
+     Done.
+     5、PM> add-migration AppDbMigration -c ApplicationDbContext -o Data/MigrationsMySql
+     Build started...
+     Build succeeded.
+     To undo this action, use Remove-Migration.
+     6、PM> update-database -c ApplicationDbContext
+     Build started...
+     Build succeeded.
+     Applying migration '20200509165505_AppDbMigration'.
+     Done.
+  * 
+  */
+
 
 
 ```
@@ -44,9 +80,11 @@
 
   技术：
 
-      * .Net Core 2.2 MVC
+      * .Net Core 3.1 MVC
       
       * EntityFramework Core
+      
+      * SqlServer/Mysql
 
       * IdentityServer4
 

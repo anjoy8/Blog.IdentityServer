@@ -22,10 +22,43 @@ namespace Blog.IdentityServer
 
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
-            //1.dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
-            //2.dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
-            //3.dotnet ef migrations add AppDbMigration -c ApplicationDbContext -o Data
-            //4.dotnet run /seed
+            /*
+             * mysql和sqlserver的迁移操作步骤一致，不过本项目已经迁移好，在Data文件夹下：
+             * msql使用MigrationsMySql文件夹下的迁移记录，卸载另一个文件夹
+             * sqlserver使用Migrations文件夹下的迁移记录，卸载另一个文件夹
+             * 
+             * 当然你也可以都删掉，自己重新做迁移。
+             * 迁移完成后，执行dotnet run /seed
+             *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigrationMysql -c PersistedGrantDbContext -o Data/MigrationsMySql/IdentityServer/PersistedGrantDb 
+                Build started...
+                Build succeeded.
+                To undo this action, use Remove-Migration.
+                2、PM> update-database -c PersistedGrantDbContext
+                Build started...
+                Build succeeded.
+                Applying migration '20200509165052_InitialIdentityServerPersistedGrantDbMigrationMysql'.
+                Done.
+                3、PM> add-migration InitialIdentityServerConfigurationDbMigrationMysql -c ConfigurationDbContext -o Data/MigrationsMySql/IdentityServer/ConfigurationDb
+                Build started...
+                Build succeeded.
+                To undo this action, use Remove-Migration.
+                4、PM> update-database -c ConfigurationDbContext
+                Build started...
+                Build succeeded.
+                Applying migration '20200509165153_InitialIdentityServerConfigurationDbMigrationMysql'.
+                Done.
+                5、PM> add-migration AppDbMigration -c ApplicationDbContext -o Data/MigrationsMySql
+                Build started...
+                Build succeeded.
+                To undo this action, use Remove-Migration.
+                6、PM> update-database -c ApplicationDbContext
+                Build started...
+                Build succeeded.
+                Applying migration '20200509165505_AppDbMigration'.
+                Done.
+             * 
+             */
+
             Console.WriteLine("Seeding database...");
 
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
