@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Blog.Core
+namespace Blog.IdentityServer
 {
     /// <summary>
     /// 
