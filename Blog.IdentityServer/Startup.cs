@@ -77,10 +77,10 @@ namespace Blog.IdentityServer
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
                     // 查看发现文档
-                    if (Configuration.GetSection("StartUp:IsOnline").ObjToBool())
+                    if (Configuration["StartUp:IsOnline"].ObjToBool())
                     {
-                        options.IssuerUri = Configuration.GetSection("StartUp:OnlinePath").ObjToString();
-                        options.PublicOrigin = Configuration.GetSection("StartUp:OnlinePath").ObjToString(); 
+                        options.IssuerUri = Configuration["StartUp:OnlinePath"].ObjToString();
+                        options.PublicOrigin = Configuration["StartUp:OnlinePath"].ObjToString(); 
                     }
                     options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
                     {
