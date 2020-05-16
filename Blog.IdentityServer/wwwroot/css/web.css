@@ -500,3 +500,8 @@ label.radio-img > h3, label > h4 {
 .content-bd{
     margin:0 20px;
 }
+
+.row.grant {
+    border-top: 1px dashed gray;
+    padding-top: 10px;
+}
