@@ -10,15 +10,20 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\**" />
     <Compile Remove="Migrations\**" />
+    <Compile Remove="Views\Oauth2\**" />
     <Content Remove="Data\Migrations\**" />
     <Content Remove="Migrations\**" />
+    <Content Remove="Views\Oauth2\**" />
     <EmbeddedResource Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="Views\Oauth2\**" />
     <None Remove="Data\Migrations\**" />
     <None Remove="Migrations\**" />
+    <None Remove="Views\Oauth2\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Account\Oauth2Controller.cs" />
     <Compile Remove="Data\20191126135600_UpdateRoleTa.cs" />
     <Compile Remove="Data\20191126135600_UpdateRoleTa.Designer.cs" />
   </ItemGroup>

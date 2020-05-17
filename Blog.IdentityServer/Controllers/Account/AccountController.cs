@@ -56,6 +56,7 @@ namespace IdentityServer4.Quickstart.UI
         /// Show login page
         /// </summary>
         [HttpGet]
+        [Route("oauth2/authorize")]
         public async Task<IActionResult> Login(string returnUrl)
         {
             // build a model so we know what to show on the login page
@@ -75,6 +76,7 @@ namespace IdentityServer4.Quickstart.UI
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("oauth2/authorize")]
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
             if (button != "login")

@@ -14,7 +14,7 @@
 
             @if (Model.EnableLocalLogin)
             {
-                <form asp-route="Login" class="form login-container">
+                <form asp-route="authorize" class="form login-container">
                     <input type="hidden" asp-for="ReturnUrl" />
                     <input class="login-name" value="test" placeholder="Username" asp-for="Username">
                     @*<input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">*@
@@ -45,17 +45,17 @@
                         </div>
                     }
 
-                        <div>
-                            <br />
-                            <p>注意：账号test、test2的密码统一都是：BlogIdp123$InitPwd</p>
-                        </div>
+                    <div>
+                        <br />
+                        <p>注意：账号test、test2的密码统一都是：BlogIdp123$InitPwd</p>
+                    </div>
 
 
                     <button type="submit" class="login" name="button" value="login">Login</button>
                     <button name="button" value="cancel">Cancel</button>
 
 
-                    <p class="to-register"><a href="register" class="register">没有账号? 去注册</a><a href="forgot-password" class="reset">忘记密码？重置</a></p>
+                    <p class="to-register"><a href="/account/register" class="register">没有账号? 去注册</a><a href="/account/forgot-password" class="reset">忘记密码？重置</a></p>
                 </form>
 
             }
