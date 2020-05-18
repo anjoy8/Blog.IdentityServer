@@ -654,7 +654,7 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email));
+            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email, await _userManager.GetClaimsAsync(user)));
         }
 
 

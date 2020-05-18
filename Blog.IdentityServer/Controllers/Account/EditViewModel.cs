@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -9,12 +11,13 @@ namespace IdentityServer4.Quickstart.UI
         {
            
         }
-        public EditViewModel(string Id, string Name, string LoginName, string Email)
+        public EditViewModel(string Id, string Name, string LoginName, string Email,IList<Claim> Claims)
         {
             this.Id = Id;
             this.LoginName = LoginName;
             this.Email = Email;
             this.UserName = Name;
+            this.Claims = Claims;
         }
 
         public string Id { get; set; }
@@ -40,5 +43,7 @@ namespace IdentityServer4.Quickstart.UI
 
         [Display(Name = "生日")]
         public DateTime Birth { get; set; } = DateTime.Now;
+
+        public IList<Claim> Claims { get; set; }
     }
 }
