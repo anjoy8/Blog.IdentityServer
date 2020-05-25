@@ -139,13 +139,12 @@ namespace Blog.IdentityServer
                     ClientId = "Console",
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
-
                     AllowedGrantTypes = new List<string>()
                     {
-                        GrantTypes.ResourceOwnerPasswordAndClientCredentials.FirstOrDefault(),
+                        GrantTypes.ResourceOwnerPassword.FirstOrDefault(),
+                        GrantTypes.ClientCredentials.FirstOrDefault(),
                         GrantTypeCustom.ResourceWeixinOpen,
                     },
-
 
                     AllowedScopes = new List<string>
                     {
