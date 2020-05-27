@@ -629,7 +629,7 @@ namespace IdentityServer4.Quickstart.UI
         public IActionResult Users(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderBy(d => d.UserName).ToList();
+            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderByDescending(d => d.Id).ToList();
 
             return View(users);
         }
