@@ -46,7 +46,7 @@ namespace Blog.IdentityServer
             if (isMysql)
             {
                 // mysql
-                //services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString))
+                services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString));
             }
             else
             {
@@ -157,7 +157,7 @@ namespace Blog.IdentityServer
                 {
                     if (isMysql)
                     {
-                        //options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
+                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
                     }
                     else
                     {
@@ -169,7 +169,7 @@ namespace Blog.IdentityServer
                 {
                     if (isMysql)
                     {
-                        //options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
+                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
                     }
                     else
                     {

@@ -771,24 +771,34 @@ namespace IdentityServer4.Quickstart.UI
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                //if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
-                if (user == null)
+                var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "email").Value;
+                var roleName = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "rolename").Value;
+                if (email == model.Email || (roleName == "SuperAdmin"))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToAction(nameof(ForgotPasswordConfirmation));
+
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    //if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+                    if (user == null)
+                    {
+                        // Don't reveal that the user does not exist or is not confirmed
+                        return RedirectToAction(nameof(ForgotPasswordConfirmation));
+                    }
+
+                    // For more information on how to enable account confirmation and password reset please
+                    // visit https://go.microsoft.com/fwlink/?LinkID=532713
+                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
+
+
+                    var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
+
+                    return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = ResetPassword });
                 }
-
-                // For more information on how to enable account confirmation and password reset please
-                // visit https://go.microsoft.com/fwlink/?LinkID=532713
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-
-                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
-
-
-                var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
-
-                return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = ResetPassword });
+                else
+                {
+                    return RedirectToAction(nameof(AccessDenied), new { errorMsg = "非超级管理员，只能修改自己密码" });
+                }
             }
 
             // If we got this far, something failed, redisplay form
@@ -853,8 +863,9 @@ namespace IdentityServer4.Quickstart.UI
 
         [HttpGet]
         //[Route("account/access-denied")]
-        public IActionResult AccessDenied()
+        public IActionResult AccessDenied(string errorMsg = "")
         {
+            ViewBag.ErrorMsg = errorMsg;
             return View();
         }
 

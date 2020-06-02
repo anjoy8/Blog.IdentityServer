@@ -106,7 +106,7 @@ namespace Blog.IdentityServer
                                     birth = user.birth,
                                     addr = user.addr,
                                     tdIsDelete = user.tdIsDelete,
-                                    Email = user.uLoginName + "@blog.com",
+                                    Email = user.uLoginName + "@email.com",
                                     EmailConfirmed=true,
                                     RealName=user.uRealName,
                                 };
