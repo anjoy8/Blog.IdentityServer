@@ -53,9 +53,9 @@ namespace Blog.IdentityServer
                .ConfigureKestrel(serverOptions =>
                {
                    serverOptions.AllowSynchronousIO = true;//启用同步 IO
-                })
+               })
                .UseStartup<Startup>()
-               .UseUrls("http://localhost:5004")
+               .UseUrls("http://*:5004")
                .ConfigureLogging((hostingContext, builder) =>
                {
                    builder.ClearProviders();
