@@ -15,4 +15,4 @@ docker build -t laozhangisphi/idsimg .
 # 生成容器
 docker run --name=idscontainer -v /etc/localtime:/etc/localtime -it -p 5004:5004 laozhangisphi/idsimg
 # 启动容器
-docker start apkcontainer
+docker start idscontainer
