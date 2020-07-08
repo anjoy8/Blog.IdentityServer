@@ -7,7 +7,7 @@ docker rmi laozhangisphi/idsimg
 # 切换目录
 cd /home/Blog.IdentityServer
 # 发布项目
-./Blog.IdentityServer.Publish.Docker.sh
+./Blog.IdentityServer.Publish.Linux.sh
 # 进入目录
 cd /home/Blog.IdentityServer/.PublishFiles/
 # 编译镜像
