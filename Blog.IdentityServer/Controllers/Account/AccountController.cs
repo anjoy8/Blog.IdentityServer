@@ -592,25 +592,26 @@ namespace IdentityServer4.Quickstart.UI
 
                     if (result.Succeeded)
                     {
-                        var claims = new List<Claim>{
-                                    new Claim(JwtClaimTypes.Name, model.RealName),
-                                    new Claim(JwtClaimTypes.Email, model.Email),
-                                    new Claim(JwtClaimTypes.EmailVerified, "false", ClaimValueTypes.Boolean),
-                                    new Claim("rolename", rName),
-                                };
+                        //var claims = new List<Claim>{
+                        //            new Claim(JwtClaimTypes.Name, model.RealName),
+                        //            new Claim(JwtClaimTypes.Email, model.Email),
+                        //            new Claim(JwtClaimTypes.EmailVerified, "false", ClaimValueTypes.Boolean),
+                        //            new Claim("rolename", rName),
+                        //        };
 
-                        claims.AddRange((new List<int> { 6 }).Select(s => new Claim(JwtClaimTypes.Role, s.ToString())));
-
-
-                        result = _userManager.AddClaimsAsync(userItem, claims).Result;
+                        //claims.AddRange((new List<int> { 6 }).Select(s => new Claim(JwtClaimTypes.Role, s.ToString())));
 
 
-                        //result = await _userManager.AddClaimsAsync(user, new Claim[]{
-                        //    new Claim(JwtClaimTypes.Name, model.RealName),
-                        //    new Claim(JwtClaimTypes.Email, model.Email),
-                        //    new Claim(JwtClaimTypes.EmailVerified, "false", ClaimValueTypes.Boolean),
-                        //    new Claim(JwtClaimTypes.Role, rName)
-                        //});
+                        //result = _userManager.AddClaimsAsync(userItem, claims).Result;
+
+
+                        result = await _userManager.AddClaimsAsync(user, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, model.RealName),
+                            new Claim(JwtClaimTypes.Email, model.Email),
+                            new Claim(JwtClaimTypes.EmailVerified, "false", ClaimValueTypes.Boolean),
+                            new Claim(JwtClaimTypes.Role, "6"),
+                            new Claim("rolename", rName),
+                        });
 
                         if (result.Succeeded)
                         {
