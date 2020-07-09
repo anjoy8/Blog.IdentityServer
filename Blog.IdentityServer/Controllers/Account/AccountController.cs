@@ -785,8 +785,8 @@ namespace IdentityServer4.Quickstart.UI
         {
             if (ModelState.IsValid)
             {
-                var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "email").Value;
-                var roleName = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "rolename").Value;
+                var email = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
+                var roleName = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "rolename")?.Value;
                 if (email == model.Email || (roleName == "SuperAdmin"))
                 {
 
