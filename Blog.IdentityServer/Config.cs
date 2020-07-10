@@ -60,6 +60,8 @@ namespace Blog.IdentityServer
                     PostLogoutRedirectUris = { "http://vueblog.neters.club" },
                     AllowedCorsOrigins =     { "http://vueblog.neters.club" },
 
+                    AccessTokenLifetime=3600,
+
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
@@ -82,6 +84,8 @@ namespace Blog.IdentityServer
                     PostLogoutRedirectUris = { "http://vueadmin.neters.club" },
                     AllowedCorsOrigins =     { "http://vueadmin.neters.club" },
 
+                    AccessTokenLifetime=3600,
+                   
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
@@ -100,6 +104,8 @@ namespace Blog.IdentityServer
                     PostLogoutRedirectUris = { "http://tibug.neters.club" },
                     AllowedCorsOrigins =     { "http://tibug.neters.club" },
 
+                    AccessTokenLifetime=3600,
+                   
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
