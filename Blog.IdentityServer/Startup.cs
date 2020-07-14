@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Http;
 using Blog.IdentityServer.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Blog.IdentityServer.Authorization;
+using Microsoft.AspNetCore.HttpOverrides;
+using IdentityServer4.Extensions;
 
 namespace Blog.IdentityServer
 {
@@ -127,6 +129,14 @@ namespace Blog.IdentityServer
                 iis.AutomaticAuthentication = false;
             });
 
+            //services.Configure<ForwardedHeadersOptions>(options =>
+            //{
+            //    options.ForwardedHeaders =
+            //        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+            //    options.KnownNetworks.Clear();
+            //    options.KnownProxies.Clear();
+            //});
+
             var builder = services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -137,7 +147,6 @@ namespace Blog.IdentityServer
                     if (Configuration["StartUp:IsOnline"].ObjToBool())
                     {
                         options.IssuerUri = Configuration["StartUp:OnlinePath"].ObjToString();
-                        options.PublicOrigin = Configuration["StartUp:OnlinePath"].ObjToString();
                     }
                     options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
                     {
@@ -157,7 +166,7 @@ namespace Blog.IdentityServer
                 {
                     if (isMysql)
                     {
-                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
+                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                     }
                     else
                     {
@@ -169,7 +178,7 @@ namespace Blog.IdentityServer
                 {
                     if (isMysql)
                     {
-                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly)); 
+                        options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                     }
                     else
                     {
@@ -200,6 +209,16 @@ namespace Blog.IdentityServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.Use(async (ctx, next) =>
+            {
+                if (Configuration["StartUp:IsOnline"].ObjToBool())
+                {
+                    ctx.SetIdentityServerOrigin(Configuration["StartUp:OnlinePath"].ObjToString());
+                }
+                await next();
+            });
+
+            //app.UseForwardedHeaders();
             app.UseCookiePolicy();
 
             if (env.IsDevelopment())
