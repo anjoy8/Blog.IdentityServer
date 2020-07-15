@@ -29,7 +29,8 @@ namespace Blog.IdentityServer
         public static IEnumerable<ApiScope> GetApiScopes()
         {
             return new ApiScope[] {
-                 new ApiScope("blog.core.api")
+                 new ApiScope("blog.core.api"),
+                 new ApiScope("blog.core.api.BlogModule"),
             };
         }
 
@@ -43,7 +44,7 @@ namespace Blog.IdentityServer
                     UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Role,"rolename" },
                     
                     // v4更新
-                    Scopes={ "blog.core.api"},
+                    Scopes={ "blog.core.api","blog.core.api.BlogModule"},
 
                     ApiSecrets = new List<Secret>()
                     {
@@ -81,7 +82,7 @@ namespace Blog.IdentityServer
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         "roles",
-                        "blog.core.api"
+                        "blog.core.api.BlogModule"
                     }
                 },
                 // 2、blog.admin 前端vue项目
