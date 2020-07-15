@@ -25,6 +25,14 @@ namespace Blog.IdentityServer
             };
         }
 
+        // v4更新
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new ApiScope[] {
+                 new ApiScope("blog.core.api")
+            };
+        }
+
         public static IEnumerable<ApiResource> GetApiResources()
         {
             // blog.core 项目
@@ -32,7 +40,11 @@ namespace Blog.IdentityServer
                 new ApiResource("blog.core.api", "Blog.Core API") {
                     // include the following using claims in access token (in addition to subject id)
                     //requires using using IdentityModel;
-                    UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Role },
+                    UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Role,"rolename" },
+                    
+                    // v4更新
+                    Scopes={ "blog.core.api"},
+
                     ApiSecrets = new List<Secret>()
                     {
                         new Secret("api_secret".Sha256())
@@ -46,7 +58,7 @@ namespace Blog.IdentityServer
         {
             // client
             return new List<Client> {
-                // blog.vue 前端vue项目
+                // 1、blog.vue 前端vue项目
                 new Client {
                     ClientId = "blogvuejs",
                     ClientName = "Blog.Vue JavaScript Client",
@@ -55,10 +67,13 @@ namespace Blog.IdentityServer
 
                     RedirectUris =           {
                         "http://vueblog.neters.club/callback",
-                        "http://apk.neters.club/oauth2-redirect.html"
+                        "http://apk.neters.club/oauth2-redirect.html",
+
+                        "http://localhost:6688/callback",
+                        "http://localhost:8081/oauth2-redirect.html",
                     },
-                    PostLogoutRedirectUris = { "http://vueblog.neters.club" },
-                    AllowedCorsOrigins =     { "http://vueblog.neters.club" },
+                    PostLogoutRedirectUris = { "http://vueblog.neters.club","http://localhost:6688" },
+                    AllowedCorsOrigins =     { "http://vueblog.neters.club","http://localhost:6688" },
 
                     AccessTokenLifetime=3600,
 
@@ -69,7 +84,7 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
-                // blog.admin 前端vue项目
+                // 2、blog.admin 前端vue项目
                 new Client {
                     ClientId = "blogadminjs",
                     ClientName = "Blog.Admin JavaScript Client",
@@ -79,13 +94,16 @@ namespace Blog.IdentityServer
                     RedirectUris =
                     {
                         "http://vueadmin.neters.club/callback",
-                        "http://apk.neters.club/oauth2-redirect.html"
+                        "http://apk.neters.club/oauth2-redirect.html",
+
+                        "http://localhost:2364/callback",
+                        "http://localhost:8081/oauth2-redirect.html",
                     },
-                    PostLogoutRedirectUris = { "http://vueadmin.neters.club" },
-                    AllowedCorsOrigins =     { "http://vueadmin.neters.club" },
+                    PostLogoutRedirectUris = { "http://vueadmin.neters.club","http://localhost:2364" },
+                    AllowedCorsOrigins =     { "http://vueadmin.neters.club","http://localhost:2364"  },
 
                     AccessTokenLifetime=3600,
-                   
+
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
@@ -93,7 +111,7 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
-                // nuxt.tbug 前端nuxt项目
+                // 3、nuxt.tbug 前端nuxt项目
                 new Client {
                     ClientId = "tibugnuxtjs",
                     ClientName = "Nuxt.tBug JavaScript Client",
@@ -105,7 +123,7 @@ namespace Blog.IdentityServer
                     AllowedCorsOrigins =     { "http://tibug.neters.club" },
 
                     AccessTokenLifetime=3600,
-                   
+
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
@@ -113,7 +131,7 @@ namespace Blog.IdentityServer
                         "blog.core.api"
                     }
                 },
-                // interactive ASP.NET Core MVC client
+                // 4、DDD 后端MVC项目
                 new Client
                 {
                     ClientId = "chrisdddmvc",
@@ -139,7 +157,7 @@ namespace Blog.IdentityServer
                         "rolename",
                     }
                 },
-                // 控制台客户端
+                // 5、控制台客户端
                 new Client
                 {
                     ClientId = "Console",
@@ -154,6 +172,38 @@ namespace Blog.IdentityServer
 
                     AllowedScopes = new List<string>
                     {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "blog.core.api"
+                    }
+                },
+                // 6、mvp 后端blazor.server项目
+                new Client
+                {
+                    ClientId = "blazorserver",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AlwaysIncludeUserClaimsInIdToken=true,//将用户所有的claims包含在IdToken内
+                    AllowAccessTokensViaBrowser = true,
+                
+                    // where to redirect to after login
+                    RedirectUris = { "https://mvp.neters.club/signin-oidc" },
+
+                    AllowedCorsOrigins =     { "https://mvp.neters.club" },
+                   
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://mvp.neters.club/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "roles",
+                        "rolename",
                         "blog.core.api"
                     }
                 }

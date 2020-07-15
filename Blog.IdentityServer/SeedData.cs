@@ -240,6 +240,20 @@ namespace Blog.IdentityServer
             {
                 Console.WriteLine("ApiResources already populated");
             }
+
+            if (!context.ApiScopes.Any())
+            {
+                Console.WriteLine("ApiScopes being populated");
+                foreach (var resource in Config.GetApiScopes().ToList())
+                {
+                    context.ApiScopes.Add(resource.ToEntity());
+                }
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("ApiScopes already populated");
+            }
         }
     }
 }
