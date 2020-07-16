@@ -12,9 +12,8 @@
 ## Tips：
 ```
  /*
-  * mysql和sqlserver的迁移操作步骤一致，不过本项目已经迁移好，在Data文件夹下：
-  * msql使用MigrationsMySql文件夹下的迁移记录，卸载另一个文件夹
-  * sqlserver使用Migrations文件夹下的迁移记录，卸载另一个文件夹
+  * 本项目同时支持Mysql和Sqlserver，我一直使用的是Mysql，所以Mysql的迁移文件已经配置号，在Data文件夹下，
+  * 直接执行update-database xxxx,那三步即可。如果你使用sqlserver，可以先从迁移开始，下边有步骤
   * 
   * 当然你也可以都删掉，自己重新做迁移。
   * 迁移完成后，执行dotnet run /seed
