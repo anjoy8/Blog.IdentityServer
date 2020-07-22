@@ -1,6 +1,7 @@
 ﻿@model List<Blog.IdentityServer.Models.ApplicationUser>
 @{
     ViewData["Title"] = "Users";
+    int index = 0;
 }
 <link href="~/css/showtip.css" rel="stylesheet" />
 <div>
@@ -25,15 +26,18 @@
         <thead>
             <tr>
                 <th>
-                    Name
+                    #
                 </th>
                 <th>
                     UserName
                 </th>
                 <th>
-                    Email
+                    LoginName
                 </th>
-                <th>PasswordHash</th>
+                <th>
+                    CreateTime
+                </th>
+                <th>AccessFailedCount</th>
                 <th>Operate</th>
             </tr>
         </thead>
@@ -42,16 +46,19 @@
             {
             <tr>
                 <td>
+                    @(Model.Count-index)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.LoginName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.birth)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PasswordHash)
+                    @Html.DisplayFor(modelItem => item.AccessFailedCount)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" asp-route-returnUrl="/account/users" title="Edit" class="btn btn-warning">
@@ -65,6 +72,8 @@
 
                 </td>
             </tr>
+
+                index++;
             }
         </tbody>
     </table>
