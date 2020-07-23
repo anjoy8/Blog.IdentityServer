@@ -10,6 +10,9 @@
         table-layout: fixed;
         word-break: break-all;
     }
+    hr{
+        margin:6px;
+    }
 </style>
 <div>
     <h2>@ViewData["Title"]</h2>
@@ -32,9 +35,9 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>客户端Id</th>
-                <th>客户端名</th>
-                <th>授权类型</th>
+                <th style="width:150px;">客户端Id</th>
+                <th style="width:230px;">客户端名</th>
+                <th style="width:180px;">授权类型</th>
                 <th>作用域</th>
                 <th>允许跨域</th>
                 <th>回调地址</th>
@@ -54,19 +57,19 @@
                         @Html.DisplayFor(modelItem => item.ClientName)
                     </td>
                     <td>
-                        @string.Join(",", clientModel.AllowedGrantTypes)
+                        @Html.Raw(string.Join("<br>", clientModel.AllowedGrantTypes))
                     </td>
                     <td>
-                        @string.Join(",", clientModel.AllowedScopes)
+                        @Html.Raw(string.Join("<br>", clientModel.AllowedScopes))
                     </td>
                     <td>
-                        @string.Join(",", clientModel.AllowedCorsOrigins)
+                        @Html.Raw(string.Join("<hr>", clientModel.AllowedCorsOrigins))
                     </td>
                     <td>
-                        @string.Join(",", clientModel.RedirectUris)
+                        @Html.Raw(string.Join("<hr>", clientModel.RedirectUris))
                     </td>
                     <td>
-                        @string.Join(",", clientModel.PostLogoutRedirectUris)
+                        @Html.Raw(string.Join("<hr>", clientModel.PostLogoutRedirectUris))
                     </td>
                     <td>
                         <a asp-action="CreateOrEdit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
