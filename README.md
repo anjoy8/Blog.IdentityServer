@@ -9,13 +9,20 @@
 
 *********************************************************
 
+  
+  <ul>
+<li></li>
+<li><a id="post_title_link_10529982" href="https://www.bilibili.com/video/BV1vC4y1p7Za?p=14">前端Blog.Admin-后端Blog.Core-认证中心(本项目) 快速启动 </a></li>
+<li></li>
+</ul>
+
 ## Tips：
 ```
  /*
-  * 本项目同时支持Mysql和Sqlserver，我一直使用的是Mysql，所以Mysql的迁移文件已经配置号，在Data文件夹下，
+  * 本项目同时支持Mysql和Sqlserver，我一直使用的是Mysql，所以Mysql的迁移文件已经配置好，在Data文件夹下，
   * 直接执行update-database xxxx,那三步即可。如果你使用sqlserver，可以先从迁移开始，下边有步骤
   * 
-  * 当然你也可以都删掉，自己重新做迁移。
+  * 当然你也可以把Data文件夹除了ApplicationDbContext.cs文件外都删掉，自己重新做迁移。
   * 迁移完成后，执行dotnet run /seed
   *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigrationMysql -c PersistedGrantDbContext -o Data/MigrationsMySql/IdentityServer/PersistedGrantDb 
      Build started...
