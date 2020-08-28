@@ -77,6 +77,21 @@
 <li></li>
 </ul>
 
+
+
+微信公众号：https://mvp.neters.club/MVP_ids4_2020/2020  
+
+<ul>
+<li><a id="post_title_link_10483922" href="http://apk.neters.club/api/Blog/GoUrl?id=133">【Ids4实战】分模块保护资源API</a></li>
+<li><a id="post_title_link_10529982" href="http://apk.neters.club/api/Blog/GoUrl?id=130">【Ids4实战】最全的 v4 版本升级指南</a></li>
+<li><a id="post_title_link_10660403" href="http://apk.neters.club/api/Blog/GoUrl?id=74">【Ids4实战】深究配置——用户信息操作篇</a></li>
+<li><a id="post_title_link_10911438" href="http://apk.neters.club/api/Blog/GoUrl?id=73">【实战 Ids4】║ 认证中心之内部加权</a></li>
+<li><a class="entry" href="http://apk.neters.club/api/Blog/GoUrl?id=72" target="_blank">【实战 Ids4】║ 控制台密码模式搭配Ocelot网关</a></li>
+<li><a class="entry" href="http://apk.neters.club/api/Blog/GoUrl?id=71" target="_blank">【实战 Ids4】║ 在Swagger中调试认证授权中心</a>&nbsp;</li>
+<li><a class="entry" href="http://apk.neters.club/api/Blog/GoUrl?id=70" target="_blank">【实战 Ids4】║ 又一个项目迁移完成（MVC）</a>&nbsp;</li>
+<li></li>
+</ul>
+
 ```
 ```
 
