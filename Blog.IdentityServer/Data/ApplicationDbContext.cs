@@ -53,6 +53,11 @@ namespace Blog.IdentityServer.Data
             //// 就是这里，我们可以修改下表名等其他任意操作
             //builder.Entity<ApplicationRole>()
             //    .ToTable("Role");
+
+            foreach (var entity in builder.Model.GetEntityTypes())
+            {
+                entity.SetTableName("Ids_" + entity.GetTableName());
+            }
         }
     }
 }

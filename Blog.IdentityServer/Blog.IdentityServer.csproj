@@ -9,16 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\**" />
+    <Compile Remove="Data\MigrationsMySql\**" />
     <Compile Remove="Migrations\**" />
     <Compile Remove="Views\Oauth2\**" />
-    <Content Remove="Data\Migrations\**" />
+    <Content Remove="Data\MigrationsMySql\**" />
     <Content Remove="Migrations\**" />
     <Content Remove="Views\Oauth2\**" />
-    <EmbeddedResource Remove="Data\Migrations\**" />
+    <EmbeddedResource Remove="Data\MigrationsMySql\**" />
     <EmbeddedResource Remove="Migrations\**" />
     <EmbeddedResource Remove="Views\Oauth2\**" />
-    <None Remove="Data\Migrations\**" />
+    <None Remove="Data\MigrationsMySql\**" />
     <None Remove="Migrations\**" />
     <None Remove="Views\Oauth2\**" />
   </ItemGroup>
