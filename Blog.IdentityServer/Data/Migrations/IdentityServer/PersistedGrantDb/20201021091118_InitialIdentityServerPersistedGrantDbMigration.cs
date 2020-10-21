@@ -8,7 +8,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DeviceCodes",
+                name: "Ids_DeviceCodes",
                 columns: table => new
                 {
                     UserCode = table.Column<string>(maxLength: 200, nullable: false),
@@ -23,11 +23,11 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeviceCodes", x => x.UserCode);
+                    table.PrimaryKey("PK_Ids_DeviceCodes", x => x.UserCode);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PersistedGrants",
+                name: "Ids_PersistedGrants",
                 columns: table => new
                 {
                     Key = table.Column<string>(maxLength: 200, nullable: false),
@@ -43,43 +43,43 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
+                    table.PrimaryKey("PK_Ids_PersistedGrants", x => x.Key);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_DeviceCodes_DeviceCode",
-                table: "DeviceCodes",
+                name: "IX_Ids_DeviceCodes_DeviceCode",
+                table: "Ids_DeviceCodes",
                 column: "DeviceCode",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DeviceCodes_Expiration",
-                table: "DeviceCodes",
+                name: "IX_Ids_DeviceCodes_Expiration",
+                table: "Ids_DeviceCodes",
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersistedGrants_Expiration",
-                table: "PersistedGrants",
+                name: "IX_Ids_PersistedGrants_Expiration",
+                table: "Ids_PersistedGrants",
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersistedGrants_SubjectId_ClientId_Type",
-                table: "PersistedGrants",
+                name: "IX_Ids_PersistedGrants_SubjectId_ClientId_Type",
+                table: "Ids_PersistedGrants",
                 columns: new[] { "SubjectId", "ClientId", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersistedGrants_SubjectId_SessionId_Type",
-                table: "PersistedGrants",
+                name: "IX_Ids_PersistedGrants_SubjectId_SessionId_Type",
+                table: "Ids_PersistedGrants",
                 columns: new[] { "SubjectId", "SessionId", "Type" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DeviceCodes");
+                name: "Ids_DeviceCodes");
 
             migrationBuilder.DropTable(
-                name: "PersistedGrants");
+                name: "Ids_PersistedGrants");
         }
     }
 }

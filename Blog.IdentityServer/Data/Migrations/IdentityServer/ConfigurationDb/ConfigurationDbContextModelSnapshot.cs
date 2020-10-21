@@ -66,7 +66,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ApiResources");
+                    b.ToTable("Ids_ApiResources");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
@@ -88,7 +88,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceClaims");
+                    b.ToTable("Ids_ApiResourceClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
@@ -115,7 +115,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceProperties");
+                    b.ToTable("Ids_ApiResourceProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceScope", b =>
@@ -137,7 +137,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceScopes");
+                    b.ToTable("Ids_ApiResourceScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceSecret", b =>
@@ -174,7 +174,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceSecrets");
+                    b.ToTable("Ids_ApiResourceSecrets");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
@@ -214,7 +214,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ApiScopes");
+                    b.ToTable("Ids_ApiScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
@@ -236,7 +236,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ScopeId");
 
-                    b.ToTable("ApiScopeClaims");
+                    b.ToTable("Ids_ApiScopeClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeProperty", b =>
@@ -263,7 +263,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ScopeId");
 
-                    b.ToTable("ApiScopeProperties");
+                    b.ToTable("Ids_ApiScopeProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Client", b =>
@@ -421,7 +421,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable("Clients");
+                    b.ToTable("Ids_Clients");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
@@ -448,7 +448,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientClaims");
+                    b.ToTable("Ids_ClientClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
@@ -470,7 +470,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientCorsOrigins");
+                    b.ToTable("Ids_ClientCorsOrigins");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
@@ -492,7 +492,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientGrantTypes");
+                    b.ToTable("Ids_ClientGrantTypes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
@@ -514,7 +514,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientIdPRestrictions");
+                    b.ToTable("Ids_ClientIdPRestrictions");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
@@ -536,7 +536,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientPostLogoutRedirectUris");
+                    b.ToTable("Ids_ClientPostLogoutRedirectUris");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
@@ -563,7 +563,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientProperties");
+                    b.ToTable("Ids_ClientProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientRedirectUri", b =>
@@ -585,7 +585,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientRedirectUris");
+                    b.ToTable("Ids_ClientRedirectUris");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientScope", b =>
@@ -607,7 +607,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientScopes");
+                    b.ToTable("Ids_ClientScopes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
@@ -644,7 +644,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientSecrets");
+                    b.ToTable("Ids_ClientSecrets");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResource", b =>
@@ -693,7 +693,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityResources");
+                    b.ToTable("Ids_IdentityResources");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceClaim", b =>
@@ -715,7 +715,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("IdentityResourceId");
 
-                    b.ToTable("IdentityResourceClaims");
+                    b.ToTable("Ids_IdentityResourceClaims");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
@@ -742,7 +742,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 
                     b.HasIndex("IdentityResourceId");
 
-                    b.ToTable("IdentityResourceProperties");
+                    b.ToTable("Ids_IdentityResourceProperties");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>

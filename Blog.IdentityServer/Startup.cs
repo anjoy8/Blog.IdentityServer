@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Blog.IdentityServer.Authorization;
 using Microsoft.AspNetCore.HttpOverrides;
 using IdentityServer4.Extensions;
+using IdentityServer4.EntityFramework.Options;
 
 namespace Blog.IdentityServer
 {
@@ -171,6 +172,19 @@ namespace Blog.IdentityServer
                     else
                     {
                         options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                        // 修改表名
+                        foreach (var p in options.GetType().GetProperties())
+                        {
+                            if (p.PropertyType == typeof(TableConfiguration))
+                            {
+                                object o = p.GetGetMethod().Invoke(options, null);
+                                PropertyInfo property = o.GetType().GetProperty("Name");
+
+                                var tableName = property.GetMethod.Invoke(o, null) as string;
+                                o.GetType().GetProperty("Name").SetMethod.Invoke(o, new object[] { $"Ids_{tableName}" });
+                            }
+                        }
                     }
                 })
                 // this adds the operational data from DB (codes, tokens, consents)
@@ -183,6 +197,19 @@ namespace Blog.IdentityServer
                     else
                     {
                         options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                        // 修改表名
+                        foreach (var p in options.GetType().GetProperties())
+                        {
+                            if (p.PropertyType == typeof(TableConfiguration))
+                            {
+                                object o = p.GetGetMethod().Invoke(options, null);
+                                PropertyInfo q = o.GetType().GetProperty("Name");
+
+                                var tableName = q.GetMethod.Invoke(o, null) as string;
+                                o.GetType().GetProperty("Name").SetMethod.Invoke(o, new object[] { $"Ids_{tableName}" });
+                            }
+                        }
                     }
 
                     // this enables automatic token cleanup. this is optional.

@@ -28,25 +28,25 @@ namespace Blog.IdentityServer
              * 
              * 当然你也可以都删掉，自己重新做迁移。
              * 迁移完成后，执行dotnet run /seed
-             *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigrationMysql -c PersistedGrantDbContext -o Data/MigrationsMySql/IdentityServer/PersistedGrantDb 
+             *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb 
                 Build started...
                 Build succeeded.
                 To undo this action, use Remove-Migration.
                 2、PM> update-database -c PersistedGrantDbContext
                 Build started...
                 Build succeeded.
-                Applying migration '20200509165052_InitialIdentityServerPersistedGrantDbMigrationMysql'.
+                Applying migration '20200509165052_InitialIdentityServerPersistedGrantDbMigration'.
                 Done.
-                3、PM> add-migration InitialIdentityServerConfigurationDbMigrationMysql -c ConfigurationDbContext -o Data/MigrationsMySql/IdentityServer/ConfigurationDb
+                3、PM> add-migration InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
                 Build started...
                 Build succeeded.
                 To undo this action, use Remove-Migration.
                 4、PM> update-database -c ConfigurationDbContext
                 Build started...
                 Build succeeded.
-                Applying migration '20200509165153_InitialIdentityServerConfigurationDbMigrationMysql'.
+                Applying migration '20200509165153_InitialIdentityServerConfigurationDbMigration'.
                 Done.
-                5、PM> add-migration AppDbMigration -c ApplicationDbContext -o Data/MigrationsMySql
+                5、PM> add-migration AppDbMigration -c ApplicationDbContext -o Data/Migrations
                 Build started...
                 Build succeeded.
                 To undo this action, use Remove-Migration.

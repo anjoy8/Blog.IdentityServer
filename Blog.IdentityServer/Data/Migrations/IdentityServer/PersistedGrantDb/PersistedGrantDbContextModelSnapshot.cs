@@ -66,7 +66,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 
                     b.HasIndex("Expiration");
 
-                    b.ToTable("DeviceCodes");
+                    b.ToTable("Ids_DeviceCodes");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.PersistedGrant", b =>
@@ -119,7 +119,7 @@ namespace Blog.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 
                     b.HasIndex("SubjectId", "SessionId", "Type");
 
-                    b.ToTable("PersistedGrants");
+                    b.ToTable("Ids_PersistedGrants");
                 });
 #pragma warning restore 612, 618
         }
