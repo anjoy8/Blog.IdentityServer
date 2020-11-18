@@ -207,6 +207,34 @@ namespace Blog.IdentityServer
                         "rolename",
                         "blog.core.api"
                     }
+                },
+
+                // 7、测试 hybrid 模式
+                new Client
+                {
+                    ClientId = "hybridclent",
+                    ClientName="Demo MVC Client",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                 
+                    RequirePkce = false,
+
+                    RedirectUris = { "http://localhost:1003/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:1003/signout-callback-oidc" },
+
+                    AllowOfflineAccess=true,
+                    AlwaysIncludeUserClaimsInIdToken=true,
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "roles",
+                        "rolename",
+                        "blog.core.api"
+                    }
                 }
             };
         }

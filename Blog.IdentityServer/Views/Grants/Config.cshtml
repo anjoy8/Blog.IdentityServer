@@ -1,0 +1,363 @@
+﻿
+@{
+    ViewData["Title"] = "Config";
+}
+
+
+<div class="grants-page">
+    <div class="lead">
+        <h1>All Grants Type Config</h1>
+        <p>Below is the list of configs,you can configure it according to the type of authorization you need.</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>implicit</strong></h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Ids4:</h5>
+            <pre>
+                new Client
+                {
+                    ClientId = "hybridclent",
+                    ClientName="Demo MVC Client",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                 
+                    RequirePkce = false,
+
+                    RedirectUris = { "http://localhost:1003/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:1003/signout-callback-oidc" },
+
+                    AllowOfflineAccess=true,
+                    AlwaysIncludeUserClaimsInIdToken=true,
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "roles",
+                        "rolename",
+                        "blog.core.api"
+                    }
+                }
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client MVC:</h5>
+            <pre>
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            // 认证方案的配置
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddCookie("Cookies", options =>
+            {
+                options.AccessDeniedPath = "/Authorization/NoPermission";
+            })
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.SignInScheme = "Cookies";
+
+                options.Authority = "https://ids.neters.club";
+                options.RequireHttpsMetadata = false;
+                options.ClientId = "hybridclent";
+                options.ClientSecret = "secret";
+
+                options.ResponseType = "code id_token";
+
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.SaveTokens = true;
+
+
+                // 为api在使用refresh_token的时候,配置offline_access作用域
+                //options.GetClaimsFromUserInfoEndpoint = true;
+
+                // 作用域获取
+                options.Scope.Clear();
+                options.Scope.Add("roles");
+                options.Scope.Add("rolename");
+                options.Scope.Add("blog.core.api");
+                options.Scope.Add("profile");
+                options.Scope.Add("openid");
+
+                //options.ClaimActions.MapJsonKey("website", "website");
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //映射 User.Name
+                    //NameClaimType = JwtClaimTypes.Name,
+                    //RoleClaimType = JwtClaimTypes.Role
+                };
+            });
+            </pre>
+
+        </div>
+
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>authorization_code</strong></h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                new Client
+                {
+                    ClientId = "blazorserver",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireConsent = false,
+                    RequirePkce = true,
+                    AlwaysIncludeUserClaimsInIdToken=true,//将用户所有的claims包含在IdToken内
+                    AllowAccessTokensViaBrowser = true,
+                
+                    // where to redirect to after login
+                    RedirectUris = { "https://mvp.neters.club/signin-oidc" },
+
+                    AllowedCorsOrigins =     { "https://mvp.neters.club" },
+                   
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://mvp.neters.club/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "roles",
+                        "rolename",
+                        "blog.core.api"
+                    }
+                },
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client MVC:</h5>
+            <pre>
+                 
+            // 第一部分:认证方案的配置
+            // add cookie-based session management with OpenID Connect authentication
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddCookie("Cookies", options =>
+            {
+                //options.Cookie.Name = "blazorclient";
+
+                //options.ExpireTimeSpan = TimeSpan.FromHours(1);
+                //options.SlidingExpiration = false;
+            })
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.Authority = "https://ids.neters.club/";
+                options.RequireHttpsMetadata = false;//必须https协议
+                options.ClientId = "blazorserver"; // 75 seconds
+                options.ClientSecret = "secret";
+                options.ResponseType = "code";
+                options.SaveTokens = true;
+
+                // 为api在使用refresh_token的时候,配置offline_access作用域
+                options.GetClaimsFromUserInfoEndpoint = true;
+                // 作用域获取
+                options.Scope.Clear();
+                options.Scope.Add("roles");//"roles"
+                options.Scope.Add("rolename");//"rolename"
+                options.Scope.Add("blog.core.api");
+                options.Scope.Add("profile");
+                options.Scope.Add("openid");
+
+                options.Events = new OpenIdConnectEvents
+                {
+                    // called if user clicks Cancel during login
+                    OnAccessDenied = context =>
+                    {
+                        context.HandleResponse();
+                        context.Response.Redirect("/");
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+
+            </pre>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>implicit</strong></h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                new Client {
+                    ClientId = "blogvuejs",
+                    ClientName = "Blog.Vue JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris =           {
+                        "http://vueblog.neters.club/callback",
+                        "http://apk.neters.club/oauth2-redirect.html",
+                        "http://localhost:6688/callback",
+                        "http://localhost:8081/oauth2-redirect.html",
+                    },
+                    PostLogoutRedirectUris = { "http://vueblog.neters.club","http://localhost:6688" },
+                    AllowedCorsOrigins =     { "http://vueblog.neters.club","http://localhost:6688" },
+
+                    AccessTokenLifetime=3600,
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
+                        "blog.core.api.BlogModule"
+                    }
+                },
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client Vue.js:</h5>
+            <pre>
+                 
+            import { UserManager } from 'oidc-client'
+
+            class ApplicationUserManager extends UserManager {
+              constructor () {
+                super({
+                  authority: 'https://ids.neters.club',
+                  client_id: 'blogadminjs',
+                  redirect_uri: 'http://vueadmin.neters.club/callback',
+                  response_type: 'id_token token',
+                  scope: 'openid profile roles blog.core.api',
+                  post_logout_redirect_uri: 'http://vueadmin.neters.club'
+                })
+              }
+
+              async login () {
+                await this.signinRedirect()
+                return this.getUser()
+              }
+
+              async logout () {
+                return this.signoutRedirect()
+              }
+            }
+
+            </pre>
+
+        </div>
+
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>password</strong></h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                 // 控制台客户端 密码模式
+                 new Client
+                 {
+                     ClientId = "Console",
+                     ClientSecrets = { new Secret("secret".Sha256()) },
+
+                     AllowedGrantTypes = new List<string>()
+                     {
+                         GrantTypes.ResourceOwnerPasswordAndClientCredentials.FirstOrDefault(),
+                     },
+
+                     AllowedScopes = new List<string>
+                     {
+                         "blog.core.api"
+                     }
+                 }
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client Console:</h5>
+            <pre>
+                 using var client = new HttpClient();
+                 var discoResponse = await client.GetDiscoveryDocumentAsync("http://localhost:5004");
+                 if (discoResponse.IsError)
+                 {
+                     Console.WriteLine(discoResponse.Error);
+                     return;
+                 }
+
+                 var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+                 {
+                     Address = discoResponse.TokenEndpoint,
+                     ClientId = "Console",// 客户端id
+                     Scope = "blog.core.api",// 对应的受保护资源服务器id
+                     ClientSecret = "secret",
+                     UserName = "laozhang",// 这里的用户名密码，是我SeedData的时候导入的
+                     Password = "BlogIdp123$InitPwd"
+                 });
+
+                 if (tokenResponse.IsError)
+                 {
+                     Console.WriteLine(tokenResponse.Error);
+                     return;
+                 }
+
+                 Console.WriteLine(tokenResponse.Json);
+                 client.SetBearerToken(tokenResponse.AccessToken);
+                 // 获取access_token后，向资源服务器发起请求
+                 var response = await client.GetAsync("http://localhost:8081/api/blog/1");
+     
+            </pre>
+
+        </div>
+
+
+    </div>
+</div>

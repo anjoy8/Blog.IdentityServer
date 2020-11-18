@@ -505,3 +505,8 @@ label.radio-img > h3, label > h4 {
     border-top: 1px dashed gray;
     padding-top: 10px;
 }
+h5.Grant-Config {
+    font-size: 1.25rem;
+    background: beige;
+    padding: 10px 20px;
+}
