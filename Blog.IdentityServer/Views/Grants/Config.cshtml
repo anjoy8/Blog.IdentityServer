@@ -13,7 +13,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-8 card-title">
-                    <h3><strong>1、implicit</strong></h3>
+                    <h3><strong>1、hybrid</strong></h3>
                 </div>
 
             </div>
@@ -30,7 +30,7 @@
 
                     AllowedGrantTypes = GrantTypes.Hybrid,
                  
-                    RequirePkce = false,
+                    RequirePkce = false,//v4.x需要配置这个
 
                     RedirectUris = { "http://localhost:1003/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:1003/signout-callback-oidc" },
