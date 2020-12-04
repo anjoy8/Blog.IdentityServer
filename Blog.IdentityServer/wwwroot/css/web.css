@@ -510,3 +510,10 @@ h5.Grant-Config {
     background: beige;
     padding: 10px 20px;
 }
+.grey888 {
+    color: #888;
+    font-size: 14px;
+}
+    .grey888 div {
+        margin: 3px;
+    }

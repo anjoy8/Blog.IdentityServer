@@ -13,9 +13,158 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-8 card-title">
-                    <h3><strong>1、hybrid</strong></h3>
+                    <h3><strong>1、client_credentials</strong></h3>
                 </div>
+                <div class="grey888">
+                    <div>这种模式一般只用在服务端与服务端之间的认证,在c#中请求令牌，认证服务器不提供像用户数据这样的重要资源，仅仅是有限的只读资源或者一些开放的API。</div>
+                </div>
+            </div>
+        </div>
 
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                 // 控制台客户端 客户端凭证模式
+                new Client
+                {
+                    ClientId = "credentials_client",
+                    ClientName = "Client Credentials Client",
+
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedScopes = { "blog.core.api" }
+                },
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client Console:</h5>
+            <pre>
+                 using var client = new HttpClient();
+                 var discoResponse = await client.GetDiscoveryDocumentAsync("http://localhost:5004");
+                 if (discoResponse.IsError)
+                 {
+                     Console.WriteLine(discoResponse.Error);
+                     return;
+                 }
+
+                 var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                 {
+                     Address = discoResponse.TokenEndpoint,
+                     ClientId = "Console",// 客户端id
+                     Scope = "blog.core.api",// 对应的受保护资源服务器id
+                     ClientSecret = "secret",
+                 });
+
+                 if (tokenResponse.IsError)
+                 {
+                     Console.WriteLine(tokenResponse.Error);
+                     return;
+                 }
+
+                 Console.WriteLine(tokenResponse.Json);
+                 client.SetBearerToken(tokenResponse.AccessToken);
+                 // 获取access_token后，向资源服务器发起请求
+                 var response = await client.GetAsync("http://localhost:8081/api/blog/1");
+     
+            </pre>
+
+        </div>
+
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>2、password</strong></h3>
+                </div>
+                <div class="grey888">
+                    <div>这种模式适用于鉴权服务器与资源服务器是高度相互信任的，例如两个服务都是同个团队或者同一公司开发的。该应用Client就使用你的密码，申请令牌，这种方式称为"密码式"（password）。</div>
+                    <div>如果你对接的是第三方的客户端，请不要使用这个方案，因为第三方可能会记录你的认证平台的用户安全信息比如用户名和密码）</div>
+                    <div>这种模式比客户端凭证模式的好处是多了用户信息，同时也可以自定义Claim声明。</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                 // 控制台客户端 密码模式
+                 new Client
+                 {
+                     ClientId = "password_client",
+                     ClientSecrets = { new Secret("secret".Sha256()) },
+
+                     AllowedGrantTypes = new List<string>()
+                     {
+                         GrantTypes.ResourceOwnerPassword.FirstOrDefault(),
+                     },
+
+                     AllowedScopes = new List<string>
+                     {
+                         "blog.core.api"
+                     }
+                 }
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client Console:</h5>
+            <pre>
+                 using var client = new HttpClient();
+                 var discoResponse = await client.GetDiscoveryDocumentAsync("http://localhost:5004");
+                 if (discoResponse.IsError)
+                 {
+                     Console.WriteLine(discoResponse.Error);
+                     return;
+                 }
+
+                 var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
+                 {
+                     Address = discoResponse.TokenEndpoint,
+                     ClientId = "password_client",// 客户端id
+                     Scope = "blog.core.api",// 对应的受保护资源服务器id
+                     ClientSecret = "secret",
+                     UserName = "laozhang",// 这里的用户名密码，是我SeedData的时候导入的
+                     Password = "BlogIdp123$InitPwd"
+                 });
+
+                 if (tokenResponse.IsError)
+                 {
+                     Console.WriteLine(tokenResponse.Error);
+                     return;
+                 }
+
+                 Console.WriteLine(tokenResponse.Json);
+                 client.SetBearerToken(tokenResponse.AccessToken);
+                 // 获取access_token后，向资源服务器发起请求
+                 var response = await client.GetAsync("http://localhost:8081/api/blog/1");
+     
+            </pre>
+
+        </div>
+
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>3、implicit（MVC模式）</strong></h3>
+                </div>
+                <div class="grey888">
+                    <div>让用户自己在IdentityServer服务器进行登录验证，客户端不需要知道用户的密码，从而实现用户密码的安全性。</div>
+                    <div>有些 Web 应用是纯前端应用，没有后端，必须将令牌储存在前端。这种方式没有授权码这个中间步骤，所以称为（授权码）"简化"（implicit）。</div>
+                    <div>简化模式（implicit grant type）不通过第三方应用程序的服务器，直接在浏览器中向认证服务器申请令牌，跳过了"授权码"这个步骤</div>
+                    <div>这种模式基于安全性考虑，建议把token时效设置短一些, 不支持refresh token</div>
+                    <div>这种模式由于token携带在url中，安全性方面不能保证。不过，令牌的位置是 URL 锚点（fragment），而不是查询字符串（querystring），这是因为 OAuth 2.0 允许跳转网址是 HTTP 协议，因此存在"中间人攻击"的风险，而浏览器跳转时，锚点不会发到服务器，就减少了泄漏令牌的风险。</div>
+                </div>
             </div>
         </div>
 
@@ -24,19 +173,15 @@
             <pre>
                 new Client
                 {
-                    ClientId = "hybridclent",
+                    ClientId = "Implicit_client",
                     ClientName="Demo MVC Client",
-                    ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.Implicit,
                  
-                    RequirePkce = false,//v4.x需要配置这个
-
                     RedirectUris = { "http://localhost:1003/signin-oidc" },
                     PostLogoutRedirectUris = { "http://localhost:1003/signout-callback-oidc" },
-
-                    AllowOfflineAccess=true,
-                    AlwaysIncludeUserClaimsInIdToken=true,
+                    
+                    RequireConsent=true,
 
                     AllowedScopes = new List<string>
                     {
@@ -56,53 +201,20 @@
             <h5 class="Grant-Config">Client MVC:</h5>
             <pre>
 
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
-            // 认证方案的配置
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-            .AddCookie("Cookies", options =>
-            {
-                options.AccessDeniedPath = "/Authorization/NoPermission";
-            })
-            .AddOpenIdConnect("oidc", options =>
-            {
-                options.SignInScheme = "Cookies";
-
-                options.Authority = "https://ids.neters.club";
-                options.RequireHttpsMetadata = false;
-                options.ClientId = "hybridclent";
-                options.ClientSecret = "secret";
-
-                options.ResponseType = "code id_token";
-
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.SaveTokens = true;
-
-
-                // 为api在使用refresh_token的时候,配置offline_access作用域
-                //options.GetClaimsFromUserInfoEndpoint = true;
-
-                // 作用域获取
-                options.Scope.Clear();
-                options.Scope.Add("roles");
-                options.Scope.Add("rolename");
-                options.Scope.Add("blog.core.api");
-                options.Scope.Add("profile");
-                options.Scope.Add("openid");
-
-                //options.ClaimActions.MapJsonKey("website", "website");
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    //映射 User.Name
-                    //NameClaimType = JwtClaimTypes.Name,
-                    //RoleClaimType = JwtClaimTypes.Role
-                };
-            });
+               .AddCookie("Cookies")
+              .AddOpenIdConnect("oidc", options =>
+              {
+                  options.Authority = "http://localhost:5004";
+                  options.RequireHttpsMetadata = false;
+                  options.ClientId = "Implicit_client";
+                  options.SaveTokens = true;
+                  options.GetClaimsFromUserInfoEndpoint = true;
+              });
             </pre>
 
         </div>
@@ -110,13 +222,94 @@
 
     </div>
 
+
     <div class="card">
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-8 card-title">
-                    <h3><strong>2、authorization_code</strong></h3>
+                    <h3><strong>4、implicit（VUE模式）</strong></h3>
                 </div>
 
+            </div>
+        </div>
+
+        <div>
+            <h5 class="Grant-Config"> Ids4:</h5>
+            <pre>
+                new Client {
+                    ClientId = "blogvuejs",
+                    ClientName = "Blog.Vue JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris =           {
+                        "http://vueblog.neters.club/callback",
+                        "http://apk.neters.club/oauth2-redirect.html",
+                        "http://localhost:6688/callback",
+                        "http://localhost:8081/oauth2-redirect.html",
+                    },
+                    PostLogoutRedirectUris = { "http://vueblog.neters.club","http://localhost:6688" },
+                    AllowedCorsOrigins =     { "http://vueblog.neters.club","http://localhost:6688" },
+
+                    AccessTokenLifetime=3600,
+
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
+                        "blog.core.api.BlogModule"
+                    }
+                },
+            </pre>
+
+        </div>
+
+        <div>
+            <h5 class="Grant-Config">Client Vue.js:</h5>
+            <pre>
+                 
+            import { UserManager } from 'oidc-client'
+
+            class ApplicationUserManager extends UserManager {
+              constructor () {
+                super({
+                  authority: 'https://ids.neters.club',
+                  client_id: 'blogadminjs',
+                  redirect_uri: 'http://vueadmin.neters.club/callback',
+                  response_type: 'id_token token',
+                  scope: 'openid profile roles blog.core.api',
+                  post_logout_redirect_uri: 'http://vueadmin.neters.club'
+                })
+              }
+
+              async login () {
+                await this.signinRedirect()
+                return this.getUser()
+              }
+
+              async logout () {
+                return this.signoutRedirect()
+              }
+            }
+
+            </pre>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-8 card-title">
+                    <h3><strong>5、authorization_code</strong></h3>
+                </div>
+                <div class="grey888">
+                    <div>这种模式不同于简化模式，在于授权码模式不直接返回token，而是先返回一个授权码，然后再根据这个授权码去请求token。这显得更为安全。</div>
+                    <div>通过多种授权模式中的授权码模式进行说明，主要针对介绍IdentityServer保护API的资源，授权码访问API资源。</div>
+                </div>
             </div>
         </div>
 
@@ -217,71 +410,96 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-8 card-title">
-                    <h3><strong>3、implicit</strong></h3>
+                    <h3><strong>6、hybrid</strong></h3>
                 </div>
 
             </div>
         </div>
 
         <div>
-            <h5 class="Grant-Config"> Ids4:</h5>
+            <h5 class="Grant-Config">Ids4:</h5>
             <pre>
-                new Client {
-                    ClientId = "blogvuejs",
-                    ClientName = "Blog.Vue JavaScript Client",
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
+                new Client
+                {
+                    ClientId = "hybridclent",
+                    ClientName="Demo MVC Client",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    RedirectUris =           {
-                        "http://vueblog.neters.club/callback",
-                        "http://apk.neters.club/oauth2-redirect.html",
-                        "http://localhost:6688/callback",
-                        "http://localhost:8081/oauth2-redirect.html",
-                    },
-                    PostLogoutRedirectUris = { "http://vueblog.neters.club","http://localhost:6688" },
-                    AllowedCorsOrigins =     { "http://vueblog.neters.club","http://localhost:6688" },
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                 
+                    RequirePkce = false,//v4.x需要配置这个
 
-                    AccessTokenLifetime=3600,
+                    RedirectUris = { "http://localhost:1003/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:1003/signout-callback-oidc" },
 
-                    AllowedScopes = {
+                    AllowOfflineAccess=true,
+                    AlwaysIncludeUserClaimsInIdToken=true,
+
+                    AllowedScopes = new List<string>
+                    {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
                         "roles",
-                        "blog.core.api.BlogModule"
+                        "rolename",
+                        "blog.core.api"
                     }
-                },
+                }
             </pre>
 
         </div>
 
         <div>
-            <h5 class="Grant-Config">Client Vue.js:</h5>
+            <h5 class="Grant-Config">Client MVC:</h5>
             <pre>
-                 
-            import { UserManager } from 'oidc-client'
 
-            class ApplicationUserManager extends UserManager {
-              constructor () {
-                super({
-                  authority: 'https://ids.neters.club',
-                  client_id: 'blogadminjs',
-                  redirect_uri: 'http://vueadmin.neters.club/callback',
-                  response_type: 'id_token token',
-                  scope: 'openid profile roles blog.core.api',
-                  post_logout_redirect_uri: 'http://vueadmin.neters.club'
-                })
-              }
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-              async login () {
-                await this.signinRedirect()
-                return this.getUser()
-              }
+            // 认证方案的配置
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddCookie("Cookies", options =>
+            {
+                options.AccessDeniedPath = "/Authorization/NoPermission";
+            })
+            .AddOpenIdConnect("oidc", options =>
+            {
+                options.SignInScheme = "Cookies";
 
-              async logout () {
-                return this.signoutRedirect()
-              }
-            }
+                options.Authority = "https://ids.neters.club";
+                options.RequireHttpsMetadata = false;
+                options.ClientId = "hybridclent";
+                options.ClientSecret = "secret";
 
+                options.ResponseType = "code id_token";
+
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.SaveTokens = true;
+
+
+                // 为api在使用refresh_token的时候,配置offline_access作用域
+                //options.GetClaimsFromUserInfoEndpoint = true;
+
+                // 作用域获取
+                options.Scope.Clear();
+                options.Scope.Add("roles");
+                options.Scope.Add("rolename");
+                options.Scope.Add("blog.core.api");
+                options.Scope.Add("profile");
+                options.Scope.Add("openid");
+
+                //options.ClaimActions.MapJsonKey("website", "website");
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //映射 User.Name
+                    //NameClaimType = JwtClaimTypes.Name,
+                    //RoleClaimType = JwtClaimTypes.Role
+                };
+            });
             </pre>
 
         </div>
@@ -289,75 +507,5 @@
 
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-sm-8 card-title">
-                    <h3><strong>4、password</strong></h3>
-                </div>
 
-            </div>
-        </div>
-
-        <div>
-            <h5 class="Grant-Config"> Ids4:</h5>
-            <pre>
-                 // 控制台客户端 密码模式
-                 new Client
-                 {
-                     ClientId = "Console",
-                     ClientSecrets = { new Secret("secret".Sha256()) },
-
-                     AllowedGrantTypes = new List<string>()
-                     {
-                         GrantTypes.ResourceOwnerPasswordAndClientCredentials.FirstOrDefault(),
-                     },
-
-                     AllowedScopes = new List<string>
-                     {
-                         "blog.core.api"
-                     }
-                 }
-            </pre>
-
-        </div>
-
-        <div>
-            <h5 class="Grant-Config">Client Console:</h5>
-            <pre>
-                 using var client = new HttpClient();
-                 var discoResponse = await client.GetDiscoveryDocumentAsync("http://localhost:5004");
-                 if (discoResponse.IsError)
-                 {
-                     Console.WriteLine(discoResponse.Error);
-                     return;
-                 }
-
-                 var tokenResponse = await client.RequestPasswordTokenAsync(new PasswordTokenRequest
-                 {
-                     Address = discoResponse.TokenEndpoint,
-                     ClientId = "Console",// 客户端id
-                     Scope = "blog.core.api",// 对应的受保护资源服务器id
-                     ClientSecret = "secret",
-                     UserName = "laozhang",// 这里的用户名密码，是我SeedData的时候导入的
-                     Password = "BlogIdp123$InitPwd"
-                 });
-
-                 if (tokenResponse.IsError)
-                 {
-                     Console.WriteLine(tokenResponse.Error);
-                     return;
-                 }
-
-                 Console.WriteLine(tokenResponse.Json);
-                 client.SetBearerToken(tokenResponse.AccessToken);
-                 // 获取access_token后，向资源服务器发起请求
-                 var response = await client.GetAsync("http://localhost:8081/api/blog/1");
-     
-            </pre>
-
-        </div>
-
-
-    </div>
 </div>
