@@ -94,6 +94,27 @@
         <div>
             <h5 class="Grant-Config"> Ids4:</h5>
             <pre>
+            
+               // 自定义claim
+                public static IEnumerable<ApiScope> ApiScopes =>
+                new ApiScope[]
+                {
+                    new ApiScope("password_scope1")
+                };
+                
+                public static IEnumerable<ApiResource> ApiResources =>
+                 new ApiResource[]
+                 {
+
+                     new ApiResource("blog.core.api","api1")
+                     {
+                         Scopes={ "blog.core.api" },
+                         UserClaims={JwtClaimTypes.Role},  //添加Cliam 角色类型，同时，用户的claim也许配置！
+                         ApiSecrets={new Secret("apisecret".Sha256())}
+                     }
+                 };
+                
+                        
                  // 控制台客户端 密码模式
                  new Client
                  {
