@@ -16,6 +16,7 @@
                     <h3><strong>1、client_credentials</strong></h3>
                 </div>
                 <div class="grey888">
+                    <div>适用于和用户无关，机器与机器之间直接交互访问资源的场景。</div>
                     <div>这种模式一般只用在服务端与服务端之间的认证,在c#中请求令牌，认证服务器不提供像用户数据这样的重要资源，仅仅是有限的只读资源或者一些开放的API。</div>
                 </div>
             </div>
@@ -413,6 +414,11 @@
                     <h3><strong>6、hybrid</strong></h3>
                 </div>
 
+                <div class="grey888">
+                    <div>客户端根据ResponseType的不同，authorization endpoint返回可以分为三种情况："code id_token"、"code token"、"code id_token token"</div>
+                    <div>适用于服务器端 Web 应用程序和原生桌面/移动应用程序，混合模式是简化模式和授权码模式的组合。</div>
+                    <div>每当考虑使用授权码模式的时候，一般都是使用混合模式。</div>
+                </div>
             </div>
         </div>
 
@@ -426,6 +432,8 @@
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
                     AllowedGrantTypes = GrantTypes.Hybrid,
+                    
+                    AllowAccessTokensViaBrowser = true,//返回类型包含token时候，配置
                  
                     RequirePkce = false,//v4.x需要配置这个
 
