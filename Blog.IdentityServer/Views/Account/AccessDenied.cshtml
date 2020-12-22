@@ -7,5 +7,7 @@
         <h2 class="text-danger">@ViewData["Title"]</h2>
     </div>
     <p class="text-danger">You do not have access to this resource.</p>
-    <p class="text-danger">@ViewBag.ErrorMsg</p>
+    <p class="text-danger">
+        @Html.Raw(ViewBag.ErrorMsg)
+    </p>
 </header>

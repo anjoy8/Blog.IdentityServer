@@ -863,7 +863,8 @@ namespace IdentityServer4.Quickstart.UI
                 }
                 else
                 {
-                    return RedirectToAction(nameof(AccessDenied), new { errorMsg = "非超级管理员，只能修改自己密码" });
+                    var forgetPwdUrl = "https://github.com/anjoy8/Blog.IdentityServer/issues";
+                    return RedirectToAction(nameof(AccessDenied), new { errorMsg = $"只能在登录状态下修改密码! <br>如果忘记密码，请联系超级管理员：<a href='{forgetPwdUrl}'>link</a>，提Issue" });
                 }
             }
 
