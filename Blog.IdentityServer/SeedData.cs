@@ -112,7 +112,7 @@ namespace Blog.IdentityServer
 
                                 //var result = userMgr.CreateAsync(userItem, "BlogIdp123$" + item.uLoginPWD).Result;
 
-                                // 因为导入的密码是 MD5密文，所以这里统一都用初始密码了,可以先登录，然后修改密码
+                                // 因为导入的密码是 MD5密文，所以这里统一都用初始密码了,可以先登录，然后修改密码，超级管理员：blogadmin
                                 var result = userMgr.CreateAsync(userItem, "BlogIdp123$InitPwd").Result;
                                 if (!result.Succeeded)
                                 {
