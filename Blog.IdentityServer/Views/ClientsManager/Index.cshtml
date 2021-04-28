@@ -10,8 +10,9 @@
         table-layout: fixed;
         word-break: break-all;
     }
-    hr{
-        margin:6px;
+
+    hr {
+        margin: 6px;
     }
 </style>
 <div>
@@ -51,7 +52,7 @@
                 var clientModel = item.ToModel();
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ClientId)
+                        @Html.DisplayFor(modelItem => !string.IsNullOrEmpty(item.ClientId) && item.ClientId.Contains("xyz000!") ? "VIP用户专属" : item.ClientId);
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ClientName)
