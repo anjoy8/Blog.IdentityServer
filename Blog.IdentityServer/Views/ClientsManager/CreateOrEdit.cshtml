@@ -15,6 +15,14 @@
         border-bottom: 1px dashed;
     }
 
+    .Client-select {
+        width: 100%;
+        height: 28px;
+        margin: 5px;
+        border: 0;
+        border-bottom: 1px dashed;
+    }
+
     section.main {
         height: 38px;
         text-align: left;
@@ -33,6 +41,14 @@
     .todoapp .contents {
         float: left;
         width: calc(100% - 200px);
+    }
+
+    .h-50 {
+        height: 50px !important;
+    }
+
+    .l-h-20 {
+        line-height: 20px;
     }
 </style>
 <script src="~/js/axios.min.js"></script>
@@ -59,6 +75,16 @@
     <section class="main" v-cloak>
         <div class="title">允许的授权类型：</div>
         <div class="contents"><input class="Client-input" type="text" v-model="clientDto.allowedGrantTypes"></div>
+    </section>
+    <section class="main h-50" v-cloak>
+        <div class="title l-h-20">允许将token通过浏览器传递：</div>
+        <div class="contents">
+            @*<input class="Client-input" type="text" v-model="clientDto.allowAccessTokensViaBrowser">*@
+            <select class="Client-select" v-model="clientDto.allowAccessTokensViaBrowser">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
     </section>
     <section class="main" v-cloak>
         <div class="title">作用域：</div>
@@ -91,6 +117,7 @@
                 clientName:'',
                 clientSecrets:'',
                 description:'',
+                allowAccessTokensViaBrowser:'',
                 allowedGrantTypes:'',
                 allowedScopes:'',
                 allowedCorsOrigins:'',

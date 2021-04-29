@@ -14,6 +14,12 @@
     hr {
         margin: 6px;
     }
+
+    .alert-auth {
+        margin: 15px 0 -10px 0;
+        color: #ff5567;
+        font-size: 14px;
+    }
 </style>
 <div>
     <h2>@ViewData["Title"]</h2>
@@ -27,6 +33,7 @@
                 <a asp-action="CreateOrEdit" asp-route-id="0" class="btn btn-primary">
                     <span title="Create New" class="glyphicon glyphicon-plus-sign"></span> Add New
                 </a>
+                <p class="alert-auth">如果你需要一个客户端，用来学习三端联调，但是又不想自己搭认证中心，可以使用本平台，请联系老张的哲学。</p>
             </div>
         </div>
     </div>

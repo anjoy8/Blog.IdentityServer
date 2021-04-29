@@ -79,6 +79,7 @@ namespace Blog.IdentityServer.Controllers.Client
                     ClientId = model?.ClientId,
                     ClientName = model?.ClientName,
                     Description = model?.Description,
+                    AllowAccessTokensViaBrowser = (model?.AllowAccessTokensViaBrowser).ObjToString(),
                     AllowedCorsOrigins = string.Join(",", model?.AllowedCorsOrigins),
                     AllowedGrantTypes = string.Join(",", model?.AllowedGrantTypes),
                     AllowedScopes = string.Join(",", model?.AllowedScopes),
@@ -107,6 +108,7 @@ namespace Blog.IdentityServer.Controllers.Client
                     ClientId = request?.ClientId,
                     ClientName = request?.ClientName,
                     Description = request?.Description,
+                    AllowAccessTokensViaBrowser = (request?.AllowAccessTokensViaBrowser).ObjToBool(),
                     AllowedCorsOrigins = request?.AllowedCorsOrigins?.Split(","),
                     AllowedGrantTypes = request?.AllowedGrantTypes?.Split(","),
                     AllowedScopes = request?.AllowedScopes?.Split(","),
@@ -137,6 +139,7 @@ namespace Blog.IdentityServer.Controllers.Client
                 modelEF.ClientId = request?.ClientId;
                 modelEF.ClientName = request?.ClientName;
                 modelEF.Description = request?.Description;
+                modelEF.AllowAccessTokensViaBrowser = (request?.AllowAccessTokensViaBrowser).ObjToBool();
 
                 var AllowedCorsOrigins = new List<IdentityServer4.EntityFramework.Entities.ClientCorsOrigin>();
                 if (!string.IsNullOrEmpty(request?.AllowedCorsOrigins))
