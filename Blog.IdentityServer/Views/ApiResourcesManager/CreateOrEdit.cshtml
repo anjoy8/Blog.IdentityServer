@@ -48,7 +48,11 @@
         允许的声明：
         <input class="Client-input" type="text" v-model="clientDto.userClaims">
     </section>
-   
+    <section class="main" v-cloak>
+        作用域：
+        <input class="Client-input" type="text" v-model="clientDto.scopes">
+    </section>
+
     <footer class="info">
         <input type="button" onclick="{ window.location.href='/ApiResourcesManager/index' }" class="btn btn-default" value="< Back">
         <input type="button" class="btn btn-primary" @@click="saveClients" value="Submit">
@@ -64,6 +68,7 @@
                 displayName:'',
                 description:'',
                 userClaims:'',
+                scopes:'',
             },
             id: @(ViewBag.ApiResourceId),
             title: '添加',

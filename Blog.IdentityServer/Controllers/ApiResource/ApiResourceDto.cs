@@ -12,5 +12,6 @@ namespace Blog.IdentityServer.Controllers.ApiResource
         public string DisplayName { get; set; }
         public string Description { get; set; }
         public string UserClaims { get; set; }
+        public string Scopes { get; set; }
     }
 }

@@ -10,6 +10,11 @@
         table-layout: fixed;
         word-break: break-all;
     }
+
+    hr {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
 </style>
 <div>
     <h2>@ViewData["Title"]</h2>
@@ -34,36 +39,40 @@
             <tr>
                 <th>资源名称</th>
                 <th>显示名称</th>
-                <th>描述</th>
                 <th>声明</th>
-                <th style="width:80px;">Operate</th>
+                <th>作用域</th>
+                <th>描述</th>
+                <th style="width:100px;">Operate</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                var clientModel = item.ToModel();
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DisplayName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @string.Join(",", clientModel.UserClaims)
-                </td>
-               
-                <td>
-                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-pencil">Edit</span>
-                    </a>
+                var apiResourceModel = item.ToModel();
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayName)
+                    </td>
+                    <td>
+                        @Html.Raw(string.Join("<hr>", apiResourceModel.UserClaims))
+                    </td>
+                    <td>
+                        @Html.Raw(string.Join("<hr>", apiResourceModel.Scopes))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
 
-                </td>
-            </tr>
+                    <td>
+                        <a asp-action="CreateOrEdit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil">Edit</span>
+                        </a>
+
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

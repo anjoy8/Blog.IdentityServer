@@ -32,6 +32,7 @@ namespace Blog.IdentityServer.Controllers.ApiResource
         {
             return View(await _configurationDbContext.ApiResources
                 .Include(d => d.UserClaims)
+                .Include(d => d.Scopes)
                 .ToListAsync());
         }
 
@@ -55,6 +56,7 @@ namespace Blog.IdentityServer.Controllers.ApiResource
         {
             var model = (await _configurationDbContext.ApiResources
                 .Include(d => d.UserClaims)
+                .Include(d => d.Scopes)
                 .ToListAsync()).FirstOrDefault(d => d.Id == id).ToModel();
 
             var apiResourceDto = new ApiResourceDto();
@@ -66,6 +68,7 @@ namespace Blog.IdentityServer.Controllers.ApiResource
                     DisplayName = model?.DisplayName,
                     Description = model?.Description,
                     UserClaims = string.Join(",", model?.UserClaims),
+                    Scopes = string.Join(",", model?.Scopes),
                 };
             }
 
@@ -88,8 +91,9 @@ namespace Blog.IdentityServer.Controllers.ApiResource
                     Name = request?.Name,
                     DisplayName = request?.DisplayName,
                     Description = request?.Description,
-                    Enabled =true,
+                    Enabled = true,
                     UserClaims = request?.UserClaims?.Split(","),
+                    Scopes = request?.Scopes?.Split(","),
                 };
 
                 var result = (await _configurationDbContext.ApiResources.AddAsync(apiResource.ToEntity()));
@@ -101,25 +105,44 @@ namespace Blog.IdentityServer.Controllers.ApiResource
 
                 var modelEF = (await _configurationDbContext.ApiResources
                     .Include(d => d.UserClaims)
+                    .Include(d => d.Scopes)
                     .ToListAsync()).FirstOrDefault(d => d.Id == request.Id);
 
                 modelEF.Name = request?.Name;
                 modelEF.DisplayName = request?.DisplayName;
                 modelEF.Description = request?.Description;
 
-                var apiResourceClaim = new List<IdentityServer4.EntityFramework.Entities.ApiResourceClaim>();
-                if (!string.IsNullOrEmpty(request?.UserClaims))
                 {
-                    request?.UserClaims.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    var apiResourceClaim = new List<IdentityServer4.EntityFramework.Entities.ApiResourceClaim>();
+                    if (!string.IsNullOrEmpty(request?.UserClaims))
                     {
-                        apiResourceClaim.Add(new IdentityServer4.EntityFramework.Entities.ApiResourceClaim()
+                        request?.UserClaims.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                        {
+                            apiResourceClaim.Add(new IdentityServer4.EntityFramework.Entities.ApiResourceClaim()
+                            {
+                                ApiResource = modelEF,
+                                ApiResourceId = modelEF.Id,
+                                Type = s
+                            });
+                        });
+                        modelEF.UserClaims = apiResourceClaim;
+                    }
+                }
+
+
+                var apiResourceScopes = new List<IdentityServer4.EntityFramework.Entities.ApiResourceScope>();
+                if (!string.IsNullOrEmpty(request?.Scopes))
+                {
+                    request?.Scopes.Split(",").Where(s => s != "" && s != null).ToList().ForEach(s =>
+                    {
+                        apiResourceScopes.Add(new IdentityServer4.EntityFramework.Entities.ApiResourceScope()
                         {
                             ApiResource = modelEF,
                             ApiResourceId = modelEF.Id,
-                            Type = s
+                            Scope = s
                         });
                     });
-                    modelEF.UserClaims = apiResourceClaim;
+                    modelEF.Scopes = apiResourceScopes;
                 }
 
 
