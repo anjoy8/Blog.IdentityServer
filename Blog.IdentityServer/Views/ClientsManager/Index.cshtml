@@ -59,7 +59,7 @@
                 var clientModel = item.ToModel();
                 <tr>
                     <td>
-                        @(!string.IsNullOrEmpty(item.ClientId) && item.ClientId.Contains("xyz000!") ? "VIP用户专属" : item.ClientId);
+                        @(!string.IsNullOrEmpty(item.ClientId) && item.ClientId.Contains("xyz000!") ? "VIP用户专属" : item.ClientId)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ClientName)
