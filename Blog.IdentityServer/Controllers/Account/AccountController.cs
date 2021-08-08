@@ -856,8 +856,8 @@ namespace IdentityServer4.Quickstart.UI
                     // visit https://go.microsoft.com/fwlink/?LinkID=532713
                     var code = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
-
+                    var accessCode = MD5Helper.MD5Encrypt32(user.Id + code);
+                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme, accessCode);
 
                     var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
 
@@ -908,7 +908,7 @@ namespace IdentityServer4.Quickstart.UI
         {
             if (code == null || accessCode == null)
             {
-                throw new ApplicationException("A code must be supplied for password reset.");
+                return RedirectToAction(nameof(AccessDenied), new { errorMsg = "code与accessCode必须都不能为空！" });
             }
             var model = new ResetPasswordViewModel { Code = code, AccessCode = accessCode, userId = userId };
             return View(model);
