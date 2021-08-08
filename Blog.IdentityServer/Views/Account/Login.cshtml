@@ -16,7 +16,7 @@
             {
                 <form asp-route="authorize" class="form login-container">
                     <input type="hidden" asp-for="ReturnUrl" />
-                    <input class="login-name" value="" placeholder="Username" asp-for="Username">
+                    <input class="login-name" value="" placeholder="登录名或邮箱" asp-for="Username">
                     @*<input class="login-pass" type="password" placeholder="Password" asp-for="Password" autocomplete="off">*@
 
                     <p class="pass-with-show">
@@ -26,7 +26,7 @@
                                type="password"
                                value=""
                                asp-for="Password"
-                               placeholder="Password"
+                               placeholder="密码"
                                data-eye-class="material-icons"
                                data-eye-open-class="visibility"
                                data-eye-close-class="visibility_off"
