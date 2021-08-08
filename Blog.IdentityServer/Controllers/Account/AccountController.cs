@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using Blog.IdentityServer.Models;
 using Microsoft.AspNetCore.Authorization;
+using Blog.Core.Common.Helper;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -872,7 +873,8 @@ namespace IdentityServer4.Quickstart.UI
 
                     var code = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
+                    var accessCode = MD5Helper.MD5Encrypt32(user.Id + code);
+                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme, accessCode);
 
 
                     var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
@@ -902,13 +904,13 @@ namespace IdentityServer4.Quickstart.UI
         [HttpGet]
         [Route("account/reset-password")]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string code = null)
+        public IActionResult ResetPassword(string code = null, string accessCode = null, string userId = "")
         {
-            if (code == null)
+            if (code == null || accessCode == null)
             {
                 throw new ApplicationException("A code must be supplied for password reset.");
             }
-            var model = new ResetPasswordViewModel { Code = code };
+            var model = new ResetPasswordViewModel { Code = code, AccessCode = accessCode, userId = userId };
             return View(model);
         }
 
@@ -922,12 +924,28 @@ namespace IdentityServer4.Quickstart.UI
             {
                 return View(model);
             }
+
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }
+
+
+            // 防止篡改
+            var getAccessCode = MD5Helper.MD5Encrypt32(model.userId + model.Code);
+            if (getAccessCode != model.AccessCode)
+            {
+                return RedirectToAction(nameof(AccessDenied), new { errorMsg = "随机码已被篡改！密码重置失败！" });
+            }
+
+            if (user != null && user.Id.ToString() != model.userId)
+            {
+                return RedirectToAction(nameof(AccessDenied), new { errorMsg = "不能修改他人邮箱！密码重置失败！" });
+            }
+
+
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {

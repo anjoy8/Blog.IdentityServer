@@ -13,12 +13,12 @@ namespace IdentityServer4.Quickstart.UI
                 protocol: scheme);
         }
 
-        public static string ResetPasswordCallbackLink(this IUrlHelper urlHelper, string userId, string code, string scheme)
+        public static string ResetPasswordCallbackLink(this IUrlHelper urlHelper, string userId, string code, string scheme, string accessCode = "")
         {
             return urlHelper.Action(
                 action: nameof(AccountController.ResetPassword),
                 controller: "Account",
-                values: new { userId, code },
+                values: new { userId, code, accessCode },
                 protocol: scheme);
         }
     }

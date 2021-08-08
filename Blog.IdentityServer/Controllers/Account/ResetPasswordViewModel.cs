@@ -5,6 +5,9 @@ namespace IdentityServer4.Quickstart.UI
     public class ResetPasswordViewModel
     {
         [Required]
+        public string userId { get; set; }
+
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -19,5 +22,6 @@ namespace IdentityServer4.Quickstart.UI
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
+        public string AccessCode { get; set; }
     }
 }
