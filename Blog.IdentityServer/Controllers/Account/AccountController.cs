@@ -110,12 +110,11 @@ namespace IdentityServer4.Quickstart.UI
 
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.Username);
-
+                var user = _userManager.Users.FirstOrDefault(d => (d.LoginName == model.Username || d.Email == model.Username) && !d.tdIsDelete);
 
                 if (user != null && !user.tdIsDelete)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
+                    var result = await _signInManager.PasswordSignInAsync(user.LoginName, model.Password, model.RememberLogin, lockoutOnFailure: true);
                     if (result.Succeeded)
                     {
                         await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.UserName));
@@ -664,7 +663,7 @@ namespace IdentityServer4.Quickstart.UI
         public IActionResult Users(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderByDescending(d => d.Id).ToList();
+            var users = _userManager.Users.Where(d => !d.tdIsDelete).OrderByDescending(d => d.Id).Take(50).ToList();
 
             return View(users);
         }
@@ -849,7 +848,7 @@ namespace IdentityServer4.Quickstart.UI
                     if (user == null)
                     {
                         // Don't reveal that the user does not exist or is not confirmed
-                        return RedirectToAction(nameof(ForgotPasswordConfirmation));
+                        return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = "邮箱不存在！" });
                     }
 
                     // For more information on how to enable account confirmation and password reset please
@@ -863,10 +862,27 @@ namespace IdentityServer4.Quickstart.UI
 
                     return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = ResetPassword });
                 }
+                else if (!string.IsNullOrEmpty(model.FirstQuestion) && !string.IsNullOrEmpty(model.SecondQuestion))
+                {
+                    var user = _userManager.Users.FirstOrDefault(d => d.Email == model.Email && d.FirstQuestion == model.FirstQuestion && d.SecondQuestion == model.SecondQuestion);
+                    if (user == null)
+                    {
+                        return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = "密保答案错误！" });
+                    }
+
+                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    var callbackUrl = Url.ResetPasswordCallbackLink(user.Id.ToString(), code, Request.Scheme);
+
+
+                    var ResetPassword = $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>";
+
+                    return RedirectToAction(nameof(ForgotPasswordConfirmation), new { ResetPassword = ResetPassword });
+                }
                 else
                 {
                     var forgetPwdUrl = "https://github.com/anjoy8/Blog.IdentityServer/issues";
-                    return RedirectToAction(nameof(AccessDenied), new { errorMsg = $"只能在登录状态下修改密码! <br>如果忘记密码，请联系超级管理员手动重置：<a href='{forgetPwdUrl}'>link</a>，提Issue" });
+                    return RedirectToAction(nameof(AccessDenied), new { errorMsg = $"只能在登录状态下或者输入正确密保的情况下，修改密码! <br>如果忘记密码，请联系超级管理员手动重置：<a href='{forgetPwdUrl}'>link</a>，提Issue" });
                 }
             }
 

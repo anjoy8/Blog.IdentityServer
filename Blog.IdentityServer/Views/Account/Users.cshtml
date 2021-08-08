@@ -29,6 +29,9 @@
                     #
                 </th>
                 <th>
+                    Id
+                </th>
+                <th>
                     UserName
                 </th>
                 <th>
@@ -47,6 +50,9 @@
             <tr>
                 <td>
                     @(Model.Count-index)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LoginName)

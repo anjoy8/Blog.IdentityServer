@@ -37,16 +37,17 @@
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
 
+            <span class="pwd-qus-tip">请填写各自密保的答案，为后期找回账户和密码提供依据，请牢记自己的内容</span>
+            <br />
+            <span class="pwd-qus-tip">密保问题两个必须都填写，否则无法找回密码等信息。</span>
             <div class="form-group">
                 <label asp-for="FirstQuestion"></label>
-                <span class="pwd-qus-tip">（请任意填写一个答案，为后期找回账户和密码提供依据，请牢记自己的选项）</span>
                 <input asp-for="FirstQuestion" class="form-control create-item" />
                 <span asp-validation-for="FirstQuestion" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="SecondQuestion"></label>
-                <span class="pwd-qus-tip">（请任意填写一个答案，为后期找回账户和密码提供依据，请牢记自己的选项）</span>
                 <input asp-for="SecondQuestion" class="form-control create-item" />
                 <span asp-validation-for="SecondQuestion" class="text-danger"></span>
             </div>
