@@ -31,8 +31,17 @@ namespace IdentityServer4.Quickstart.UI
         public string ConfirmPassword { get; set; }
 
 
+
+        [Required]
+        [Display(Name = "密保问题一：你喜欢的动漫？")]
+        public string FirstQuestion { get; set; }
+
+        [Required]
+        [Display(Name = "密保问题二：你喜欢的名著？")]
+        public string SecondQuestion { get; set; }
+
         [Display(Name = "性别")]
-        public int Sex { get; set; } =0;
+        public int Sex { get; set; } = 0;
 
         [Display(Name = "生日")]
         public DateTime Birth { get; set; } = DateTime.Now;

@@ -19,6 +19,8 @@ namespace Blog.IdentityServer.Models
         public DateTime birth { get; set; } = DateTime.Now;
 
         public string addr { get; set; }
+        public string FirstQuestion { get; set; }
+        public string SecondQuestion { get; set; }
 
         public bool tdIsDelete { get; set; }
 

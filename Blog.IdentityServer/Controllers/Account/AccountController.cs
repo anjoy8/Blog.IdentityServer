@@ -602,6 +602,8 @@ namespace IdentityServer4.Quickstart.UI
                         sex = model.Sex,
                         age = model.Birth.Year - DateTime.Now.Year,
                         birth = model.Birth,
+                        FirstQuestion = model.FirstQuestion,
+                        SecondQuestion = model.SecondQuestion,
                         addr = "",
                         tdIsDelete = false
                     };

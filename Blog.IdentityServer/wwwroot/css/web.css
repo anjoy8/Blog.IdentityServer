@@ -517,3 +517,11 @@ h5.Grant-Config {
     .grey888 div {
         margin: 3px;
     }
+
+.pwd-qus-tip{
+    font-size:12px;
+    color:red;
+}
+.create-item{
+    width:300px;
+}
