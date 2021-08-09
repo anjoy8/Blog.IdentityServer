@@ -689,7 +689,7 @@ namespace IdentityServer4.Quickstart.UI
                 return NotFound();
             }
 
-            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email, await _userManager.GetClaimsAsync(user)));
+            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email, await _userManager.GetClaimsAsync(user), user.FirstQuestion, user.SecondQuestion));
         }
 
 
@@ -767,6 +767,121 @@ namespace IdentityServer4.Quickstart.UI
             return View(model);
         }
 
+
+
+        [HttpGet]
+        [Route("account/my")]
+        [Authorize]
+        public async Task<IActionResult> My(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            var id = (int.Parse)(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value);
+            if (id <= 0)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new EditViewModel(user.Id.ToString(), user.LoginName, user.UserName, user.Email, await _userManager.GetClaimsAsync(user), user.FirstQuestion, user.SecondQuestion));
+        }
+
+        [HttpPost]
+        [Route("account/my")]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> My(EditViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            IdentityResult result = new IdentityResult();
+
+            if (ModelState.IsValid)
+            {
+                var id = (int.Parse)(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value);
+                if (id <= 0)
+                {
+                    return NotFound();
+                }
+
+                // id为当前登录人
+                if (model.Id == id.ToString())
+                {
+                    var userItem = _userManager.FindByIdAsync(model.Id).Result;
+                    if (userItem != null)
+                    {
+
+
+                        var oldName = userItem.LoginName;
+                        var oldEmail = userItem.Email;
+
+                        userItem.UserName = model.LoginName;
+                        userItem.LoginName = model.UserName;
+                        userItem.Email = model.Email;
+                        userItem.RealName = model.UserName;
+                        userItem.FirstQuestion = model.FirstQuestion;
+                        userItem.SecondQuestion = model.SecondQuestion;
+
+
+                        result = await _userManager.UpdateAsync(userItem);
+
+                        if (result.Succeeded)
+                        {
+                            var removeClaimsIdRst = await _userManager.RemoveClaimsAsync(userItem,
+                                new Claim[]{
+                                new Claim(JwtClaimTypes.Name, oldName),
+                                new Claim(JwtClaimTypes.Email, oldEmail),
+                            });
+
+                            if (removeClaimsIdRst.Succeeded)
+                            {
+                                var addClaimsIdRst = await _userManager.AddClaimsAsync(userItem,
+                                    new Claim[]{
+                                    new Claim(JwtClaimTypes.Name, userItem.LoginName),
+                                    new Claim(JwtClaimTypes.Email, userItem.Email),
+                                });
+
+                                if (addClaimsIdRst.Succeeded)
+                                {
+                                    return RedirectToLocal(returnUrl);
+                                }
+                                else
+                                {
+                                    AddErrors(addClaimsIdRst);
+
+                                }
+                            }
+                            else
+                            {
+                                AddErrors(removeClaimsIdRst);
+
+                            }
+
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, $"{userItem?.UserName} no exist!");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, $"您无权修改该数据!");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
 
 
         [HttpPost]

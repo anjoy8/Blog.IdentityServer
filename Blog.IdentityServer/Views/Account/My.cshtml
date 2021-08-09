@@ -1,6 +1,6 @@
 ﻿@model EditViewModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "个人中心";
 
 }
 
@@ -9,14 +9,7 @@
 <div class="row">
     <div class="col-md-6">
         <partial name="_ValidationSummary" />
-        @{
-            foreach (var item in Model.Claims)
-            {
-                <p>@item</p>
-            }
-
-        }
-        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" asp-action="Edit" method="post">
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" asp-action="My" method="post">
             <h4>Create a new account.</h4>
             <hr />
             <input type="hidden" asp-for="Id" />
@@ -37,12 +30,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="FirstQuestion"></label>
-                <input disabled="disabled" asp-for="FirstQuestion" class="form-control" />
+                <input asp-for="FirstQuestion" class="form-control" />
                 <span asp-validation-for="FirstQuestion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SecondQuestion"></label>
-                <input disabled="disabled" asp-for="SecondQuestion" class="form-control" />
+                <input asp-for="SecondQuestion" class="form-control" />
                 <span asp-validation-for="SecondQuestion" class="text-danger"></span>
             </div>
 
