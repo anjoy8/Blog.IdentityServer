@@ -129,6 +129,24 @@ namespace IdentityServer4.Quickstart.UI
 
                         return Redirect("~/");
                     }
+                    else
+                    {
+                        var result2 = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberLogin, lockoutOnFailure: true);
+
+                        if (result2.Succeeded)
+                        {
+                            await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.UserName));
+
+                            // make sure the returnUrl is still valid, and if so redirect back to authorize endpoint or a local page
+                            // the IsLocalUrl check is only necessary if you want to support additional local pages, otherwise IsValidReturnUrl is more strict
+                            if (_interaction.IsValidReturnUrl(model.ReturnUrl) || Url.IsLocalUrl(model.ReturnUrl))
+                            {
+                                return Redirect(model.ReturnUrl);
+                            }
+
+                            return Redirect("~/");
+                        }
+                    }
                 }
 
                 await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
