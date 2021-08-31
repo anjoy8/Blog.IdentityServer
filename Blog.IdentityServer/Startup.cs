@@ -205,6 +205,9 @@ namespace Blog.IdentityServer
 
             services.AddSingleton<IAuthorizationHandler, ClaimsRequirementHandler>();
 
+            services.AddIpPolicyRateLimitSetup(Configuration);
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -218,6 +221,8 @@ namespace Blog.IdentityServer
                 await next();
             });
 
+            app.UseIpLimitMildd();
+         
             //app.UseForwardedHeaders();
             app.UseCookiePolicy();
 
