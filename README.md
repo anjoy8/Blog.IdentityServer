@@ -4,6 +4,11 @@
 &nbsp;
 &nbsp;
 
+## Info 
+1、项目支持SqlServer和Mysql，默认Mysql，在配置文件中可以设置："IsMysql": true,  
+2、如果用mysql，直接执行update-database即可，迁移文件在data下的MigrationsMySql文件夹；    
+3、如果不想用自带的迁移文件，先删掉data下的MigrationsMySql文件夹，然后执行（具体步骤在SeedData.cs中）；  
+
 ## 给个星星! ⭐️
 如果你喜欢这个项目或者它帮助你, 请给 Star~（辛苦星咯）
 
