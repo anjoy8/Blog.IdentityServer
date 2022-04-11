@@ -23,14 +23,16 @@ namespace Blog.IdentityServer
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
             /*
-             * 本项目同时支持Mysql和Sqlserver，我一直使用的是Mysql，所以Mysql的迁移文件已经配置号，在Data文件夹下，
-             * 直接执行update-database xxxx,那三步即可。
+             * 1、本项目同时支持Mysql和Sqlserver，默认Mysql，迁移文件已经配置好，在Data文件夹下，
+             * 直接执行三步 update-database xxxxcontext 即可。
              * 
-             * 如果自己处理，删掉data下的MigrationsMySql文件夹
+             * 2、如果自己处理，删掉data下的MigrationsMySql文件夹
              * 如果你使用sqlserver，可以先从迁移开始，下边有步骤
-             * 
              * 当然你也可以都删掉，自己重新做迁移。
-             * 迁移完成后，执行dotnet run /seed
+             * 
+             * 3、迁移完成后，执行dotnet run /seed
+             *  
+             *  
              *  1、PM> add-migration InitialIdentityServerPersistedGrantDbMigrationMysql -c PersistedGrantDbContext -o Data/MigrationsMySql/IdentityServer/PersistedGrantDb 
                 Build started...
                 Build succeeded.

@@ -164,6 +164,7 @@ namespace Blog.IdentityServer
                     ClientId = "Console",
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
+                     AllowOfflineAccess = true,//如果要获取refresh_tokens ,必须把AllowOfflineAccess设置为true
                     AllowedGrantTypes = new List<string>()
                     {
                         GrantTypes.ResourceOwnerPassword.FirstOrDefault(),
@@ -175,6 +176,7 @@ namespace Blog.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        "offline_access",
                         "blog.core.api"
                     }
                 },
