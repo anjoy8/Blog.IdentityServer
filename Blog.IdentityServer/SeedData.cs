@@ -25,6 +25,9 @@ namespace Blog.IdentityServer
             /*
              * 1、本项目同时支持Mysql和Sqlserver，默认Mysql，迁移文件已经配置好，在Data文件夹下，
              * 直接执行三步 update-database xxxxcontext 即可。
+             * update-database -c PersistedGrantDbContext
+             * update-database -c ConfigurationDbContext
+             * update-database -c ApplicationDbContext
              * 
              * 2、如果自己处理，删掉data下的MigrationsMySql文件夹
              * 如果你使用sqlserver，可以先从迁移开始，下边有步骤
@@ -104,7 +107,7 @@ namespace Blog.IdentityServer
                                 userItem = new ApplicationUser
                                 {
                                     UserName = user.uLoginName,
-                                    LoginName = user.uRealName,
+                                    LoginName = user.uLoginName,
                                     sex = user.sex,
                                     age = user.age,
                                     birth = user.birth,
